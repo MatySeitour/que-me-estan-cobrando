@@ -1,0 +1,330 @@
+{
+  "plataformas": [
+    {
+      "id": 0,
+      "nombre": "Netflix",
+      "imagen": "/icons8-netflix.svg",
+      "planes": [
+        {
+          "id": 0,
+          "plan": "Básico",
+          "descripcion": [
+            {
+              "plan_description_id": 0,
+              "plan_description": "Puedes ver contenido en 1 dispositivo compatible a la vez"
+            },
+            {
+              "plan_description_id": 1,
+              "plan_description": "Puedes ver en HD"
+            },
+            {
+              "plan_description_id": 2,
+              "plan_description": "Puedes descargar contenido en 1 dispositivo compatible a la vez"
+            }
+          ],
+          "precio": 999
+        },
+        {
+          "id": 2,
+          "plan": "Estándar",
+          "descripcion": [
+            {
+              "plan_description_id": 3,
+              "plan_description": "Puedes ver contenido en 2 dispositivos compatibles a la vez"
+            },
+            {
+              "plan_description_id": 4,
+              "plan_description": "Puedes ver en Full HD"
+            },
+            {
+              "plan_description_id": 5,
+              "plan_description": "Puedes descargar contenido en 2 dispositivos compatibles a la vez"
+            },
+            {
+              "plan_description_id": 6,
+              "plan_description": "Opción para agregar hasta 1 miembro extra que no viva contigo"
+            }
+          ],
+          "precio": 1699
+        },
+        {
+          "id": 3,
+          "plan": "Premium",
+          "descripcion": [
+            {
+              "plan_description_id": 7,
+              "plan_description": "Puedes ver contenido en 4 dispositivos compatibles a la vez"
+            },
+            {
+              "plan_description_id": 8,
+              "plan_description": "Puedes ver en Ultra HD "
+            },
+            {
+              "plan_description_id": 9,
+              "plan_description": "Puedes descargar contenido en 6 dispositivos compatibles a la vez"
+            },
+            {
+              "plan_description_id": 10,
+              "plan_description": "Opción para agregar hasta 2 miembros extras que no vivan contigo "
+            }
+          ],
+          "precio": 2399
+        }
+      ],
+      "impuesto_final": 76,
+      "impuesto_porcentaje": 1.76,
+      "image_background": "netflix-test.jpg",
+      "select_price": false
+    },
+    {
+      "id": 1,
+      "nombre": "HBO Max",
+      "imagen": "/icons8-hbo.svg",
+      "planes": [
+        {
+          "id": 4,
+          "plan": "1 mes",
+          "descripcion": [
+            {
+              "plan_description_id": 11,
+              "plan_description": "Puedes ver en 3 dispositivos a la vez "
+            },
+            {
+              "plan_description_id": 12,
+              "plan_description": "Hasta 5 perfiles para toda la familia"
+            }
+          ],
+          "precio": 699
+        },
+        {
+          "id": 5,
+          "plan": "3 meses",
+          "descripcion": [
+            {
+              "plan_description_id": 12,
+              "plan_description": "Disfruta en todas tus pantallas"
+            },
+            {
+              "plan_description_id": 13,
+              "plan_description": "Contenido en alta definición y 4K"
+            }
+          ],
+          "precio": 1899
+        },
+        {
+          "id": 6,
+          "plan": "12 meses",
+          "descripcion": [
+            {
+              "plan_description_id": 14,
+              "plan_description": "Chromecast y Airplay disponibles "
+            },
+            {
+              "plan_description_id": 15,
+              "plan_description": "Descarga y disfruta donde sea"
+            },
+            {
+              "plan_description_id": 16,
+              "plan_description": "Ahorra 3 meses"
+            }
+          ],
+          "precio": 5999
+        }
+      ],
+      "impuesto_final": 76,
+      "impuesto_porcentaje": 1.76,
+      "image_background": "hbo-test.webp",
+      "select_price": false
+    },
+    {
+      "id": 2,
+      "nombre": "Amazon Prime",
+      "imagen": "/icons8-amazon-prime.svg",
+      "planes": [
+        {
+          "id": 7,
+          "plan": "1 mes",
+          "descripcion": [
+            {
+              "plan_description_id": 17,
+              "plan_description": "Puedes ver en cualquier dispositivo"
+            },
+            {
+              "plan_description_id": 18,
+              "plan_description": "Puedes descargar el contenido de Amazon Prime Video"
+            }
+          ],
+          "precio": 580
+        }
+      ],
+      "impuesto_final": 76,
+      "impuesto_porcentaje": 1.76,
+      "image_background": "amazon-test.jpg",
+      "select_price": false
+    },
+    {
+      "id": 3,
+      "nombre": "Disney+",
+      "imagen": "/icons8-disney.svg",
+      "planes": [
+        {
+          "id": 8,
+          "plan": "1 mes",
+          "descripcion": [
+            {
+              "plan_description_id": 19,
+              "plan_description": "Acceso a estrenos de películas, series originales y los clásicos atemporales de Disney, Pixar, Marvel, Star Wars y National Geographic"
+            },
+            {
+              "plan_description_id": 20,
+              "plan_description": "Puedes descargar el contenido que quieras"
+            },
+            {
+              "plan_description_id": 21,
+              "plan_description": "Acceso desde cualquier dispositivo"
+            }
+          ],
+          "precio": 453.99
+        },
+        {
+          "id": 9,
+          "plan": "12 mes",
+          "descripcion": [
+            {
+              "plan_description_id": 30,
+              "plan_description": "Puedes disfrutar de todos los beneficios anteriores por un periodo de 12 meses"
+            }
+          ],
+          "precio": 3977
+        },
+        {
+          "id": 10,
+          "plan": "Combo Disney+ y Star+ por mes",
+          "descripcion": [
+            {
+              "plan_description_id": 22,
+              "plan_description": "Pueden acceder a contenido de Disney+ y Star+"
+            }
+          ],
+          "precio": 1136
+        },
+        {
+          "id": 11,
+          "plan": "Combo Disney+, Star+ y Lionsgate+ por mes",
+          "descripcion": [
+            {
+              "plan_description_id": 23,
+              "plan_description": "Pueden acceder a contenido de Disney+, Star+ y Lionsgate+"
+            }
+          ],
+          "precio": 1363
+        }
+      ],
+      "impuesto_final": 76,
+      "impuesto_porcentaje": 1.76,
+      "image_background": "disney-test.png",
+      "select_price": false
+    },
+    {
+      "id": 4,
+      "nombre": "Paramount +",
+      "imagen": "/icons8-steam.svg",
+      "planes": [
+        {
+          "id": 12,
+          "plan": "1 mes",
+          "descripcion": [
+            {
+              "plan_description_id": 24,
+              "plan_description": "Puedes ver películas y series de Paramount, Nickelodeon, MTV y más desde cualquier dispositivo!"
+            },
+            {
+              "plan_description_id": 25,
+              "plan_description": "Puedes descargar contenido"
+            }
+          ],
+          "precio": 181
+        }
+      ],
+      "impuesto_final": 76,
+      "impuesto_porcentaje": 1.76,
+      "image_background": "paramount-test.png",
+      "select_price": false
+    },
+    {
+      "id": 5,
+      "nombre": "Start +",
+      "imagen": "/icons8-disney.svg",
+      "planes": [
+        {
+          "id": 13,
+          "plan": "1 mes",
+          "descripcion": [
+            {
+              "plan_description_id": 26,
+              "plan_description": "Puedes ver películas, series y deportes desde cualquier dispositivo!"
+            }
+          ],
+          "precio": 453.99
+        },
+        {
+          "id": 14,
+          "plan": "12 mes",
+          "descripcion": [
+            {
+              "plan_description_id": 27,
+              "plan_description": "Puedes ver películas, series y deportes desde cualquier dispositivo por 1 año!"
+            }
+          ],
+          "precio": 3977
+        },
+        {
+          "id": 15,
+          "plan": "Combo Disney+ y Star+ por mes",
+          "descripcion": [
+            {
+              "plan_description_id": 28,
+              "plan_description": "Pueden acceder a contenido de Disney+ y Star+"
+            }
+          ],
+          "precio": 1136
+        },
+        {
+          "id": 16,
+          "plan": "Combo Disney+, Star+ y Lionsgate+ por mes",
+          "descripcion": [
+            {
+              "plan_description_id": 29,
+              "plan_description": "Pueden acceder a contenido de Disney+, Star+ y Lionsgate+"
+            }
+          ],
+          "precio": 1363
+        }
+      ],
+      "impuesto_final": 76,
+      "impuesto_porcentaje": 1.76,
+      "image_background": "start-test.png",
+      "select_price": false
+    },
+    {
+      "id": 6,
+      "nombre": "Steam",
+      "imagen": "/icons8-steam.svg",
+      "planes": [],
+      "impuesto_final": 76,
+      "impuesto_porcentaje": 1.76,
+      "image_background": "steam-test.jpg",
+      "select_price": true
+    },
+    {
+      "id": 7,
+      "nombre": "Epic Games",
+      "imagen": "/icons8-epic.svg",
+      "planes": [],
+      "impuesto_final": 76,
+      "impuesto_porcentaje": 1.76,
+      "image_background": "epic-test.jpg",
+      "select_price": true
+    }
+  ]
+}
