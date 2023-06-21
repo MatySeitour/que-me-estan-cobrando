@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.home-title {
+  background: linear-gradient(to bottom, #fff 30%, hsla(0, 0%, 100%, 0.5));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home-subtitle {
+  background: linear-gradient(to bottom, #fff 30%, hsla(0, 0%, 100%, 0.5));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.slider-track {
+  width: calc(100px * 16);
+  display: flex;
+}
+
+.slider-container::before,
+.slider-container::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 15%;
+  background: linear-gradient(to right, #121212 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+}
+
+.slider-container::before {
+  left: 0;
+  top: 0;
+}
+
+.slider-container::after {
+  right: -1px;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider-container {
+  -webkit-box-reflect: below 0px
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+.home-title {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.home-title .word {
+  padding-bottom: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-title .char {
+  transform: translateY(115px);
+  transition: transform 0.5s;
+}
