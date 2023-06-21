@@ -3,6 +3,7 @@ import { Paytone_One } from "next/font/google";
 
 import Head from "next/head";
 import { Banner } from "@/components/Banner";
+import { ServicesSection } from "@/components/ServicesSection";
 
 const paytone_One = Paytone_One({
   weight: "400",
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <main className={`h-screen w-screen ${paytone_One.className}`}>
       <Banner />
+      <ServicesSection />
     </main>
   );
 }
