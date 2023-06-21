@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-gradient {
+  background: linear-gradient(to bottom, #fff 30%, hsla(0, 0%, 100%, 0.5));
+}
+
+.button-calculator:hover .svg-calculator {
+  fill: #fff;
+  transition: all 0.5;
+}
+
 .home-title {
   background: linear-gradient(to bottom, #fff 30%, hsla(0, 0%, 100%, 0.5));
   background-clip: text;
