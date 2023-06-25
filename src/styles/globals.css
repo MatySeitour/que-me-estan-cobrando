@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-gradient {
+.bg-gradient__effect {
   background: linear-gradient(to bottom, #fff 30%, hsla(0, 0%, 100%, 0.5));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .button-calculator:hover .svg-calculator {

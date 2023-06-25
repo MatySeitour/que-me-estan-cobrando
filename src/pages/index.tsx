@@ -15,9 +15,11 @@ export default function Home() {
     <title>Que me cobran</title>
   </Head>;
   return (
-    <main className={`h-screen w-screen ${paytone_One.className}`}>
-      <Banner />
-      <ServicesSection />
+    <main className={`h-screen w-full ${paytone_One.className}`}>
+      <div className="mx-auto max-w-7xl">
+        <Banner />
+        <ServicesSection />
+      </div>
     </main>
   );
 }
