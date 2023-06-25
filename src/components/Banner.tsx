@@ -2,7 +2,6 @@ import { Paytone_One } from "next/font/google";
 import { SliderHome } from "./SliderHome";
 import { gsap } from "gsap";
 import { useEffect } from "react";
-import SplitType from "split-type";
 
 const paytone_One = Paytone_One({
   weight: ["400"],
@@ -63,7 +62,7 @@ export const Banner = () => {
   }, []);
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
+    <div className="flex h-full min-h-screen w-full flex-col items-center justify-center">
       <h1
         className={`home-title bg-clip-text text-[5rem] ${paytone_One.className} animate-gradientTitle`}
       >
