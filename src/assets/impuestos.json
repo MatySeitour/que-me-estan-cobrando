@@ -1,0 +1,32 @@
+{
+  "impuestos": [
+    {
+      "id": 0,
+      "nombre": "Impuesto al valor agregado",
+      "porcentaje": 21,
+      "descripcion": "El Impuesto al Valor Agregado (IVA) es una carga impositiva al consumo, esto quiere decir que se trata de un impuesto que paga el comprador.",
+      "abreviacion": "IVA"
+    },
+    {
+      "id": 1,
+      "nombre": "Percepción RG AFIP 4815",
+      "porcentaje": 45,
+      "descripcion": "La Resolución General N° 4815 establece un régimen de percepción a cuenta de los impuestos a las Ganancias y sobre los Bienes Personales para las operaciones de compra de moneda extranjera.",
+      "abreviacion": "RG AFIP 4815"
+    },
+    {
+      "id": 2,
+      "nombre": "Impuesto PAÍS para servicios digitales",
+      "porcentaje": 8,
+      "descripcion": "El cobro de impuestos digitales corresponde al impuesto por el uso o compra de servicios digitales como Netflix, Spotify, Steam, etc.",
+      "abreviacion": "IMP PAIS"
+    },
+    {
+      "id": 3,
+      "nombre": "Percepción Ingresos Brutos",
+      "porcentaje": 2,
+      "descripcion": "Algunas provincias cobran una percepción de ingresos brutos a los servicios digitales o pagos en moneda extranjera. El monto de esta percepción varía de acuerdo a la provincia",
+      "abreviacion": "ISIB"
+    }
+  ]
+}
