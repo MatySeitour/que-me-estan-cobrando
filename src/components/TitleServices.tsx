@@ -14,28 +14,35 @@ export default function TitleServices() {
       {
         scrollTrigger: {
           trigger: title.current,
-          start: "top center",
+          start: "start center",
+          end: "start center",
+          scrub: 1,
         },
-        yPercent: 50,
+        yPercent: -100,
         opacity: 0,
-        duration: 1.5,
-        ease: "elastic",
+        duration: 2,
       },
+
       {
         scrollTrigger: {
           trigger: title.current,
-          start: "top center",
+          start: "start center",
+          end: "start center",
+
+          scrub: 1,
         },
         yPercent: 0,
         opacity: 1,
-        duration: 1.5,
-        ease: "elastic",
+        duration: 2,
       }
     );
   }, []);
 
   return (
-    <h2 ref={title} className="bg-gradient__effect text-center text-[3rem]">
+    <h2
+      ref={title}
+      className="bg-gradient__effect text-center text-[3rem] opacity-0"
+    >
       Plataformas Digitales
     </h2>
   );
