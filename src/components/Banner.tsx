@@ -62,17 +62,41 @@ export const Banner = () => {
   }, []);
 
   return (
-    <div className="flex h-full min-h-screen w-full flex-col items-center justify-center">
+    <div className="relative flex h-full min-h-screen w-full flex-col items-center justify-center bg-black">
+      <div className="banner absolute top-0 h-40 w-screen bg-home bg-[length:40px_40px]"></div>
       <h1
-        className={`home-title bg-clip-text text-[5rem] ${paytone_One.className} animate-gradientTitle`}
+        className={`home-title bg-clip-text text-[5rem] ${paytone_One.className} relative z-20 animate-gradientTitle`}
       >
-        ¿Que me están cobrando?
+        ¿Que me están{" "}
+        <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal">
+          cobrando
+        </b>
+        ?
       </h1>
 
       <div className="mb-4">
         <h2 className="home-subtitle mb-10 mt-10 text-2xl tracking-wide text-white">
-          Descubre que impuestos te cobran y cúal es el valor final para evitar
-          sorpresas
+          Descubre que{" "}
+          <b
+            id="banner-word"
+            className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal"
+          >
+            impuestos
+          </b>{" "}
+          te cobran y cúal es el{" "}
+          <b
+            id="banner-word"
+            className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal"
+          >
+            valor final
+          </b>{" "}
+          para{" "}
+          <b
+            id="banner-word"
+            className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal"
+          >
+            evitar sorpresas
+          </b>
         </h2>
       </div>
 
