@@ -3,7 +3,7 @@
     {
       "id": 0,
       "nombre": "Netflix",
-      "imagen": "/icons8-netflix.svg",
+      "imagen": "/netflix.svg",
       "planes": [
         {
           "id": 0,
@@ -73,13 +73,12 @@
       ],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
-      "image_background": "netflix-test.jpg",
       "select_price": false
     },
     {
       "id": 1,
       "nombre": "HBO Max",
-      "imagen": "/icons8-hbo.svg",
+      "imagen": "/hbo.svg",
       "planes": [
         {
           "id": 4,
@@ -133,13 +132,12 @@
       ],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
-      "image_background": "hbo-test.webp",
       "select_price": false
     },
     {
       "id": 2,
       "nombre": "Amazon Prime",
-      "imagen": "/icons8-amazon-prime.svg",
+      "imagen": "/amazon.svg",
       "planes": [
         {
           "id": 7,
@@ -159,13 +157,12 @@
       ],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
-      "image_background": "amazon-test.jpg",
       "select_price": false
     },
     {
       "id": 3,
       "nombre": "Disney+",
-      "imagen": "/icons8-disney.svg",
+      "imagen": "/disney.svg",
       "planes": [
         {
           "id": 8,
@@ -222,13 +219,12 @@
       ],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
-      "image_background": "disney-test.png",
       "select_price": false
     },
     {
       "id": 4,
       "nombre": "Paramount +",
-      "imagen": "/icons8-steam.svg",
+      "imagen": "/paramount.svg",
       "planes": [
         {
           "id": 12,
@@ -248,13 +244,12 @@
       ],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
-      "image_background": "paramount-test.png",
       "select_price": false
     },
     {
       "id": 5,
       "nombre": "Start +",
-      "imagen": "/icons8-disney.svg",
+      "imagen": "/star.svg",
       "planes": [
         {
           "id": 13,
@@ -303,27 +298,24 @@
       ],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
-      "image_background": "start-test.png",
       "select_price": false
     },
     {
       "id": 6,
       "nombre": "Steam",
-      "imagen": "/icons8-steam.svg",
+      "imagen": "/steam.svg",
       "planes": [],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
-      "image_background": "steam-test.jpg",
       "select_price": true
     },
     {
       "id": 7,
       "nombre": "Epic Games",
-      "imagen": "/icons8-epic.svg",
+      "imagen": "/epic.svg",
       "planes": [],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
-      "image_background": "epic-test.jpg",
       "select_price": true
     }
   ]
