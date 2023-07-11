@@ -1,9 +1,13 @@
-import Image from "next/image";
 import { Paytone_One } from "next/font/google";
 
 import Head from "next/head";
 import { Banner } from "@/components/Banner";
-import { ServicesSection } from "@/components/ServicesSection";
+import { SelectService } from "@/components/SelectService";
+import TitleServices from "@/components/TitleServices";
+import { Service } from "@/components/Service";
+import { useState } from "react";
+import type { ServiceType } from "@/types";
+import plataformasData from "../assets/plataformas.json";
 
 const paytone_One = Paytone_One({
   weight: "400",
@@ -11,15 +15,47 @@ const paytone_One = Paytone_One({
 });
 
 export default function Home() {
+  const { plataformas } = plataformasData;
+  const [serviceSelected, setServiceSelected] = useState<ServiceType>(
+    plataformas[0]
+  );
   <Head>
     <title>Que me cobran</title>
   </Head>;
   return (
-    <main className={`h-screen w-full ${paytone_One.className}`}>
+    <main
+      className={`h-full w-full ${paytone_One.className} relative overflow-hidden bg-black`}
+    >
       <div className="mx-auto max-w-7xl">
         <Banner />
-        <ServicesSection />
+        <div className="h-auto w-full">
+          <TitleServices />
+        </div>
+        <SelectService
+          serviceSelected={
+            serviceSelected ?? {
+              id: -1,
+              imagen: "",
+              planes: [],
+              nombre: "",
+              impuesto_final: 0,
+              impuesto_porcentaje: 0,
+              select_price: false,
+            }
+          }
+          setServiceSelected={setServiceSelected}
+        />
+        <Service serviceSelected={serviceSelected} />
+        <div className="h-72 w-full bg-blue-500"></div>
       </div>
     </main>
   );
 }
+
+// content: "";
+// width: 100%;
+// height: 100%;
+// top: 0;
+// right: -1%;
+// position: absolute;
+// background: linear-gradient(89deg, transparent, rgba(0, 0, 0, 0.1), #000);
