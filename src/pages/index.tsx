@@ -1,5 +1,3 @@
-import { Paytone_One } from "next/font/google";
-
 import Head from "next/head";
 import { Banner } from "@/components/Banner";
 import { SelectService } from "@/components/SelectService";
@@ -8,11 +6,7 @@ import { Service } from "@/components/Service";
 import { useState } from "react";
 import type { ServiceType } from "@/types";
 import plataformasData from "../assets/plataformas.json";
-
-const paytone_One = Paytone_One({
-  weight: "400",
-  subsets: ["latin"],
-});
+import { paytone_One } from "@/utils/fonts";
 
 export default function Home() {
   const { plataformas } = plataformasData;
