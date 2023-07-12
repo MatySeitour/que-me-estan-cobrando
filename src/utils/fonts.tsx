@@ -7,6 +7,6 @@ export const paytone_One = Paytone_One({
 });
 
 export const inter = Inter({
-  weight: "400",
+  weight: ["400", "600", "800"],
   subsets: ["latin"],
 });
