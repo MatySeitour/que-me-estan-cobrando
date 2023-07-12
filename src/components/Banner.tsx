@@ -62,7 +62,7 @@ export const Banner = () => {
   }, []);
 
   return (
-    <div className="relative flex h-full min-h-screen w-full flex-col items-center justify-center bg-black">
+    <div className="relative flex h-full w-full flex-col items-center justify-center bg-black pt-40">
       <div className="banner absolute top-0 h-40 w-screen bg-home bg-[length:40px_40px]"></div>
       <h1
         className={`home-title bg-clip-text text-[5rem] ${paytone_One.className} relative z-20 animate-gradientTitle`}
