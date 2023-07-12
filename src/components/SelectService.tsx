@@ -1,11 +1,4 @@
 import Image from "next/image";
-import amazonLogo from "../../public/amazon.svg";
-import disneyLogo from "../../public/disney.svg";
-import epicLogo from "../../public/epic.svg";
-import netflixLogo from "../../public/netflix.svg";
-import paramountLogo from "../../public/paramount.svg";
-import starLogo from "../../public/star.svg";
-import steamLogo from "../../public/steam.svg";
 import plataformasData from "../assets/plataformas.json";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
