@@ -17,10 +17,10 @@ export const Taxes = () => {
   };
 
   return (
-    <div className="flex h-auto w-full flex-col gap-3">
+    <div className="flex h-auto w-full flex-col gap-8">
       <div className="pl-2">
         <h3 className="bg-gradient__effect text-3xl font-normal text-transparent">
-          Impuestos
+          ¿Que impuestos me cobran?
         </h3>
       </div>
       <ul className="flex h-auto w-full flex-col gap-1">
@@ -33,7 +33,7 @@ export const Taxes = () => {
             <div className="flex items-center justify-between p-4">
               <p className="bg-gradient__effect font-normal text-transparent">
                 {tax.nombre}
-                {` (${tax.abreviacion})`}
+                {` (${tax.abreviacion}): ${tax.porcentaje}%`}
               </p>
               <FaAngleDown
                 className={`h-5 w-5 transition-all ${
