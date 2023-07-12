@@ -131,3 +131,18 @@
   left: 42.2rem;
   transition: all 0.5s ease linear;
 }
+
+.option-active__1 ~ .item-b {
+  left: -0.9rem;
+  transition: all 0.5s ease linear;
+}
+
+.option-active__2 ~ .item-b {
+  left: 5.9rem;
+  transition: all 0.5s ease linear;
+}
+
+.option-active__3 ~ .item-b {
+  left: 12.7rem;
+  transition: all 0.5s ease linear;
+}
