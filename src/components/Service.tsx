@@ -4,6 +4,7 @@ import { Taxes } from "./Taxes";
 import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { Plans } from "./Plans";
 
 export const Service = ({
   serviceSelected,
@@ -104,6 +105,9 @@ export const Service = ({
           />
         </div>
         {serviceOptionSelect == 2 && <Taxes />}
+        {serviceOptionSelect == 3 && (
+          <Plans serviceSelected={serviceSelected} />
+        )}
       </div>
     </section>
   );
