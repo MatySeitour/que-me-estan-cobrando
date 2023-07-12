@@ -9,11 +9,12 @@ export default function TitleServices() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    const serviceContainer = document.querySelector("#service-container");
     gsap.fromTo(
       title.current,
       {
         scrollTrigger: {
-          trigger: title.current,
+          trigger: serviceContainer,
           start: "start center",
           end: "start center",
           scrub: 1,
@@ -25,7 +26,7 @@ export default function TitleServices() {
 
       {
         scrollTrigger: {
-          trigger: title.current,
+          trigger: serviceContainer,
           start: "start center",
           end: "start center",
 
@@ -41,7 +42,8 @@ export default function TitleServices() {
   return (
     <h2
       ref={title}
-      className="bg-gradient__effect text-center text-[3rem] opacity-0"
+      id="service-title"
+      className="bg-gradient__effect service-title text-center text-[3rem] opacity-0"
     >
       Plataformas Digitales
     </h2>

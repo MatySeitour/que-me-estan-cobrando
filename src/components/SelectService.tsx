@@ -24,29 +24,29 @@ export const SelectService = ({
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    const serviceContainer = document.querySelector("#service-container");
+
     gsap.fromTo(
       selectService.current,
       {
         scrollTrigger: {
-          trigger: selectService.current,
-          start: "center center",
-          end: "center center",
+          trigger: serviceContainer,
+          start: "start center",
+          end: "start center",
           scrub: 1,
-          markers: true,
         },
-        yPercent: -20,
+        yPercent: -50,
         opacity: 0,
         duration: 2,
       },
 
       {
         scrollTrigger: {
-          trigger: selectService.current,
-          start: "center center",
-          end: "center center",
+          trigger: serviceContainer,
+          start: "start center",
+          end: "start center",
 
           scrub: 1,
-          markers: true,
         },
         yPercent: 0,
         opacity: 1,
@@ -54,44 +54,6 @@ export const SelectService = ({
       }
     );
   }, []);
-
-  const services = [
-    {
-      id: 1,
-      name: "amazon prime",
-      logo: amazonLogo,
-    },
-    {
-      id: 2,
-      name: "disney",
-      logo: disneyLogo,
-    },
-    {
-      id: 3,
-      name: "epic games",
-      logo: epicLogo,
-    },
-    {
-      id: 4,
-      name: "netflix",
-      logo: netflixLogo,
-    },
-    {
-      id: 5,
-      name: "paramount +",
-      logo: paramountLogo,
-    },
-    {
-      id: 6,
-      name: "star +",
-      logo: starLogo,
-    },
-    {
-      id: 7,
-      name: "steam",
-      logo: steamLogo,
-    },
-  ];
 
   return (
     <div
@@ -126,9 +88,6 @@ export const SelectService = ({
           <div className="absolute bottom-0 left-0 right-0 top-0 -z-10 h-full w-full">
             <div className="relative flex h-full w-full place-items-center before:absolute before:h-full before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-transparent before:to-[#0B121C10] after:absolute after:bottom-4 after:left-[0%] after:-z-20 after:h-[100px] after:w-[140px] after:translate-x-1/3 after:bg-gradient-conic after:from-[#39f2aea5]/30 after:via-[#2D5FFF]/50 after:blur-2xl after:content-['']" />
           </div>
-          {/* <div className="absolute bottom-0 left-0 right-0 top-0 -z-10 h-full w-full">
-            <div className="relative flex h-full w-full place-items-center before:absolute before:h-full before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-transparent before:to-[#0B121C10] after:absolute after:left-[0%] after:top-0 after:-z-20 after:h-[180px] after:w-[240px] after:-translate-x-1/3 after:bg-gradient-conic after:from-[#39f2aea5]/30 after:via-[#2D5FFF]/50 after:blur-2xl after:content-['']" />
-          </div> */}
         </li>
       </ul>
     </div>
