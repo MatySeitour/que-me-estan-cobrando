@@ -22,23 +22,23 @@ export default function Home() {
     >
       <div className="mx-auto max-w-7xl">
         <Banner />
-        <div className="h-auto w-full">
+        <div id="service-container" className="h-auto w-full pt-28">
           <TitleServices />
-        </div>
-        <SelectService
-          serviceSelected={
-            serviceSelected ?? {
-              id: -1,
-              imagen: "",
-              planes: [],
-              nombre: "",
-              impuesto_final: 0,
-              impuesto_porcentaje: 0,
-              select_price: false,
+          <SelectService
+            serviceSelected={
+              serviceSelected ?? {
+                id: -1,
+                imagen: "",
+                planes: [],
+                nombre: "",
+                impuesto_final: 0,
+                impuesto_porcentaje: 0,
+                select_price: false,
+              }
             }
-          }
-          setServiceSelected={setServiceSelected}
-        />
+            setServiceSelected={setServiceSelected}
+          />
+        </div>
         <Service serviceSelected={serviceSelected} />
         <div className="h-72 w-full bg-blue-500"></div>
       </div>
