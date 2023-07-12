@@ -38,8 +38,8 @@ export default function Home() {
             }
             setServiceSelected={setServiceSelected}
           />
+          <Service serviceSelected={serviceSelected} />
         </div>
-        <Service serviceSelected={serviceSelected} />
         <div className="h-72 w-full bg-blue-500"></div>
       </div>
     </main>
