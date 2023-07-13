@@ -3,8 +3,8 @@ import Image from "next/image";
 import { Taxes } from "./Taxes";
 import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Plans } from "./Plans";
+import { CustomEase } from "gsap/dist/CustomEase";
 
 export const Service = ({
   serviceSelected,
@@ -45,6 +45,9 @@ export const Service = ({
   }, []);
 
   useEffect(() => {
+    const borderTop = document.querySelector(".border-effect__top");
+    const borderLeft = document.querySelector(".border-effect__left");
+
     gsap.fromTo(
       logoService.current,
       {
@@ -56,6 +59,46 @@ export const Service = ({
         duration: 0.4,
       }
     );
+
+    gsap.fromTo(
+      borderTop,
+      {
+        xPercent: 500,
+        duration: 0.4,
+        ease: CustomEase.create(
+          "custom",
+          "M0,0 C0,0 0.382,-0.054 0.609,0.126 0.692,0.192 0.762,0.602 0.762,0.677 0.762,0.75 0.77,0.712 0.77,0.784 0.77,0.845 0.795,0.876 0.817,0.922 0.839,0.968 0.846,0.956 0.868,1.004 0.887,1.045 0.894,1.032 0.912,1.046 0.955,1.079 1,1.152 1,1.152 "
+        ),
+      },
+      {
+        xPercent: 0,
+        duration: 0.4,
+        ease: CustomEase.create(
+          "custom",
+          "M0,0 C0,0 0.382,-0.054 0.609,0.126 0.692,0.192 0.762,0.602 0.762,0.677 0.762,0.75 0.77,0.712 0.77,0.784 0.77,0.845 0.795,0.876 0.817,0.922 0.839,0.968 0.846,0.956 0.868,1.004 0.887,1.045 0.894,1.032 0.912,1.046 0.955,1.079 1,1.152 1,1.152 "
+        ),
+      }
+    );
+
+    gsap.fromTo(
+      borderLeft,
+      {
+        yPercent: 0,
+        duration: 0.4,
+        ease: CustomEase.create(
+          "custom",
+          "M0,0 C0,0 0.382,-0.054 0.609,0.126 0.692,0.192 0.762,0.602 0.762,0.677 0.762,0.75 0.77,0.712 0.77,0.784 0.77,0.845 0.795,0.876 0.817,0.922 0.839,0.968 0.846,0.956 0.868,1.004 0.887,1.045 0.894,1.032 0.912,1.046 0.955,1.079 1,1.152 1,1.152 "
+        ),
+      },
+      {
+        yPercent: 100,
+        ease: CustomEase.create(
+          "custom",
+          "M0,0 C0,0 0.382,-0.054 0.609,0.126 0.692,0.192 0.762,0.602 0.762,0.677 0.762,0.75 0.77,0.712 0.77,0.784 0.77,0.845 0.795,0.876 0.817,0.922 0.839,0.968 0.846,0.956 0.868,1.004 0.887,1.045 0.894,1.032 0.912,1.046 0.955,1.079 1,1.152 1,1.152 "
+        ),
+        duration: 0.4,
+      }
+    );
   }, [serviceSelected.id]);
 
   return (
@@ -64,6 +107,10 @@ export const Service = ({
         ref={service}
         className="relative h-full w-full rounded-md border border-white/20"
       >
+        <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
+        <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
+        <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>
+        <div className="border-effect__bottom absolute -bottom-0.5 -right-0.5 h-0.5 w-20"></div>
         <div className="absolute left-1/2 top-2 flex h-auto w-auto -translate-x-1/2 flex-row gap-6 text-white">
           <div
             onClick={() => setServiceOptionSelect(1)}

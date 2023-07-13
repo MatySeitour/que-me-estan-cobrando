@@ -17,7 +17,7 @@ export const Taxes = () => {
   };
 
   return (
-    <div className="flex h-auto w-full flex-col gap-8">
+    <div className="relative flex h-auto w-full flex-col gap-8 overflow-hidden">
       <div className="pl-2">
         <h3 className="bg-gradient__effect text-3xl font-normal text-transparent">
           ¿Que impuestos me cobran?
@@ -27,7 +27,7 @@ export const Taxes = () => {
         {impuestos.map((tax) => (
           <li
             onClick={() => toggleTax(tax.id)}
-            className="border-b border-t border-white/30 text-white"
+            className="border-t border-white/30 text-white"
             key={tax.id}
           >
             <div className="flex items-center justify-between p-4">

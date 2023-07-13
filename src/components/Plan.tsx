@@ -30,8 +30,8 @@ export const Plan = ({ plans }: { plans: any }): JSX.Element => {
       onClick={() => toggleTax(plans.id)}
       className={
         plans.id == planSelect
-          ? `border-b border-t border-white/30 text-white transition-[height]`
-          : `h-16 overflow-hidden border-b border-t border-white/30 text-white transition-[height]`
+          ? ` border-t border-white/30 text-white transition-[height]`
+          : `h-16 overflow-hidden border-t border-white/30 text-white transition-[height]`
       }
       key={plans.id}
     >

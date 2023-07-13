@@ -146,3 +146,33 @@
   left: 12.7rem;
   transition: all 0.5s ease linear;
 }
+
+.border-effect__top {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(143, 143, 143, 0.67) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.border-effect__left {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(143, 143, 143, 0.67) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.border-effect__bottom {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(143, 143, 143, 0.67) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
