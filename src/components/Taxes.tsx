@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import impuestosData from "../assets/impuestos.json";
 import { FaAngleDown } from "react-icons/fa6";
 import { inter } from "@/utils/fonts";
+import { gsap } from "gsap";
 
 export const Taxes = () => {
   const { impuestos } = impuestosData;
 
   const [taxSelect, setTaxSelect] = useState<number | null>(null);
+
+  const taxTitle = useRef(null);
 
   const toggleTax = (taxNumber: number) => {
     if (taxNumber != taxSelect) {
@@ -16,16 +19,58 @@ export const Taxes = () => {
     }
   };
 
+  useEffect(() => {
+    const titleCard = gsap.utils.toArray(`#tax`);
+
+    const tl = gsap.timeline({ paused: true, reversed: true });
+
+    tl.play();
+
+    gsap.fromTo(
+      taxTitle.current,
+      {
+        yPercent: -40,
+        opacity: 0,
+        duration: 0.5,
+      },
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.5,
+      }
+    );
+
+    titleCard.forEach((plan: any) => {
+      tl.fromTo(
+        plan,
+        {
+          yPercent: -20,
+          opacity: 0,
+          duration: 0.2,
+        },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.2,
+        }
+      );
+    });
+  }, []);
+
   return (
     <div className="relative flex h-auto w-full flex-col gap-8 overflow-hidden">
       <div className="pl-2">
-        <h3 className="bg-gradient__effect text-3xl font-normal text-transparent">
+        <h3
+          ref={taxTitle}
+          className="bg-gradient__effect text-3xl font-normal text-transparent"
+        >
           ¿Que impuestos me cobran?
         </h3>
       </div>
       <ul className="flex h-auto w-full flex-col gap-1">
         {impuestos.map((tax) => (
           <li
+            id="tax"
             onClick={() => toggleTax(tax.id)}
             className="border-t border-white/30 text-white"
             key={tax.id}
