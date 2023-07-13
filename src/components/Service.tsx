@@ -47,6 +47,7 @@ export const Service = ({
   useEffect(() => {
     const borderTop = document.querySelector(".border-effect__top");
     const borderLeft = document.querySelector(".border-effect__left");
+    gsap.registerPlugin(CustomEase);
 
     gsap.fromTo(
       logoService.current,
