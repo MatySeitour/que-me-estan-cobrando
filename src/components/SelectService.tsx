@@ -89,38 +89,3 @@ export const SelectService = ({
     </div>
   );
 };
-
-// .p-px {
-//   padding: 1px;
-// }
-// .to-slate-10 {
-//   --tw-gradient-to: rgba(231,243,255,.472) var(--tw-gradient-to-position);
-// }
-
-// .via-slate-6 {
-//   --tw-gradient-to: rgba(223,239,254,0) var(--tw-gradient-to-position);
-//   --tw-gradient-stops: var(--tw-gradient-from),rgba(223,239,254,.139) var(--tw-gradient-via-position),var(--tw-gradient-to);
-// }
-// .from-slate-6 {
-//   --tw-gradient-from: rgba(223,239,254,.139) var(--tw-gradient-from-position);
-//   --tw-gradient-to: rgba(223,239,254,0) var(--tw-gradient-to-position);
-//   --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to);
-// }
-// .bg-gradient-to-tr {
-//   background-image: linear-gradient(to top right,var(--tw-gradient-stops));
-// }
-// .rounded-lg {
-//   border-radius: 0.5rem;
-// }
-// .w-full {
-//   width: 100%;
-// }
-// .h-8 {
-//   height: 2rem;
-// }
-// .top-0 {
-//   top: 0;
-// }
-// .absolute {
-//   position: absolute;
-// }
