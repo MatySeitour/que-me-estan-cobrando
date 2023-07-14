@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Plans } from "./Plans";
 import { CustomEase } from "gsap/dist/CustomEase";
+import { Prices } from "./Prices";
 
 export const Service = ({
   serviceSelected,
@@ -152,6 +153,9 @@ export const Service = ({
             height={2000}
           />
         </div>
+        {serviceOptionSelect == 1 && (
+          <Prices serviceSelected={serviceSelected} />
+        )}
         {serviceOptionSelect == 2 && <Taxes />}
         {serviceOptionSelect == 3 && (
           <Plans serviceSelected={serviceSelected} />
