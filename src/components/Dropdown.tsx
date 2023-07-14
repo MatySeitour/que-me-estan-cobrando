@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ServiceType } from "@/types";
 import { HiChevronDown } from "react-icons/hi";
+import { gsap } from "gsap";
 
 interface Planes {
   id: number;
@@ -22,16 +23,33 @@ export const Dropdown = ({
   setSelectPlan: (selectPlan: Planes) => void;
 }): JSX.Element => {
   const [dropwDownActive, setDropDownAcitve] = useState(false);
-
-  console.log(selectPlan);
+  const dropdown = useRef(null);
 
   const handleChangePlan = (plan: Planes) => {
     setSelectPlan(plan);
     setDropDownAcitve(false);
   };
 
+  useEffect(() => {
+    setSelectPlan(serviceSelected.planes[0]);
+    gsap.fromTo(
+      dropdown.current,
+      {
+        opacity: 0,
+        duration: 0.5,
+      },
+      {
+        opacity: 1,
+        duration: 0.5,
+      }
+    );
+  }, [serviceSelected]);
+
   return (
-    <div className="absolute -top-28 right-4 h-auto w-64 rounded-md border border-white/20 bg-black p-2 text-white">
+    <div
+      ref={dropdown}
+      className="absolute -top-28 right-4 h-auto w-64 rounded-md border border-white/20 bg-black p-2 text-white"
+    >
       <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
       <div className="border-effect__left absolute -right-0.5 top-0 h-12 w-0.5"></div>
 

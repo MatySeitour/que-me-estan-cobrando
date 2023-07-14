@@ -1,30 +1,31 @@
 import impuestosData from "../assets/impuestos.json";
 import { Dropdown } from "./Dropdown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ServiceType } from "@/types";
+
+interface Planes {
+  id: number;
+  plan: string;
+  descripcion: {
+    plan_description_id: number;
+    plan_description: string;
+  }[];
+  precio: number;
+}
 
 export const Prices = ({
   serviceSelected,
+  selectPlan,
+  setSelectPlan,
 }: {
   serviceSelected: ServiceType;
+  selectPlan: Planes;
+  setSelectPlan: any;
 }): JSX.Element => {
-  console.log(serviceSelected);
-
-  interface Planes {
-    id: number;
-    plan: string;
-    descripcion: {
-      plan_description_id: number;
-      plan_description: string;
-    }[];
-    precio: number;
-  }
-
-  const [selectPlan, setSelectPlan] = useState<Planes>(
-    serviceSelected.planes[0]
-  );
-
   const { impuestos } = impuestosData;
+
+  console.log(selectPlan);
+
   return (
     <div className="relative flex h-auto w-full flex-col gap-8">
       <Dropdown
@@ -37,29 +38,44 @@ export const Prices = ({
           Precios
         </h3>
       </div>
-      <div className="flex h-96 w-full flex-row">
-        <ul className="flex h-20 flex-col">
-          <li className="flex-[2] border border-white/20 p-4 text-white">
-            Impuestos
-          </li>
+      <div className="flex h-auto w-full flex-row">
+        <ul className="flex h-full w-full flex-col">
+          <div className="flex h-10 w-full items-center bg-black">
+            <p className="bg-gradient__effect flex-[2] border-y border-r border-white/20 p-2 text-center text-lg text-transparent">
+              Nombre del impuesto
+            </p>
+            <p className="bg-gradient__effect flex-[1] border-y border-r border-white/20 p-2 text-center text-lg text-transparent">
+              Porcentaje
+            </p>
+            <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg text-transparent">
+              Precio impuesto
+            </p>
+          </div>
           {impuestos.map((impuesto) => (
-            <li
-              className="flex-[2] border border-white/20 p-4 text-white"
+            <div
               key={impuesto.id}
+              className="flex h-10 w-full items-center bg-black"
             >
-              {impuesto.nombre}
-            </li>
+              <p className="bg-gradient__effect flex-[2] border-y border-r border-white/20 p-2 text-center text-lg font-normal text-transparent">
+                {impuesto.nombre}
+              </p>
+              <p className="bg-gradient__effect flex-[1] border-y border-r border-white/20 p-2 text-center text-lg font-normal text-transparent">
+                {impuesto.porcentaje}%
+              </p>
+              <p className="bg-gradient__effect flex-1 border-y border-white/20 p-2 text-center text-lg font-normal text-transparent">
+                ${(selectPlan.precio * impuesto.porcentaje) / 100}
+              </p>
+            </div>
           ))}
-        </ul>
-        <ul>
-          {impuestos.map((impuesto) => (
-            <li
-              key={impuesto.id}
-              className="border border-white/20 p-4 text-white"
-            >
-              {impuesto.porcentaje}%
-            </li>
-          ))}
+          <div className="flex h-10 w-full items-center bg-white">
+            <p className="flex-[2] p-2 text-center text-lg text-black">
+              Precio Final
+            </p>
+            <p className="flex-[1] p-2 text-center text-lg text-black"></p>
+            <p className="flex-[1] p-2 text-center text-lg text-black">
+              ${selectPlan.precio * serviceSelected.impuesto_porcentaje}
+            </p>
+          </div>
         </ul>
       </div>
       {/* <ul className="flex h-auto w-full flex-col gap-1">

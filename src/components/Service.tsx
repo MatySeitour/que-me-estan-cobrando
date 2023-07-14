@@ -7,12 +7,23 @@ import { Plans } from "./Plans";
 import { CustomEase } from "gsap/dist/CustomEase";
 import { Prices } from "./Prices";
 
+interface Planes {
+  id: number;
+  plan: string;
+  descripcion: {
+    plan_description_id: number;
+    plan_description: string;
+  }[];
+  precio: number;
+}
+
 export const Service = ({
   serviceSelected,
 }: {
   serviceSelected: ServiceType;
 }): JSX.Element => {
   const [serviceOptionSelect, setServiceOptionSelect] = useState<number>(1);
+  const [selectPlan, setSelectPlan] = useState<any>();
   const service = useRef(null);
   const logoService = useRef(null);
 
@@ -154,7 +165,11 @@ export const Service = ({
           />
         </div>
         {serviceOptionSelect == 1 && (
-          <Prices serviceSelected={serviceSelected} />
+          <Prices
+            selectPlan={selectPlan}
+            setSelectPlan={setSelectPlan}
+            serviceSelected={serviceSelected}
+          />
         )}
         {serviceOptionSelect == 2 && <Taxes />}
         {serviceOptionSelect == 3 && (
