@@ -16,7 +16,7 @@
     },
     {
       "id": 2,
-      "nombre": "Impuesto PAÍS para servicios digitales",
+      "nombre": "Impuesto PAÍS",
       "porcentaje": 8,
       "descripcion": "El cobro de impuestos digitales corresponde al impuesto por el uso o compra de servicios digitales como Netflix, Spotify, Steam, etc.",
       "abreviacion": "IMP PAIS"
