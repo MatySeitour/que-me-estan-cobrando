@@ -70,7 +70,8 @@ export const Dropdown = ({
           } left-0 top-8 mt-2 flex w-full flex-col rounded-md border border-white/20 py-2 text-sm shadow-lg transition-all dark:shadow-black `}
         >
           <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
-          <div className="border-effect__left absolute -right-0.5 top-10 h-12 w-0.5"></div>
+          <div className="border-effect__top absolute -bottom-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
+          <div className="border-effect__left absolute -right-0.5 top-2 h-12 w-0.5"></div>
           {serviceSelected.planes.map((plan) => (
             <p
               onClick={() => handleChangePlan(plan)}
