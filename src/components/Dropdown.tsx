@@ -48,7 +48,7 @@ export const Dropdown = ({
   return (
     <div
       ref={dropdown}
-      className="absolute -top-28 right-4 h-auto w-64 rounded-md border border-white/20 bg-black p-2 text-white"
+      className="absolute -top-28 right-4 z-50 h-auto w-64 rounded-md border border-white/20 bg-black p-2 text-white"
     >
       <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
       <div className="border-effect__left absolute -right-0.5 top-0 h-12 w-0.5"></div>
