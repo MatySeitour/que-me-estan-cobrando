@@ -1,6 +1,6 @@
 import impuestosData from "../assets/impuestos.json";
 import { Dropdown } from "./Dropdown";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ServiceType } from "@/types";
 import { gsap } from "gsap";
 
@@ -24,12 +24,27 @@ export const Prices = ({
   setSelectPlan: any;
 }): JSX.Element => {
   const { impuestos } = impuestosData;
+  const priceTitle = useRef(null);
 
   useEffect(() => {
     const prices = gsap.utils.toArray("#price");
     const tl = gsap.timeline({ paused: true, reversed: true });
 
     tl.play();
+
+    gsap.fromTo(
+      priceTitle.current,
+      {
+        yPercent: -40,
+        opacity: 0,
+        duration: 0.5,
+      },
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.5,
+      }
+    );
 
     prices.forEach((price: any) => {
       tl.fromTo(
@@ -56,7 +71,10 @@ export const Prices = ({
         setSelectPlan={setSelectPlan}
       />
       <div className="pl-2">
-        <h3 className="bg-gradient__effect text-3xl font-normal text-transparent">
+        <h3
+          ref={priceTitle}
+          className="bg-gradient__effect text-3xl font-normal text-transparent"
+        >
           Precios
         </h3>
       </div>
