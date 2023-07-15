@@ -2,6 +2,7 @@ import impuestosData from "../assets/impuestos.json";
 import { Dropdown } from "./Dropdown";
 import { useEffect, useState } from "react";
 import { ServiceType } from "@/types";
+import { gsap } from "gsap";
 
 interface Planes {
   id: number;
@@ -24,7 +25,28 @@ export const Prices = ({
 }): JSX.Element => {
   const { impuestos } = impuestosData;
 
-  console.log(selectPlan);
+  useEffect(() => {
+    const prices = gsap.utils.toArray("#price");
+    const tl = gsap.timeline({ paused: true, reversed: true });
+
+    tl.play();
+
+    prices.forEach((price: any) => {
+      tl.fromTo(
+        price,
+        {
+          yPercent: -20,
+          opacity: 0,
+          duration: 0.1,
+        },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.1,
+        }
+      );
+    });
+  }, []);
 
   return (
     <div className="relative flex h-auto w-full flex-col gap-8">
@@ -40,7 +62,7 @@ export const Prices = ({
       </div>
       <div className="flex h-auto w-full flex-row">
         <ul className="flex h-full w-full flex-col">
-          <div className="flex h-10 w-full items-center bg-black">
+          <div id="price" className="flex h-10 w-full items-center bg-black">
             <p className="bg-gradient__effect flex-[2] border-y border-r border-white/20 p-2 text-center text-lg text-transparent">
               Nombre del impuesto
             </p>
@@ -53,6 +75,7 @@ export const Prices = ({
           </div>
           {impuestos.map((impuesto) => (
             <div
+              id="price"
               key={impuesto.id}
               className="flex h-10 w-full items-center bg-black"
             >
@@ -63,17 +86,20 @@ export const Prices = ({
                 {impuesto.porcentaje}%
               </p>
               <p className="bg-gradient__effect flex-1 border-y border-white/20 p-2 text-center text-lg font-normal text-transparent">
-                ${(selectPlan.precio * impuesto.porcentaje) / 100}
+                ${(selectPlan?.precio * impuesto?.porcentaje) / 100}
               </p>
             </div>
           ))}
-          <div className="flex h-10 w-full items-center bg-white">
+          <div id="price" className="flex h-10 w-full items-center bg-white">
             <p className="flex-[2] p-2 text-center text-lg text-black">
               Precio Final
             </p>
             <p className="flex-[1] p-2 text-center text-lg text-black"></p>
             <p className="flex-[1] p-2 text-center text-lg text-black">
-              ${selectPlan.precio * serviceSelected.impuesto_porcentaje}
+              $
+              {(
+                selectPlan?.precio * serviceSelected?.impuesto_porcentaje
+              ).toFixed(2)}
             </p>
           </div>
         </ul>
