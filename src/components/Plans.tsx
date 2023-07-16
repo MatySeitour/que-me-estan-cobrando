@@ -38,7 +38,7 @@ export const Plans = ({
       </div>
       <ul className="flex h-auto w-full flex-col gap-1">
         {serviceSelected.planes.map((plans) => (
-          <Plan plans={plans} />
+          <Plan key={plans.id} plans={plans} />
         ))}
       </ul>
     </div>
