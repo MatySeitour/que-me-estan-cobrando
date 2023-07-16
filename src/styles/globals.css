@@ -98,52 +98,52 @@
 }
 
 .active__1 ~ .item-a {
-  left: 5.5rem;
+  transform: translateX(6rem);
   transition: all 0.5s ease linear;
 }
 
 .active__2 ~ .item-a {
-  left: 11.7rem;
+  transform: translateX(12rem);
   transition: all 0.5s ease linear;
 }
 
 .active__3 ~ .item-a {
-  left: 18rem;
+  transform: translateX(18.3rem);
   transition: all 0.5s ease linear;
 }
 
 .active__4 ~ .item-a {
-  left: 24rem;
+  transform: translateX(24.5rem);
   transition: all 0.5s ease linear;
 }
 
 .active__5 ~ .item-a {
-  left: 30rem;
+  transform: translateX(30.5rem);
   transition: all 0.5s ease linear;
 }
 
 .active__6 ~ .item-a {
-  left: 36rem;
+  transform: translateX(36.7rem);
   transition: all 0.5s ease linear;
 }
 
 .active__7 ~ .item-a {
-  left: 42.2rem;
+  transform: translateX(42.7rem);
   transition: all 0.5s ease linear;
 }
 
 .option-active__1 ~ .item-b {
-  left: -0.9rem;
+  transform: translateX(0rem);
   transition: all 0.5s ease linear;
 }
 
 .option-active__2 ~ .item-b {
-  left: 5.9rem;
+  transform: translateX(6.6rem);
   transition: all 0.5s ease linear;
 }
 
 .option-active__3 ~ .item-b {
-  left: 12.7rem;
+  transform: translateX(13.4rem);
   transition: all 0.5s ease linear;
 }
 
