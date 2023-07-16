@@ -62,10 +62,10 @@ export const Banner = () => {
   }, []);
 
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center bg-black pt-40">
+    <div className="relative flex h-full w-full flex-col items-center justify-center bg-black px-4 pt-40">
       <div className="banner absolute top-0 h-40 w-screen bg-home bg-[length:40px_40px]"></div>
       <h1
-        className={`home-title bg-clip-text text-[5rem] ${paytone_One.className} relative z-20 animate-gradientTitle`}
+        className={`home-title bg-clip-text p-2 ${paytone_One.className} relative z-20 mb-10 animate-gradientTitle text-center text-4xl min-[525px]:text-4xl min-[680px]:text-5xl min-[830px]:text-6xl lg:text-7xl`}
       >
         ¿Que me están{" "}
         <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal">
@@ -75,7 +75,7 @@ export const Banner = () => {
       </h1>
 
       <div className="mb-4">
-        <h2 className="home-subtitle mb-10 mt-10 text-2xl tracking-wide text-white">
+        <h2 className="home-subtitle text-center tracking-wide text-white md:text-lg lg:text-xl">
           Descubre que{" "}
           <b
             id="banner-word"
