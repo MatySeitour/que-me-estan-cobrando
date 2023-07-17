@@ -11,7 +11,7 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'home': 'linear-gradient(#353536 .05rem, transparent .05rem),linear-gradient(to right, #353536 .05rem, #000000 .05rem)',
+        'home': 'linear-gradient(#353536 .08rem, transparent .08rem),linear-gradient(to right, #353536 .08rem, #000000 .08rem)',
 
       },
       keyframes: {
