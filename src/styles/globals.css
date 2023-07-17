@@ -97,41 +97,6 @@
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.1), #000);
 }
 
-.active__1 ~ .item-a {
-  transform: translateX(6rem);
-  transition: all 0.5s ease linear;
-}
-
-.active__2 ~ .item-a {
-  transform: translateX(12rem);
-  transition: all 0.5s ease linear;
-}
-
-.active__3 ~ .item-a {
-  transform: translateX(18.3rem);
-  transition: all 0.5s ease linear;
-}
-
-.active__4 ~ .item-a {
-  transform: translateX(24.5rem);
-  transition: all 0.5s ease linear;
-}
-
-.active__5 ~ .item-a {
-  transform: translateX(30.5rem);
-  transition: all 0.5s ease linear;
-}
-
-.active__6 ~ .item-a {
-  transform: translateX(36.7rem);
-  transition: all 0.5s ease linear;
-}
-
-.active__7 ~ .item-a {
-  transform: translateX(42.7rem);
-  transition: all 0.5s ease linear;
-}
-
 .option-active__1 ~ .item-b {
   transform: translateX(0rem);
   transition: all 0.5s ease linear;
