@@ -22,7 +22,10 @@ export default function Home() {
     >
       <div className="mx-auto max-w-7xl">
         <Banner />
-        <div id="service-container" className="h-auto w-full pt-28">
+        <div
+          id="service-container"
+          className="mx-auto h-auto w-full px-4 pt-28"
+        >
           <TitleServices />
           <SelectService
             serviceSelected={
