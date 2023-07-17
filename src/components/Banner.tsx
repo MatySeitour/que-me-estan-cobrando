@@ -1,7 +1,8 @@
 import { Paytone_One } from "next/font/google";
 import { SliderHome } from "./SliderHome";
 import { gsap } from "gsap";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { inter } from "@/utils/fonts";
 
 const paytone_One = Paytone_One({
   weight: ["400"],
@@ -9,6 +10,7 @@ const paytone_One = Paytone_One({
 });
 
 export const Banner = () => {
+  const linkPageDollar = useRef(null);
   useEffect(() => {
     const homeTitle = document.querySelector(".home-title");
 
@@ -20,14 +22,12 @@ export const Banner = () => {
       {
         yPercent: 50,
         opacity: 0,
-        duration: 1.5,
-        ease: "elastic",
+        duration: 0.4,
       },
       {
         yPercent: 0,
         opacity: 1,
-        duration: 1.5,
-        ease: "elastic",
+        duration: 0.4,
       }
     );
 
@@ -36,15 +36,14 @@ export const Banner = () => {
       {
         yPercent: 50,
         opacity: 0,
-        duration: 1,
-        ease: "elastic",
+        duration: 0.4,
+        delay: 0.2,
       },
       {
         yPercent: 0,
         opacity: 1,
-        duration: 1,
-        ease: "elastic",
-        delay: 0.5,
+        duration: 0.4,
+        delay: 0.2,
       }
     );
     gsap.fromTo(
@@ -52,11 +51,25 @@ export const Banner = () => {
       {
         opacity: 0,
         duration: 1,
+        delay: 0.4,
       },
       {
         opacity: 1,
         duration: 1,
-        delay: 1,
+        delay: 0.4,
+      }
+    );
+    gsap.fromTo(
+      linkPageDollar.current,
+      {
+        opacity: 0,
+        duration: 0.5,
+        delay: 0.4,
+      },
+      {
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.4,
       }
     );
   }, []);
@@ -75,35 +88,23 @@ export const Banner = () => {
       </h1>
 
       <div className="mb-4">
-        <h2 className="home-subtitle text-center tracking-wide text-white md:text-lg lg:text-xl">
-          Descubre que{" "}
-          <b
-            id="banner-word"
-            className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal"
-          >
-            impuestos
-          </b>{" "}
-          te cobran y cúal es el{" "}
-          <b
-            id="banner-word"
-            className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal"
-          >
-            valor final
-          </b>{" "}
-          para{" "}
-          <b
-            id="banner-word"
-            className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal"
-          >
-            evitar sorpresas
+        <h2
+          className={`home-subtitle text-center text-white/30 md:text-lg lg:text-xl ${inter.className} max-w-3xl`}
+        >
+          Una página donde vas a poder conocer el precio{" "}
+          <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-bold">
+            real{" "}
           </b>
+          de los servicios digitales que más usas y que tipo de
+          planes/beneficios tienen.
         </h2>
       </div>
 
       <SliderHome />
 
       <button
-        className="button-calculator flex flex-row items-center rounded-md border border-white bg-white p-2 transition-all hover:bg-[#000] hover:text-white"
+        ref={linkPageDollar}
+        className="button-calculator flex flex-row items-center rounded-md border border-white bg-white p-2 hover:bg-[#000] hover:text-white"
         type="button"
       >
         <p className="mr-2">Calculadora Dólar</p>
