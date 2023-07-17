@@ -73,7 +73,7 @@ export const Service = ({
   }, [serviceSelected.id]);
 
   return (
-    <section className="mb-20 h-auto px-4 pt-28">
+    <section className="mb-20 h-auto pt-28">
       <div
         ref={service}
         className="relative h-full w-full rounded-md border border-white/20"
@@ -113,14 +113,16 @@ export const Service = ({
             </div>
           </div>
         </div>
-        <div className="flex h-40 w-40 items-center justify-center px-4">
-          <Image
-            ref={logoService}
-            alt={serviceSelected?.nombre}
-            src={serviceSelected?.imagen}
-            width={2000}
-            height={2000}
-          />
+        <div className="flex w-full justify-center md:justify-start">
+          <div className="flex h-40 w-40 items-center justify-center px-4">
+            <Image
+              ref={logoService}
+              alt={serviceSelected?.nombre}
+              src={serviceSelected?.imagen}
+              width={2000}
+              height={2000}
+            />
+          </div>
         </div>
         {serviceOptionSelect == 1 && (
           <Prices

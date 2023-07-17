@@ -79,28 +79,31 @@ export const Prices = ({
         </h3>
       </div>
       <div className="flex h-auto w-full flex-row">
-        <ul className="flex h-full w-full flex-col">
+        <ul className="flex h-full w-full flex-col gap-5">
           <div id="price" className="flex h-10 w-full items-center bg-black">
-            <p className="bg-gradient__effect flex-[2] border-y border-r border-white/20 p-2 text-center text-lg text-transparent">
-              Nombre del impuesto
+            <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg text-transparent md:flex-[2]">
+              Impuesto
             </p>
-            <p className="bg-gradient__effect flex-[1] border-y border-r border-white/20 p-2 text-center text-lg text-transparent">
+            <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg text-transparent">
               Porcentaje
             </p>
             <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg text-transparent">
-              Precio impuesto
+              Precio
             </p>
           </div>
           {impuestos.map((impuesto) => (
             <div
               id="price"
               key={impuesto.id}
-              className="flex h-10 w-full items-center bg-black"
+              className="flex h-10 w-full items-center border-white/20 bg-black"
             >
-              <p className="bg-gradient__effect flex-[2] border-y border-r border-white/20 p-2 text-center text-lg font-normal text-transparent">
+              <p className="bg-gradient__effect hidden flex-[2] border-y border-white/20 p-2 text-center text-lg font-normal text-transparent md:inline-block">
                 {impuesto.nombre}
               </p>
-              <p className="bg-gradient__effect flex-[1] border-y border-r border-white/20 p-2 text-center text-lg font-normal text-transparent">
+              <p className="bg-gradient__effect inline-block flex-[1] border-y border-white/20 p-2 text-center text-lg font-normal text-transparent md:hidden">
+                {impuesto.abreviacion}
+              </p>
+              <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg font-normal text-transparent">
                 {impuesto.porcentaje}%
               </p>
               <p className="bg-gradient__effect flex-1 border-y border-white/20 p-2 text-center text-lg font-normal text-transparent">
