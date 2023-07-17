@@ -24,26 +24,23 @@ export const SelectService = ({
       {
         scrollTrigger: {
           trigger: serviceContainer,
-          start: "start center",
-          end: "start center",
-          scrub: 1,
+          start: "start 70%",
+          end: "start 70%",
         },
-        yPercent: -50,
+        yPercent: -70,
         opacity: 0,
-        duration: 2,
+        duration: 0.5,
       },
 
       {
         scrollTrigger: {
           trigger: serviceContainer,
-          start: "start center",
-          end: "start center",
-
-          scrub: 1,
+          start: "start 70%",
+          end: "start 70%",
         },
         yPercent: 0,
         opacity: 1,
-        duration: 2,
+        duration: 0.5,
       }
     );
   }, []);
