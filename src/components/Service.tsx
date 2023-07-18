@@ -76,7 +76,7 @@ export const Service = ({
     <section className="mb-20 h-auto pt-28">
       <div
         ref={service}
-        className="relative h-full w-full rounded-md border border-white/20"
+        className="relative h-full w-full rounded-md border border-white/20 pb-8"
       >
         <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
         <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
