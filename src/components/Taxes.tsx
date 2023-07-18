@@ -75,7 +75,7 @@ export const Taxes = () => {
             className="border-t border-white/30 text-white"
             key={tax.id}
           >
-            <div className="flex items-center justify-between p-4">
+            <div className="flex items-center justify-between gap-4 p-4">
               <p className="bg-gradient__effect font-normal text-transparent">
                 {tax.nombre}
                 {` (${tax.abreviacion}): ${tax.porcentaje}%`}
@@ -88,7 +88,7 @@ export const Taxes = () => {
             </div>
             <div
               className={`h-0 overflow-hidden text-sm transition-[height] ${
-                taxSelect == tax.id && `h-20 transition-[height]`
+                taxSelect == tax.id && `h-32 transition-[height] sm:h-20`
               }`}
             >
               <p
