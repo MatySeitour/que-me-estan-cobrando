@@ -58,11 +58,11 @@ export const Taxes = () => {
   }, []);
 
   return (
-    <div className="relative flex h-auto w-full flex-col gap-8 overflow-hidden">
-      <div className="pl-2">
+    <div className="relative flex h-auto w-full flex-col gap-8">
+      <div className="px-2">
         <h3
           ref={taxTitle}
-          className="bg-gradient__effect text-3xl font-normal text-transparent"
+          className="bg-gradient__effect pb-2 text-center text-4xl font-normal text-transparent sm:text-left"
         >
           ¿Que impuestos me cobran?
         </h3>
