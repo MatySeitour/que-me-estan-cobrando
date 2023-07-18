@@ -64,7 +64,7 @@ export const Prices = ({
   }, []);
 
   return (
-    <div className="relative flex h-auto w-full flex-col gap-8">
+    <div className="relative flex h-auto w-full flex-col gap-8 pb-8">
       <Dropdown
         serviceSelected={serviceSelected}
         selectPlan={selectPlan}
@@ -80,6 +80,15 @@ export const Prices = ({
       </div>
       <div className="flex h-auto w-full flex-row">
         <ul className="flex h-full w-full flex-col gap-5">
+          <div id="price" className="flex h-10 w-full items-center bg-white">
+            <p className="flex-[2] p-2 text-center text-lg text-black">
+              Precio Inicial
+            </p>
+            <p className="flex-[1] p-2 text-center text-lg text-black"></p>
+            <p className="flex-[1] p-2 text-center text-lg text-black">
+              ${selectPlan?.precio}
+            </p>
+          </div>
           <div id="price" className="flex h-10 w-full items-center bg-black">
             <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg text-transparent md:flex-[2]">
               Impuesto
@@ -91,6 +100,7 @@ export const Prices = ({
               Precio
             </p>
           </div>
+
           {impuestos.map((impuesto) => (
             <div
               id="price"
@@ -125,38 +135,6 @@ export const Prices = ({
           </div>
         </ul>
       </div>
-      {/* <ul className="flex h-auto w-full flex-col gap-1">
-        {impuestos.map((tax) => (
-          <li
-            onClick={() => toggleTax(tax.id)}
-            className="border-t border-white/30 text-white"
-            key={tax.id}
-          >
-            <div className="flex items-center justify-between p-4">
-              <p className="bg-gradient__effect font-normal text-transparent">
-                {tax.nombre}
-                {` (${tax.abreviacion}): ${tax.porcentaje}%`}
-              </p>
-              <FaAngleDown
-                className={`h-5 w-5 transition-all ${
-                  taxSelect == tax.id && `rotate-180 transition-all`
-                }`}
-              />
-            </div>
-            <div
-              className={`h-0 overflow-hidden text-sm transition-[height] ${
-                taxSelect == tax.id && `h-20 transition-[height]`
-              }`}
-            >
-              <p
-                className={`p-4 font-serif font-normal ${inter.className} font-bold text-white/70`}
-              >
-                {tax.descripcion}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul> */}
     </div>
   );
 };
