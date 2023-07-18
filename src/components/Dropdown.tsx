@@ -49,29 +49,31 @@ export const Dropdown = ({
     <div className="relative flex h-auto w-full justify-end pr-4">
       <div
         ref={dropdown}
-        className="-top-14 left-0 z-50 flex h-auto w-full items-center rounded-md border-transparent bg-black p-2 text-white sm:relative sm:left-auto sm:top-auto sm:inline-block sm:w-[25rem] sm:border sm:border-white/20"
+        className="-top-14 left-0 z-50 flex h-auto w-full items-center rounded-md border-transparent bg-black p-2 sm:relative sm:left-auto sm:top-auto sm:inline-block sm:w-[25rem] sm:border sm:border-white/20"
       >
         <div className="border-effect__top absolute -top-0.5 left-20 hidden h-0.5 w-20 -translate-x-1/2 sm:inline-block"></div>
         <div className="border-effect__left absolute -right-0.5 top-0 hidden h-12 w-0.5 sm:inline-block"></div>
 
-        <span className="left-2 h-auto w-full text-sm font-normal sm:absolute">
+        <span className="left-2 mr-2 h-auto w-auto text-sm font-normal text-white sm:absolute sm:mr-0">
           Seleccionar Plan
         </span>
-        <div className="flex h-auto w-full rounded-sm sm:mt-6 sm:bg-[#222] sm:px-2 sm:py-0.5">
+        <div className="flex h-auto w-auto rounded-sm sm:mt-6 sm:bg-[#222] sm:px-2 sm:py-0.5">
           <div
             onClick={() => setDropDownAcitve((prev) => !prev)}
             className="flex w-full cursor-pointer flex-row items-center justify-end sm:justify-between"
           >
-            <p className="hidden sm:inline-block">{selectPlan?.plan}</p>
-            <p className="inline-block text-sm sm:hidden">
+            <p className="hidden bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal text-transparent sm:inline-block">
+              {selectPlan?.plan}
+            </p>
+            <p className="inline-block bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-sm font-normal text-transparent sm:hidden">
               {selectPlan?.plan.length > 10
                 ? `${selectPlan.plan.slice(0, 13)}...`
                 : selectPlan?.plan}
             </p>
-            <HiChevronDown className="ml-2 h-4 w-4 sm:ml-0" />
+            <HiChevronDown className="ml-2 h-4 w-4 text-white sm:ml-0" />
           </div>
           <div
-            className={`absolute bg-black ${
+            className={`absolute bg-black text-white ${
               dropwDownActive ? `opacity-1` : `invisible opacity-0`
             } left-1/2 top-10 mt-2 flex w-full max-w-[300px] -translate-x-1/2 flex-col rounded-md border border-white/20 py-2 text-sm shadow-lg transition-all dark:shadow-black sm:left-0 sm:top-16 sm:min-w-full sm:translate-x-0 `}
           >
@@ -80,15 +82,13 @@ export const Dropdown = ({
             <div className="border-effect__left absolute -right-0.5 top-2 h-12 w-0.5"></div>
             <div>
               {serviceSelected.planes.map((plan) => (
-                <>
-                  <p
-                    onClick={() => handleChangePlan(plan)}
-                    key={plan.id}
-                    className="text-primary/60 hover:text-primary hidden h-11 w-full items-center justify-start px-8 hover:cursor-pointer hover:bg-white/10 sm:flex"
-                  >
-                    {plan.plan}
-                  </p>
-                </>
+                <p
+                  onClick={() => handleChangePlan(plan)}
+                  key={plan.id}
+                  className="text-primary/60 hover:text-primary hidden h-11 w-full items-center justify-start px-8 hover:cursor-pointer hover:bg-white/10 sm:flex"
+                >
+                  {plan.plan}
+                </p>
               ))}
             </div>
             <div>
