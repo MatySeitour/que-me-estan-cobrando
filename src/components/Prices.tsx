@@ -70,13 +70,16 @@ export const Prices = ({
         selectPlan={selectPlan}
         setSelectPlan={setSelectPlan}
       />
-      <div className="pl-2">
-        <h3
+      <div className="flex flex-col items-center justify-between gap-2 px-2 sm:flex-row">
+        <h4
           ref={priceTitle}
-          className="bg-gradient__effect text-3xl font-normal text-transparent"
+          className="bg-gradient__effect text-4xl font-normal text-transparent"
         >
           Precios
-        </h3>
+        </h4>
+        <h4 className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-center text-xl font-normal text-transparent sm:pr-4">
+          {selectPlan?.plan}
+        </h4>
       </div>
       <div className="flex h-auto w-full flex-row">
         <ul className="flex h-full w-full flex-col gap-5">
