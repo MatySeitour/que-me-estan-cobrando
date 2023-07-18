@@ -64,7 +64,14 @@ export const Plan = ({ plans }: { plans: any }): JSX.Element => {
     >
       <div className="flex items-center justify-between p-4">
         <div className="flex font-normal">
-          <p className="bg-gradient__effect mr-2">{plans.plan}</p>
+          <p className="bg-gradient__effect mr-2 sm:hidden">
+            {plans?.plan.length > 10
+              ? `${plans.plan.slice(0, 13)}...`
+              : plans?.plan}
+          </p>
+          <p className="bg-gradient__effect mr-2 hidden sm:inline-block">
+            {plans.plan}
+          </p>
           <div className="group relative">
             <p className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal text-transparent">
               ${`${plans.precio}`}
