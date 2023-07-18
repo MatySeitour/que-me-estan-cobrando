@@ -28,10 +28,10 @@ export const Plans = ({
 
   return (
     <div className="flex h-auto w-full flex-col gap-8">
-      <div className="pl-2">
+      <div className="px-2">
         <h3
           ref={planTitle}
-          className="bg-gradient__effect text-3xl font-normal text-transparent"
+          className="bg-gradient__effect pb-2 text-center text-4xl font-normal text-transparent sm:text-left"
         >
           ¿Que planes me ofrecen?
         </h3>
