@@ -98,17 +98,17 @@
 }
 
 .option-active__1 ~ .item-b {
-  transform: translateX(0rem);
+  transform: translateX(-1rem);
   transition: all 0.5s ease linear;
 }
 
 .option-active__2 ~ .item-b {
-  transform: translateX(6.6rem);
+  transform: translateX(5.8rem);
   transition: all 0.5s ease linear;
 }
 
 .option-active__3 ~ .item-b {
-  transform: translateX(13.4rem);
+  transform: translateX(12.5rem);
   transition: all 0.5s ease linear;
 }
 
