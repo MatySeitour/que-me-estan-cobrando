@@ -25,6 +25,7 @@ export const Prices = ({
 }): JSX.Element => {
   const { impuestos } = impuestosData;
   const priceTitle = useRef(null);
+  const planTitle = useRef(null);
 
   useEffect(() => {
     const prices = gsap.utils.toArray("#price");
@@ -43,6 +44,21 @@ export const Prices = ({
         yPercent: 0,
         opacity: 1,
         duration: 0.5,
+      }
+    );
+    gsap.fromTo(
+      planTitle.current,
+      {
+        yPercent: -40,
+        opacity: 0,
+        duration: 0.5,
+        delay: 0.2,
+      },
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.2,
       }
     );
 
@@ -70,14 +86,17 @@ export const Prices = ({
         selectPlan={selectPlan}
         setSelectPlan={setSelectPlan}
       />
-      <div className="flex flex-col items-center justify-between gap-2 px-2 sm:flex-row">
+      <div className="flex flex-col gap-2 px-2 text-center sm:flex-col sm:text-left">
         <h4
           ref={priceTitle}
           className="bg-gradient__effect text-4xl font-normal text-transparent"
         >
           Precios
         </h4>
-        <h4 className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-center text-xl font-normal text-transparent sm:pr-4">
+        <h4
+          ref={planTitle}
+          className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-xl font-normal text-transparent sm:pr-4"
+        >
           {selectPlan?.plan}
         </h4>
       </div>
