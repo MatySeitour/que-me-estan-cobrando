@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { inter } from "@/utils/fonts";
+import { Calculator } from "./Calculator";
 
 export const Games = (): JSX.Element => {
   const gameTitle: any = useRef(null);
@@ -42,7 +43,6 @@ export const Games = (): JSX.Element => {
           trigger: gameTitle.current,
           start: "start 70%",
           end: "start 70%",
-          markers: true,
         },
         yPercent: -100,
         opacity: 0,
@@ -54,7 +54,6 @@ export const Games = (): JSX.Element => {
           trigger: gameTitle.current,
           start: "start 70%",
           end: "start 70%",
-          markers: true,
         },
         yPercent: 0,
         opacity: 1,
@@ -78,11 +77,13 @@ export const Games = (): JSX.Element => {
         ref={selectServiceDescription}
         className={`text-center text-white/30 md:text-lg lg:text-xl ${inter.className} home-title`}
       >
-        Calcula el valor del juego que quieras{" "}
+        Calcula el valor del juego que{" "}
         <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal">
-          detalles
+          quieras
         </b>
       </p>
+
+      <Calculator />
     </section>
   );
 };
