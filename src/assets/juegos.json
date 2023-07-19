@@ -1,0 +1,53 @@
+{
+  "games": [
+    {
+      "id": 0,
+      "name": "Steam",
+      "src": "./steam.svg",
+      "tax_final": 1.75,
+      "payment_dollar": false
+    },
+    {
+      "id": 1,
+      "name": "Epic Games",
+      "src": "./epic.svg",
+      "tax_final": 1.75,
+      "payment_dollar": true
+    },
+    {
+      "id": 2,
+      "name": "Battle.net",
+      "src": "./epic.svg",
+      "tax_final": 1.75,
+      "payment_dollar": false
+    },
+    {
+      "id": 3,
+      "name": "PlayStation Store",
+      "src": "./epic.svg",
+      "tax_final": 1.75,
+      "payment_dollar": true
+    },
+    {
+      "id": 4,
+      "name": "Xbox Store",
+      "src": "./epic.svg",
+      "tax_final": 1.75,
+      "payment_dollar": false
+    },
+    {
+      "id": 5,
+      "name": "Nintendo",
+      "src": "./epic.svg",
+      "tax_final": 1.75,
+      "payment_dollar": false
+    },
+    {
+      "id": 6,
+      "name": "Ubisoft",
+      "src": "./epic.svg",
+      "tax_final": 1.75,
+      "payment_dollar": false
+    }
+  ]
+}
