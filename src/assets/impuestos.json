@@ -24,7 +24,7 @@
     {
       "id": 3,
       "nombre": "Percepción Ingresos Brutos",
-      "porcentaje": 2,
+      "porcentaje": 1,
       "descripcion": "Algunas provincias cobran una percepción de ingresos brutos a los servicios digitales o pagos en moneda extranjera. El monto de esta percepción varía de acuerdo a la provincia",
       "abreviacion": "ISIB"
     }
