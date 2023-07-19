@@ -1,6 +1,7 @@
 import impuestosData from "../assets/impuestos.json";
 import { Dropdown } from "./Dropdown";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { HiInformationCircle } from "react-icons/hi2";
 import { ServiceType } from "@/types";
 import { gsap } from "gsap";
 
@@ -101,7 +102,7 @@ export const Prices = ({
         </h4>
       </div>
       <div className="flex h-auto w-full flex-row">
-        <ul className="flex h-full w-full flex-col gap-5">
+        <ul className="flex h-full w-full flex-col">
           <div id="price" className="flex h-10 w-full items-center bg-white">
             <p className="flex-[2] p-2 text-center text-lg text-black">
               Precio Inicial
@@ -129,12 +130,38 @@ export const Prices = ({
               key={impuesto.id}
               className="flex h-10 w-full items-center border-white/20 bg-black"
             >
-              <p className="bg-gradient__effect hidden flex-[2] border-y border-white/20 p-2 text-center text-lg font-normal text-transparent md:inline-block">
-                {impuesto.nombre}
-              </p>
-              <p className="bg-gradient__effect inline-block flex-[1] border-y border-white/20 p-2 text-center text-lg font-normal text-transparent md:hidden">
-                {impuesto.abreviacion}
-              </p>
+              <div className="relative hidden flex-[2] border-y border-white/20 p-2 text-center text-lg md:flex md:flex-row md:justify-center md:gap-2">
+                <p className="bg-gradient__effect font-normal text-transparent">
+                  {impuesto.nombre}
+                </p>
+                <div
+                  className={`${
+                    impuesto.id != 3 && `hidden`
+                  } group relative z-50 inline-block w-[1.3rem] text-center`}
+                >
+                  <HiInformationCircle className="h-full w-full text-white" />
+                  <span className="invisible absolute -top-14 z-50 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black sm:group-hover:visible sm:group-hover:opacity-100">
+                    El porcentaje del impuesto puede variar según la provincia
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-[1] items-center justify-center gap-2 border-y border-white/20 p-2 text-center text-lg font-normal text-transparent md:hidden">
+                <p className="bg-gradient__effect font-normal text-transparent">
+                  {impuesto.abreviacion}
+                </p>
+                <div
+                  className={`${
+                    impuesto.id != 3 && `hidden`
+                  } group relative inline-block w-[1.3rem] text-center`}
+                >
+                  <HiInformationCircle className="h-full w-full text-white" />
+                  <span className="invisible absolute -top-36 right-1/2 z-50 w-32 translate-x-1/2 break-words rounded-md border border-white/20 bg-black p-2 text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-auto before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:-top-14 sm:w-16 sm:-translate-x-1/2">
+                    <p className="h-auto w-full break-words">
+                      El porcentaje del impuesto puede variar según la provincia
+                    </p>
+                  </span>
+                </div>
+              </div>
               <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg font-normal text-transparent">
                 {impuesto.porcentaje}%
               </p>
