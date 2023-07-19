@@ -7,6 +7,7 @@ import { useState } from "react";
 import type { ServiceType } from "@/types";
 import plataformasData from "../assets/plataformas.json";
 import { paytone_One } from "@/utils/fonts";
+import { Games } from "@/components/Games";
 
 export default function Home() {
   const { plataformas } = plataformasData;
@@ -42,8 +43,8 @@ export default function Home() {
             setServiceSelected={setServiceSelected}
           />
           <Service serviceSelected={serviceSelected} />
+          <Games />
         </div>
-        <div className="h-72 w-full bg-blue-500"></div>
       </div>
     </main>
   );
