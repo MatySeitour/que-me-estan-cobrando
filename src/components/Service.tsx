@@ -73,7 +73,7 @@ export const Service = ({
   }, [serviceSelected.id]);
 
   return (
-    <section className="mb-20 h-auto pt-28">
+    <section className="mb-20 h-auto pt-16">
       <div
         ref={service}
         className="relative h-full w-full rounded-md border border-white/20"
