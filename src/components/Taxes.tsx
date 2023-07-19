@@ -78,7 +78,9 @@ export const Taxes = () => {
             <div className="flex items-center justify-between gap-4 p-4">
               <p className="bg-gradient__effect font-normal text-transparent">
                 {tax.nombre}
-                {` (${tax.abreviacion}): ${tax.porcentaje}%`}
+                {` (${tax.abreviacion}): ${tax.porcentaje}% ${
+                  tax.id == 3 ? `o  2%` : ``
+                }`}
               </p>
               <FaAngleDown
                 className={`h-5 w-5 transition-all ${
