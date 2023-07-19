@@ -141,3 +141,13 @@
     rgba(0, 0, 0, 0) 100%
   );
 }
+
+.badge-active__1 ~ .item-c {
+  transform: translateX(-1rem);
+  transition: all 0.5s ease linear;
+}
+
+.badge-active__2 ~ .item-c {
+  transform: translateX(4rem);
+  transition: all 0.5s ease linear;
+}
