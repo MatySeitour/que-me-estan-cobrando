@@ -325,7 +325,7 @@
           "precio": 299
         },
         {
-          "id": 14,
+          "id": 18,
           "plan": "Mega-Fan/mes",
           "descripcion": [
             {
@@ -344,7 +344,7 @@
           "precio": 379
         },
         {
-          "id": 15,
+          "id": 19,
           "plan": "Mega-Fan/año",
           "descripcion": [
             {
@@ -364,13 +364,90 @@
       "select_price": false
     },
     {
-      "id": 8,
-      "nombre": "Epic Games",
+      "id": 7,
+      "nombre": "Spotify",
       "imagen": "/spotify.svg",
-      "planes": [],
-      "impuesto_final": 76,
-      "impuesto_porcentaje": 1.76,
-      "select_price": true
+      "planes": [
+        {
+          "id": 20,
+          "plan": "Individual",
+          "descripcion": [
+            {
+              "plan_description_id": 34,
+              "plan_description": "Música sin anuncios para 1 cuenta"
+            },
+            {
+              "plan_description_id": 35,
+              "plan_description": "Escuchá tus canciones en cualquier lugar, incluso sin conexión"
+            },
+            {
+              "plan_description_id": 36,
+              "plan_description": "Reproducción on-demand"
+            }
+          ],
+          "precio": 399
+        },
+        {
+          "id": 14,
+          "plan": "Duo",
+          "descripcion": [
+            {
+              "plan_description_id": 37,
+              "plan_description": "Todos los beneficios del plan anterior"
+            },
+            {
+              "plan_description_id": 38,
+              "plan_description": "Disponible en 2 cuentas"
+            },
+            {
+              "plan_description_id": 39,
+              "plan_description": "Reproducción de música en modo offline"
+            }
+          ],
+          "precio": 549
+        },
+        {
+          "id": 15,
+          "plan": "Familiar",
+          "descripcion": [
+            {
+              "plan_description_id": 40,
+              "plan_description": "Todos los beneficios del plan anterior"
+            },
+            {
+              "plan_description_id": 41,
+              "plan_description": "Disponible en 6 cuentas"
+            },
+            {
+              "plan_description_id": 42,
+              "plan_description": "Bloqueo de música con contenido explícito"
+            },
+            {
+              "plan_description_id": 43,
+              "plan_description": "Spotify Kids: una aplicación independiente creada solo para niños"
+            }
+          ],
+          "precio": 649
+        },
+        {
+          "id": 16,
+          "plan": "Estudiantes",
+          "descripcion": [
+            {
+              "plan_description_id": 44,
+              "plan_description": "Descuento especial para estudiantes universitarios que cumplan con los requisitos"
+            },
+            {
+              "plan_description_id": 45,
+              "plan_description": "Todos los beneficios del plan individual"
+            }
+          ],
+          "precio": 199
+        }
+      ],
+      "impuesto_final": 75,
+      "impuesto_porcentaje": 1.74,
+      "select_price": false
     }
   ]
 }
