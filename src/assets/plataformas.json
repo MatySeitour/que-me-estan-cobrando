@@ -71,7 +71,7 @@
           "precio": 2399
         }
       ],
-      "impuesto_final": 76,
+      "impuesto_final": 75,
       "impuesto_porcentaje": 1.76,
       "select_price": false
     },
@@ -130,8 +130,8 @@
           "precio": 5999
         }
       ],
-      "impuesto_final": 76,
-      "impuesto_porcentaje": 1.76,
+      "impuesto_final": 75,
+      "impuesto_porcentaje": 1.75,
       "select_price": false
     },
     {
@@ -155,8 +155,8 @@
           "precio": 580
         }
       ],
-      "impuesto_final": 76,
-      "impuesto_porcentaje": 1.76,
+      "impuesto_final": 75,
+      "impuesto_porcentaje": 1.75,
       "select_price": false
     },
     {
@@ -217,7 +217,7 @@
           "precio": 1363
         }
       ],
-      "impuesto_final": 76,
+      "impuesto_final": 75,
       "impuesto_porcentaje": 1.76,
       "select_price": false
     },
@@ -242,8 +242,8 @@
           "precio": 181
         }
       ],
-      "impuesto_final": 76,
-      "impuesto_porcentaje": 1.76,
+      "impuesto_final": 75,
+      "impuesto_porcentaje": 1.75,
       "select_price": false
     },
     {
@@ -296,23 +296,77 @@
           "precio": 1363
         }
       ],
-      "impuesto_final": 76,
-      "impuesto_porcentaje": 1.76,
+      "impuesto_final": 75,
+      "impuesto_porcentaje": 1.75,
       "select_price": false
     },
     {
       "id": 6,
-      "nombre": "Steam",
-      "imagen": "/steam.svg",
-      "planes": [],
-      "impuesto_final": 76,
-      "impuesto_porcentaje": 1.76,
-      "select_price": true
+      "nombre": "Crunchyroll",
+      "imagen": "/crunchyroll.svg",
+      "planes": [
+        {
+          "id": 17,
+          "plan": "Fan/mes",
+          "descripcion": [
+            {
+              "plan_description_id": 26,
+              "plan_description": "Acceso ilimitado a animes dentro del catálogo de Crunchyroll sin publicidad"
+            },
+            {
+              "plan_description_id": 27,
+              "plan_description": "Nuevos episodios poco después de su transmisión en Japón"
+            },
+            {
+              "plan_description_id": 28,
+              "plan_description": "Disponible en 1 dispositivo al mismo tiempo"
+            }
+          ],
+          "precio": 299
+        },
+        {
+          "id": 14,
+          "plan": "Mega-Fan/mes",
+          "descripcion": [
+            {
+              "plan_description_id": 29,
+              "plan_description": "Todos los beneficios del plan anterior"
+            },
+            {
+              "plan_description_id": 30,
+              "plan_description": "Disponible en 4 dispositivos al mismo tiempo"
+            },
+            {
+              "plan_description_id": 31,
+              "plan_description": "Visionado Sin Conexión"
+            }
+          ],
+          "precio": 379
+        },
+        {
+          "id": 15,
+          "plan": "Mega-Fan/año",
+          "descripcion": [
+            {
+              "plan_description_id": 32,
+              "plan_description": "Todos los beneficios del plan anterior"
+            },
+            {
+              "plan_description_id": 33,
+              "plan_description": "16 % de descuento sobre el Plan Mensual (cargo cada 12 meses)"
+            }
+          ],
+          "precio": 3799
+        }
+      ],
+      "impuesto_final": 75,
+      "impuesto_porcentaje": 1.75,
+      "select_price": false
     },
     {
-      "id": 7,
+      "id": 8,
       "nombre": "Epic Games",
-      "imagen": "/epic.svg",
+      "imagen": "/spotify.svg",
       "planes": [],
       "impuesto_final": 76,
       "impuesto_porcentaje": 1.76,
