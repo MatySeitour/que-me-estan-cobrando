@@ -11,20 +11,20 @@ export const PricesGame = ({
   return (
     <div className="h-auto w-full">
       <div className="flex h-10 w-full">
-        <p className="flex-[2] p-2 text-left text-lg text-white">
+        <p className="flex-[2] bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-left text-lg font-normal text-transparent">
           PRECIO INICIAL
         </p>
         <p className="flex-[.5] p-2 text-center text-lg text-white"></p>
-        <p className="flex-[1] p-2 text-center text-lg text-white">
-          {inputPriceValue == "" ? "$0" : inputPriceValue}
+        <p className="flex-[1] bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
+          {inputPriceValue == "" ? "$0" : `$${inputPriceValue}`}
         </p>
       </div>
-      <ul>
+      <ul className="mb-4">
         {impuestos.map((impuesto) => (
           <div
             id="price"
             key={impuesto.id}
-            className="flex h-10 w-full items-center border-white/20 bg-black"
+            className="flex h-10 w-full items-center border-white/20"
           >
             <div className="relative hidden flex-[2] p-2 text-center text-lg md:flex md:flex-row md:justify-start md:gap-2">
               <p className="bg-gradient__effect font-normal text-transparent">
@@ -64,11 +64,25 @@ export const PricesGame = ({
             <p className="bg-gradient__effect flex-1 p-2 text-center text-lg font-normal text-transparent">
               {inputPriceValue == ""
                 ? "$0"
-                : `$${(Number(inputPriceValue) * impuesto.porcentaje) / 100}`}
+                : `$${(
+                    (Number(inputPriceValue) * impuesto.porcentaje) /
+                    100
+                  ).toFixed(2)}`}
             </p>
           </div>
         ))}
       </ul>
+      <div className="flex h-10 w-full pr-2">
+        <p className="flex-[2] bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-left text-lg font-normal text-transparent">
+          PRECIO FINAL
+        </p>
+        <p className="flex-[.5] p-2 text-center text-lg text-white"></p>
+        <p className="flex flex-[1] items-center justify-center rounded-md border border-white/30 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
+          {inputPriceValue == ""
+            ? "$0"
+            : `$${(Number(inputPriceValue) * 1.75).toFixed(2)}`}
+        </p>
+      </div>
     </div>
   );
 };
