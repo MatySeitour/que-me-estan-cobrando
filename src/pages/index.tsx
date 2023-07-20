@@ -8,6 +8,7 @@ import type { ServiceType } from "@/types";
 import plataformasData from "../assets/plataformas.json";
 import { paytone_One } from "@/utils/fonts";
 import { Games } from "@/components/Games";
+import { GradientEffectBackground } from "@/components/GradientEffectBackground";
 
 export default function Home() {
   const { plataformas } = plataformasData;
@@ -27,6 +28,7 @@ export default function Home() {
           id="service-container"
           className="mx-auto h-auto w-full px-4 pt-28"
         >
+          <GradientEffectBackground />
           <TitleServices />
           <SelectService
             serviceSelected={
