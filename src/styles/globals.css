@@ -151,3 +151,25 @@
   transform: translateX(4rem);
   transition: all 0.5s ease linear;
 }
+
+.preserve {
+  perspective: 10px;
+  transition: transform 0.7s ease;
+  transform-style: preserve-3d;
+}
+
+.face {
+  transition: transform 0.7s ease;
+  transform: rotateY(0deg);
+}
+
+.back {
+  backface-visibility: hidden;
+  transition: transform 0.7s ease;
+  transform: rotateY(180deg);
+}
+
+.preserve__active {
+  transform: rotateY(180deg);
+  transition: transform 0.7s ease;
+}
