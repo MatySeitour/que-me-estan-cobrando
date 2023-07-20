@@ -12,12 +12,14 @@ export const Calculator = (): JSX.Element => {
   const [inputPriceValue, setInputPriceValue] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputPriceValue(e.target.value);
+    if (e.target.value.length <= 8) {
+      setInputPriceValue(e.target.value);
+    }
   };
 
   return (
-    <div className="jus flex h-auto w-full pt-16">
-      <div className="relative mx-auto h-full w-full max-w-xl rounded-md border border-white/20 pb-8">
+    <div className="flex h-auto w-full pt-16">
+      <div className="relative z-40 mx-auto h-full w-full max-w-xl rounded-md border border-white/20 pb-8">
         <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
         <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
         <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>
@@ -51,14 +53,15 @@ export const Calculator = (): JSX.Element => {
         </div>
 
         <div className="flex h-auto w-full flex-col items-center justify-center p-2">
-          <label className="bg-gradient__effect mb-2 text-lg font-normal text-transparent">
+          <label className="bg-gradient__effect mb-2 text-2xl font-normal text-transparent">
             Introduce el valor del juego
           </label>
           <input
             type="number"
+            pattern=" 0+\.[0-9]*[1-9][0-9]*$"
             onChange={handleInputChange}
             value={inputPriceValue}
-            className="bg-gradient__effect h-8 w-72 rounded-md border border-white/30 bg-black p-2 font-normal text-transparent caret-white outline-none focus:border-white/60"
+            className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
           />
         </div>
         <PricesGame inputPriceValue={inputPriceValue} />
