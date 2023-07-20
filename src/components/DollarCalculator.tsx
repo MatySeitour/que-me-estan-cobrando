@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, ChangeEvent } from "react";
 import impuestosData from "../assets/impuestos.json";
 import { HiInformationCircle } from "react-icons/hi2";
@@ -11,10 +13,12 @@ export const DollarCalculator = ({
   badge,
   setBadge,
   className,
+  dollar,
 }: {
   badge: string;
   setBadge: any;
   className: string;
+  dollar: any;
 }): JSX.Element => {
   const { impuestos } = impuestosData;
 
@@ -64,17 +68,31 @@ export const DollarCalculator = ({
           </div>
         </div>
 
-        <div className="flex h-auto w-full flex-col items-center justify-center p-2">
-          <label className="bg-gradient__effect mb-2 text-2xl font-normal text-transparent">
+        <div className="flex h-auto w-full flex-col items-center justify-center gap-4 p-2">
+          <p className="bg-gradient__effect text-center text-base font-normal text-transparent">
+            Ultima actualización: {dollar.lastUpdate}
+          </p>
+          <p className="bg-gradient__effect text-xl font-normal text-transparent">
+            Dólar{" "}
+            <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal">
+              {dollar.dollarValue}
+            </b>
+          </p>
+          <label className="bg-gradient__effect text-center text-2xl font-normal text-transparent">
             Introduce el valor del juego en dolares
           </label>
-          <input
-            type="number"
-            pattern=" 0+\.[0-9]*[1-9][0-9]*$"
-            onChange={handleInputChange}
-            value={inputPriceValue}
-            className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
-          />
+          <div className="flex flex-row items-center gap-2">
+            <p className="bg-gradient__effect text-center text-base font-normal text-transparent">
+              USD$
+            </p>
+            <input
+              type="number"
+              pattern=" 0+\.[0-9]*[1-9][0-9]*$"
+              onChange={handleInputChange}
+              value={inputPriceValue}
+              className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
+            />
+          </div>
         </div>
         <div className="h-auto w-full">
           <div className="flex h-10 w-full">
