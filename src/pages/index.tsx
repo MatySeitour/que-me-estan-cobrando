@@ -46,8 +46,8 @@ export default function Home() {
           />
           <Service serviceSelected={serviceSelected} />
           <Games />
-          <div className="h-96 w-full bg-blue-500"></div>
         </div>
+        <div className="h-96 w-full bg-black"></div>
       </div>
     </main>
   );
