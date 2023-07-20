@@ -1,14 +1,24 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { inter } from "@/utils/fonts";
 import { Calculator } from "./Calculator";
+import axios from "axios";
+
+type InfoDollar = {
+  dollarValue: string;
+  lastUpdate: string;
+};
 
 export const Games = (): JSX.Element => {
   const gameTitle: any = useRef(null);
   const selectServiceDescription: any = useRef(null);
+  const [dollar, setDollar] = useState<InfoDollar>({
+    dollarValue: "",
+    lastUpdate: "",
+  });
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -62,8 +72,26 @@ export const Games = (): JSX.Element => {
     );
   }, []);
 
+  useEffect(() => {
+    async function getDollarValue() {
+      const res = await axios.get(
+        "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
+      );
+      const time = new Date();
+      const timeFinal = `${time.getDay().toString()}/${
+        time.getMonth() + 1
+      }/${time.getFullYear()} a las ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
+
+      setDollar({
+        dollarValue: res.data[0].casa.venta,
+        lastUpdate: timeFinal,
+      });
+    }
+    getDollarValue();
+  }, []);
+
   return (
-    <section className="h-screen">
+    <section className="h-auto min-h-screen">
       <h2
         ref={gameTitle}
         className="bg-gradient__effect service-title mb-8 text-center text-[3rem] opacity-0"
@@ -83,7 +111,7 @@ export const Games = (): JSX.Element => {
         </b>
       </p>
 
-      <Calculator />
+      <Calculator dollar={dollar} />
     </section>
   );
 };
