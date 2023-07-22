@@ -21,7 +21,7 @@ export const PesosCalculator = ({
   const [inputPriceValue, setInputPriceValue] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= 8) {
+    if (e.target.value.length <= 8 && Number(e.target.value) < 30000) {
       setInputPriceValue(e.target.value);
     }
   };
@@ -69,8 +69,8 @@ export const PesosCalculator = ({
             Introduce el valor del juego
           </label>
           <input
-            type="number"
-            pattern=" 0+\.[0-9]*[1-9][0-9]*$"
+            type="text"
+            pattern="[0-9]+"
             onChange={handleInputChange}
             value={inputPriceValue}
             className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
@@ -82,7 +82,7 @@ export const PesosCalculator = ({
               PRECIO INICIAL
             </p>
             <p className="flex-[.5] p-2 text-center text-lg text-white"></p>
-            <p className="flex-[1] bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
+            <p className="flex-[1.5] bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent sm:flex-[1]">
               {inputPriceValue == "" ? "$0" : `$${inputPriceValue}`}
             </p>
           </div>
@@ -108,7 +108,7 @@ export const PesosCalculator = ({
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-[1] items-center justify-center gap-2 p-2 text-center text-lg font-normal text-transparent md:hidden">
+                <div className="flex flex-[2] items-center justify-start gap-2 p-2 text-center text-lg font-normal text-transparent md:hidden">
                   <p className="bg-gradient__effect font-normal text-transparent">
                     {impuesto.abreviacion}
                   </p>
@@ -129,7 +129,7 @@ export const PesosCalculator = ({
                 <p className="bg-gradient__effect flex-[.5] p-2 text-center text-lg font-normal text-transparent">
                   {impuesto.porcentaje}%
                 </p>
-                <p className="bg-gradient__effect flex-1 p-2 text-center text-lg font-normal text-transparent">
+                <p className="bg-gradient__effect flex-[1.5] p-2 text-center text-lg font-normal text-transparent sm:flex-1">
                   {inputPriceValue == ""
                     ? "$0"
                     : `$${(
