@@ -22,13 +22,16 @@ export const DollarCalculator = ({
 }): JSX.Element => {
   const { impuestos } = impuestosData;
 
-  const [inputPriceValue, setInputPriceValue] = useState("");
+  const [inputPriceValue, setInputPriceValue] = useState<number>(0);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= 8) {
-      setInputPriceValue(e.target.value);
+    if (e.target.value.length <= 8 && Number(e.target.value) >= 0) {
+      setInputPriceValue(Number(e.target.value));
     }
   };
+
+  const dollarNumber = dollar.dollarValue.replace(",", ".");
+  const priceInPesos = dollarNumber * Number(inputPriceValue);
   return (
     <div
       className={`${
@@ -86,8 +89,8 @@ export const DollarCalculator = ({
               USD$
             </p>
             <input
-              type="number"
-              pattern=" 0+\.[0-9]*[1-9][0-9]*$"
+              type="text"
+              pattern="[0-9]+"
               onChange={handleInputChange}
               value={inputPriceValue}
               className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
@@ -97,13 +100,14 @@ export const DollarCalculator = ({
         <div className="h-auto w-full">
           <div className="flex h-10 w-full">
             <p className="flex-[2] bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-left text-lg font-normal text-transparent">
-              PRECIO INICIAL
+              PRECIO EN PESOS
             </p>
             <p className="flex-[.5] p-2 text-center text-lg text-white"></p>
             <p className="flex-[1] bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
-              {inputPriceValue == "" ? "$0" : `$${inputPriceValue}`}
+              {inputPriceValue == 0 ? "$0" : `$${priceInPesos}`}
             </p>
           </div>
+
           <ul className="mb-4">
             {impuestos.map((impuesto) => (
               <div
@@ -148,12 +152,11 @@ export const DollarCalculator = ({
                   {impuesto.porcentaje}%
                 </p>
                 <p className="bg-gradient__effect flex-1 p-2 text-center text-lg font-normal text-transparent">
-                  {inputPriceValue == ""
+                  {inputPriceValue == 0
                     ? "$0"
-                    : `$${(
-                        (Number(inputPriceValue) * impuesto.porcentaje) /
-                        100
-                      ).toFixed(2)}`}
+                    : `$${((priceInPesos * impuesto.porcentaje) / 100).toFixed(
+                        2
+                      )}`}
                 </p>
               </div>
             ))}
@@ -164,9 +167,9 @@ export const DollarCalculator = ({
             </p>
             <p className="flex-[.5] p-2 text-center text-lg text-white"></p>
             <p className="flex flex-[1] items-center justify-center rounded-md border border-white/30 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
-              {inputPriceValue == ""
+              {inputPriceValue == 0
                 ? "$0"
-                : `$${(Number(inputPriceValue) * 1.75).toFixed(2)}`}
+                : `$${(priceInPesos * 1.75).toFixed(2)}`}
             </p>
           </div>
         </div>
