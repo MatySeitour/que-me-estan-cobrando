@@ -80,7 +80,9 @@ export const Games = (): JSX.Element => {
       const time = new Date();
       const timeFinal = `${time.getDay().toString()}/${
         time.getMonth() + 1
-      }/${time.getFullYear()} a las ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
+      }/${time.getFullYear()} a las ${time.getHours()}:${String(
+        time.getMinutes()
+      ).padStart(2, "0")}:${String(time.getSeconds()).padStart(2, "0")}`;
 
       setDollar({
         dollarValue: res.data[0].casa.venta,
