@@ -10,7 +10,7 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'conic-gradient(from 46deg at 50% 50%, var(--tw-gradient-stops))',
         'home': 'linear-gradient(#353536 .08rem, transparent .08rem),linear-gradient(to right, #353536 .08rem, #000000 .08rem)',
 
       },
