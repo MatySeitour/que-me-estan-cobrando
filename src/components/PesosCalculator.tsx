@@ -21,7 +21,11 @@ export const PesosCalculator = ({
   const [inputPriceValue, setInputPriceValue] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length <= 8 && Number(e.target.value) < 30000) {
+    if (
+      e.target.value.length <= 8 &&
+      Number(e.target.value) < 30000 &&
+      e.target.value[0] != "0"
+    ) {
       setInputPriceValue(e.target.value);
     }
   };
@@ -64,17 +68,22 @@ export const PesosCalculator = ({
           </div>
         </div>
 
-        <div className="flex h-auto w-full flex-col items-center justify-center p-2">
+        <div className="gap flex h-auto w-full flex-col items-center justify-center gap-4">
           <label className="bg-gradient__effect mb-2 text-2xl font-normal text-transparent">
             Introduce el valor del juego
           </label>
-          <input
-            type="text"
-            pattern="[0-9]+"
-            onChange={handleInputChange}
-            value={inputPriceValue}
-            className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
-          />
+          <div className="flex flex-row items-center gap-2">
+            <p className="bg-gradient__effect text-center text-base font-normal text-transparent">
+              ARS$
+            </p>
+            <input
+              type="text"
+              pattern="[0-9]+"
+              onChange={handleInputChange}
+              value={inputPriceValue}
+              className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
+            />
+          </div>
         </div>
         <div className="h-auto w-full">
           <div className="flex h-10 w-full">
