@@ -28,7 +28,6 @@ export default function Home() {
           id="service-container"
           className="mx-auto h-auto w-full px-4 pt-28"
         >
-          <GradientEffectBackground />
           <TitleServices />
           <SelectService
             serviceSelected={
