@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { inter } from "@/utils/fonts";
 import { Calculator } from "./Calculator";
 import axios from "axios";
+import { GradientEffectBackground } from "./GradientEffectBackground";
 
 type InfoDollar = {
   dollarValue: string;
@@ -96,12 +97,13 @@ export const Games = (): JSX.Element => {
     <section className="h-auto min-h-screen">
       <h2
         ref={gameTitle}
-        className="bg-gradient__effect service-title mb-8 text-center text-[3rem] opacity-0"
+        className="bg-gradient__effect service-title relative mb-8 text-center text-[3rem] opacity-0"
       >
         Calculadora de{" "}
         <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal">
           Juegos
         </b>
+        <GradientEffectBackground />
       </h2>
       <p
         ref={selectServiceDescription}
