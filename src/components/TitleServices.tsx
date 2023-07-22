@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { inter } from "@/utils/fonts";
+import { GradientEffectBackground } from "./GradientEffectBackground";
 
 export default function TitleServices() {
   const title: any = useRef(null);
@@ -73,6 +74,7 @@ export default function TitleServices() {
         <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal">
           Digitales
         </b>
+        <GradientEffectBackground />
       </h2>
       <p
         ref={selectServiceDescription}
