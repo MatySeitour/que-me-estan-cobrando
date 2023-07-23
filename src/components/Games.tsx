@@ -22,6 +22,7 @@ export const Games = (): JSX.Element => {
   });
 
   useEffect(() => {
+    const gamesContainer = document.querySelector("#games-container");
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo(
       gameTitle.current,
@@ -43,6 +44,28 @@ export const Games = (): JSX.Element => {
           end: "start 70%",
         },
         yPercent: 0,
+        opacity: 1,
+        duration: 0.5,
+      }
+    );
+    gsap.fromTo(
+      gamesContainer,
+      {
+        scrollTrigger: {
+          trigger: gameTitle.current,
+          start: "start 70%",
+          end: "start 70%",
+        },
+        opacity: 0,
+        duration: 0.5,
+      },
+
+      {
+        scrollTrigger: {
+          trigger: gameTitle.current,
+          start: "start 70%",
+          end: "start 70%",
+        },
         opacity: 1,
         duration: 0.5,
       }
