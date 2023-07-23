@@ -14,12 +14,10 @@ export const Plans = ({
     gsap.fromTo(
       planTitle.current,
       {
-        yPercent: -40,
         opacity: 0,
         duration: 0.5,
       },
       {
-        yPercent: 0,
         opacity: 1,
         duration: 0.5,
       }
