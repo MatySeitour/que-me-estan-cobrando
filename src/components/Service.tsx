@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { Plans } from "./Plans";
 import { CustomEase } from "gsap/dist/CustomEase";
 import { Prices } from "./Prices";
+import { Dropdown } from "./Dropdown";
 
 interface Planes {
   id: number;
@@ -36,7 +37,6 @@ export const Service = ({
           trigger: serviceContainer,
           start: "start center",
           end: "start center",
-          scrub: 1,
         },
         opacity: 0,
         duration: 2,
@@ -47,8 +47,6 @@ export const Service = ({
           trigger: serviceContainer,
           start: "start center",
           end: "start center",
-
-          scrub: 1,
         },
         opacity: 1,
         duration: 2,
@@ -90,7 +88,7 @@ export const Service = ({
                 serviceOptionSelect == 1 && `option-active__1`
               }`}
             >
-              <p className="p-2">Precios</p>
+              <p className="cursor-pointer p-2">Precios</p>
             </div>
             <div
               onClick={() => setServiceOptionSelect(2)}
@@ -98,7 +96,7 @@ export const Service = ({
                 serviceOptionSelect == 2 && `option-active__2`
               }`}
             >
-              <p className="p-2">Impuestos</p>
+              <p className="cursor-pointer p-2">Impuestos</p>
             </div>
             <div
               onClick={() => setServiceOptionSelect(3)}
@@ -106,7 +104,7 @@ export const Service = ({
                 serviceOptionSelect == 3 && `option-active__3`
               }`}
             >
-              <p className="p-2">Planes</p>
+              <p className="cursor-pointer p-2">Planes</p>
             </div>
             <div
               className={`item-b absolute -left-0 h-10 w-[6.5rem] overflow-hidden rounded-md border border-white/40 transition-all`}
@@ -117,7 +115,7 @@ export const Service = ({
             </div>
           </div>
         </div>
-        <div className="flex w-full justify-center md:justify-start">
+        <div className="flex w-full flex-col items-center justify-center sm:flex-row md:justify-start">
           <div className="flex h-40 w-48 items-center justify-center px-4 sm:w-52">
             <Image
               ref={logoService}
@@ -127,6 +125,11 @@ export const Service = ({
               height={2000}
             />
           </div>
+          <Dropdown
+            serviceSelected={serviceSelected}
+            selectPlan={selectPlan}
+            setSelectPlan={setSelectPlan}
+          />
         </div>
         {serviceOptionSelect == 1 && (
           <Prices
