@@ -22,7 +22,7 @@ export default function Home() {
     <main
       className={`h-full w-full ${paytone_One.className} relative overflow-hidden bg-black`}
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto h-full max-w-7xl">
         <Banner />
         <div
           id="service-container"
@@ -46,7 +46,6 @@ export default function Home() {
           <Service serviceSelected={serviceSelected} />
           <Games />
         </div>
-        <div className="h-96 w-full bg-black"></div>
       </div>
     </main>
   );
