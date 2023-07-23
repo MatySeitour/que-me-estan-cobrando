@@ -13,7 +13,11 @@ export const Calculator = ({ dollar }: { dollar: any }): JSX.Element => {
   const [badge, setBadge] = useState<Badge>(Badge.PESOS);
 
   return (
-    <div className={`preserve ${badge == "USD" ? `preserve__active` : ``}`}>
+    <div
+      className={`preserve ${
+        badge == "USD" ? `preserve__active h-screen` : `h-screen`
+      }`}
+    >
       <PesosCalculator
         badge={badge}
         setBadge={setBadge}
