@@ -75,10 +75,10 @@ export const Banner = () => {
   }, []);
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center bg-black px-4 pt-32">
+    <div className="relative flex h-auto w-full flex-col items-center justify-center gap-4 bg-black px-4 pt-32">
       <div className="banner absolute top-0 h-40 w-screen bg-home bg-[length:40px_40px]"></div>
       <h1
-        className={`home-title bg-clip-text p-2 ${paytone_One.className} relative z-20 mb-10 animate-gradientTitle text-center text-5xl min-[525px]:text-4xl min-[680px]:text-5xl min-[830px]:text-6xl lg:text-7xl`}
+        className={`home-title bg-clip-text p-2 ${paytone_One.className} relative z-20 mb-10 animate-gradientTitle text-center text-6xl min-[525px]:text-6xl min-[680px]:text-6xl min-[830px]:text-7xl lg:text-8xl`}
       >
         ¿Que me están{" "}
         <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal">
