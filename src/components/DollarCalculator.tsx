@@ -57,7 +57,7 @@ export const DollarCalculator = ({
                 badge == Badge.PESOS && `badge-active__1`
               }`}
             >
-              <p className="p-2">Pesos</p>
+              <p className="cursor-pointer p-2">Pesos</p>
             </div>
             <div
               onClick={() => setBadge(Badge.USD)}
@@ -65,7 +65,7 @@ export const DollarCalculator = ({
                 badge == Badge.USD && `badge-active__2`
               }`}
             >
-              <p className="p-2">USD</p>
+              <p className="cursor-pointer p-2">USD</p>
             </div>
             <div
               className={`item-c absolute left-2.5 h-10 w-[4.5rem] overflow-hidden rounded-md border border-white/40 transition-all`}

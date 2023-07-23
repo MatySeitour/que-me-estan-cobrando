@@ -72,7 +72,7 @@ export const Taxes = () => {
           <li
             id="tax"
             onClick={() => toggleTax(tax.id)}
-            className="border-t border-white/30 text-white"
+            className="cursor-pointer border-t border-white/30 text-white"
             key={tax.id}
           >
             <div className="flex items-center justify-between gap-4 p-4">
