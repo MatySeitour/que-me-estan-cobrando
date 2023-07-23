@@ -94,7 +94,7 @@ export const Games = (): JSX.Element => {
   }, []);
 
   return (
-    <section className="h-auto min-h-screen">
+    <section className="mb-20 h-auto pt-16">
       <h2
         ref={gameTitle}
         className="bg-gradient__effect service-title relative mb-8 text-center text-[3rem] opacity-0"
