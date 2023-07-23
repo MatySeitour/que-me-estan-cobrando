@@ -9,6 +9,7 @@ import plataformasData from "../assets/plataformas.json";
 import { paytone_One } from "@/utils/fonts";
 import { Games } from "@/components/Games";
 import { GradientEffectBackground } from "@/components/GradientEffectBackground";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const { plataformas } = plataformasData;
@@ -46,6 +47,7 @@ export default function Home() {
           <Service serviceSelected={serviceSelected} />
           <Games />
         </div>
+        <Footer />
       </div>
     </main>
   );
