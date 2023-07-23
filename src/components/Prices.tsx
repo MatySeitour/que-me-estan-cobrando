@@ -82,11 +82,6 @@ export const Prices = ({
 
   return (
     <div className="relative flex h-auto w-full flex-col gap-8 pb-8">
-      <Dropdown
-        serviceSelected={serviceSelected}
-        selectPlan={selectPlan}
-        setSelectPlan={setSelectPlan}
-      />
       <div className="flex flex-col gap-2 px-2 text-center sm:flex-col sm:text-left">
         <h4
           ref={priceTitle}
