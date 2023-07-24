@@ -88,7 +88,7 @@ export const Service = ({
                 serviceOptionSelect == 1 && `option-active__1`
               }`}
             >
-              <p className="cursor-pointer p-2">Precios</p>
+              <p className="p-2 sm:cursor-pointer">Precios</p>
             </div>
             <div
               onClick={() => setServiceOptionSelect(2)}
@@ -96,7 +96,7 @@ export const Service = ({
                 serviceOptionSelect == 2 && `option-active__2`
               }`}
             >
-              <p className="cursor-pointer p-2">Impuestos</p>
+              <p className="p-2 sm:cursor-pointer">Impuestos</p>
             </div>
             <div
               onClick={() => setServiceOptionSelect(3)}
@@ -104,7 +104,7 @@ export const Service = ({
                 serviceOptionSelect == 3 && `option-active__3`
               }`}
             >
-              <p className="cursor-pointer p-2">Planes</p>
+              <p className="p-2 sm:cursor-pointer">Planes</p>
             </div>
             <div
               className={`item-b absolute -left-0 h-10 w-[6.5rem] overflow-hidden rounded-md border border-white/40 transition-all`}

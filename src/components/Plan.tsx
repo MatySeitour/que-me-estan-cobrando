@@ -57,8 +57,8 @@ export const Plan = ({ plans }: { plans: any }): JSX.Element => {
       onClick={() => toggleTax(plans.id)}
       className={
         plans.id == planSelect
-          ? ` cursor-pointer border-t border-white/30 transition-[height]`
-          : `h-16 cursor-pointer border-t border-white/30 transition-[height]`
+          ? ` border-t border-white/30 transition-[height] sm:cursor-pointer`
+          : `h-16 border-t border-white/30 transition-[height] sm:cursor-pointer`
       }
       key={plans.id}
     >

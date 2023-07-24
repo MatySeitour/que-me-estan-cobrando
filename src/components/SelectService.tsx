@@ -55,7 +55,7 @@ export const SelectService = ({
           <li
             className={`service-item__${
               service.id
-            } group relative flex h-24 w-28 cursor-pointer items-center transition-all ${
+            } group relative flex h-24 w-28 items-center transition-all sm:cursor-pointer ${
               service.id == 0 && ``
             } ${
               serviceSelected.id == service.id &&
