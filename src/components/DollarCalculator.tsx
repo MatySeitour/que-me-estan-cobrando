@@ -25,11 +25,13 @@ export const DollarCalculator = ({
   const [inputPriceValue, setInputPriceValue] = useState<string>("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const firstZero = e.target.value[0] == "0" && e.target.value[1] == "0";
+    console.log(firstZero);
     if (
       e.target.value.length < 7 &&
       Number(e.target.value) <= 1000 &&
       Number(e.target.value) >= 0 &&
-      e.target.value[0] != "0"
+      !firstZero
     ) {
       console.log(parseInt(e.target.value));
       setInputPriceValue(e.target.value);
