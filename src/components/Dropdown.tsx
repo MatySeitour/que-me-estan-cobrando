@@ -60,7 +60,7 @@ export const Dropdown = ({
         <div className="flex h-auto w-auto rounded-sm sm:mt-6 sm:bg-[#222] sm:px-2 sm:py-0.5">
           <div
             onClick={() => setDropDownAcitve((prev) => !prev)}
-            className="flex w-full cursor-pointer flex-row items-center justify-end sm:justify-between"
+            className="flex w-full flex-row items-center justify-end sm:cursor-pointer sm:justify-between"
           >
             <p className="hidden bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal text-transparent sm:inline-block">
               {selectPlan?.plan}
@@ -85,7 +85,7 @@ export const Dropdown = ({
                 <p
                   onClick={() => handleChangePlan(plan)}
                   key={plan.id}
-                  className="text-primary/60 hover:text-primary hidden h-11 w-full items-center justify-start px-8 hover:cursor-pointer hover:bg-white/10 sm:flex"
+                  className="text-primary/60 hover:text-primary hidden h-11 w-full items-center justify-start px-8 hover:bg-white/10 sm:flex hover:sm:cursor-pointer"
                 >
                   {plan.plan}
                 </p>
@@ -96,7 +96,7 @@ export const Dropdown = ({
                 <p
                   onClick={() => handleChangePlan(plan)}
                   key={plan.id}
-                  className="text-primary/60 hover:text-primary flex h-11 w-full items-center justify-start px-8 hover:cursor-pointer hover:bg-white/10 sm:hidden"
+                  className="text-primary/60 hover:text-primary flex h-11 w-full items-center justify-start px-8 hover:bg-white/10 sm:hidden hover:sm:cursor-pointer"
                 >
                   {plan.plan.length > 10
                     ? `${plan.plan.slice(0, 26)}...`
