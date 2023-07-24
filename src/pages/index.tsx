@@ -21,9 +21,9 @@ export default function Home() {
   </Head>;
   return (
     <main
-      className={`h-full w-full ${paytone_One.className} relative overflow-hidden bg-black`}
+      className={`${paytone_One.className} relative overflow-hidden bg-black`}
     >
-      <div className="mx-auto h-full max-w-7xl">
+      <div className="mx-auto max-w-7xl">
         <Banner />
         <div
           id="service-container"
@@ -47,8 +47,9 @@ export default function Home() {
           <Service serviceSelected={serviceSelected} />
           <Games />
         </div>
-        <Footer />
       </div>
+
+      <Footer />
     </main>
   );
 }
