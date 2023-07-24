@@ -15,8 +15,8 @@ export const Calculator = ({ dollar }: { dollar: any }): JSX.Element => {
   return (
     <div
       id="games-container"
-      className={`preserve ${
-        badge == "USD" ? `preserve__active h-screen` : `h-screen`
+      className={`preserve min-h-[700px] ${
+        badge == "USD" ? `preserve__active` : ``
       }`}
     >
       <PesosCalculator
