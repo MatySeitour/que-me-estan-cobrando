@@ -31,6 +31,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.calculator-gradient__text {
+  background: linear-gradient(to bottom, #1fbd06 30%, hsla(136, 95%, 25%, 0.5));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .home-subtitle {
   background: linear-gradient(to bottom, #fff 30%, hsla(0, 0%, 100%, 0.5));
