@@ -1,8 +1,6 @@
 import { useState, ChangeEvent } from "react";
-import impuestosData from "../assets/impuestos.json";
-import { HiInformationCircle } from "react-icons/hi2";
-import { PesosCalculator } from "./PesosCalculator";
-import { DollarCalculator } from "./DollarCalculator";
+import { PesosCalculator } from "./GamePesos";
+import { DollarCalculator } from "./GameUsd";
 
 const enum Badge {
   USD = "USD",
