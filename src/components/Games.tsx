@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { inter } from "@/utils/fonts";
-import { Calculator } from "./Calculator";
+import { Calculator } from "./CalculatorGame";
 import axios from "axios";
 import { GradientEffectBackground } from "./GradientEffectBackground";
 
