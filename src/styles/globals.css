@@ -173,3 +173,13 @@
   transform: rotateY(180deg);
   transition: transform 0.7s ease;
 }
+
+.badge-calculator__active__1 ~ .item-d {
+  transform: translateX(8.5rem);
+  transition: all 0.5s ease linear;
+}
+
+.badge-calculator__active__2 ~ .item-d {
+  transform: translateX(13.3rem);
+  transition: all 0.5s ease linear;
+}
