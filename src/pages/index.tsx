@@ -16,41 +16,45 @@ export default function Home() {
   const [serviceSelected, setServiceSelected] = useState<ServiceType>(
     plataformas[0]
   );
-  <Head>
-    <title>Que me cobran</title>
-  </Head>;
-  return (
-    <main
-      className={`${paytone_One.className} relative overflow-hidden bg-black`}
-    >
-      <div className="mx-auto max-w-7xl">
-        <Banner />
-        <div
-          id="service-container"
-          className="mx-auto h-auto w-full px-4 pt-28"
-        >
-          <TitleServices />
-          <SelectService
-            serviceSelected={
-              serviceSelected ?? {
-                id: -1,
-                imagen: "",
-                planes: [],
-                nombre: "",
-                impuesto_final: 0,
-                impuesto_porcentaje: 0,
-                select_price: false,
-              }
-            }
-            setServiceSelected={setServiceSelected}
-          />
-          <Service serviceSelected={serviceSelected} />
-          <Games />
-        </div>
-      </div>
 
-      <Footer />
-    </main>
+  return (
+    <>
+      <Head>
+        <title>¿Que me están cobrando?</title>
+      </Head>
+
+      <main
+        className={`${paytone_One.className} relative overflow-hidden bg-black`}
+      >
+        <div className="mx-auto max-w-7xl">
+          <Banner />
+          <div
+            id="service-container"
+            className="mx-auto h-auto w-full px-4 pt-28"
+          >
+            <TitleServices />
+            <SelectService
+              serviceSelected={
+                serviceSelected ?? {
+                  id: -1,
+                  imagen: "",
+                  planes: [],
+                  nombre: "",
+                  impuesto_final: 0,
+                  impuesto_porcentaje: 0,
+                  select_price: false,
+                }
+              }
+              setServiceSelected={setServiceSelected}
+            />
+            <Service serviceSelected={serviceSelected} />
+            <Games />
+          </div>
+        </div>
+
+        <Footer />
+      </main>
+    </>
   );
 }
 
