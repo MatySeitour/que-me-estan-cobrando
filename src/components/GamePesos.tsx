@@ -7,7 +7,7 @@ const enum Badge {
   PESOS = "pesos",
 }
 
-export const PesosCalculator = ({
+export const GamePesos = ({
   badge,
   setBadge,
   className,

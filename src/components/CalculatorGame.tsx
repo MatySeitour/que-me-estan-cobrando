@@ -1,13 +1,13 @@
 import { useState, ChangeEvent } from "react";
-import { PesosCalculator } from "./GamePesos";
-import { DollarCalculator } from "./GameUsd";
+import { GamePesos } from "./GamePesos";
+import { GameUsd } from "./GameUsd";
 
 const enum Badge {
   USD = "USD",
   PESOS = "pesos",
 }
 
-export const Calculator = ({ dollar }: { dollar: any }): JSX.Element => {
+export const CalculatorGame = ({ dollar }: { dollar: any }): JSX.Element => {
   const [badge, setBadge] = useState<Badge>(Badge.PESOS);
 
   return (
@@ -17,12 +17,8 @@ export const Calculator = ({ dollar }: { dollar: any }): JSX.Element => {
         badge == "USD" ? `preserve__active` : ``
       }`}
     >
-      <PesosCalculator
-        badge={badge}
-        setBadge={setBadge}
-        className="front z-10"
-      />
-      <DollarCalculator
+      <GamePesos badge={badge} setBadge={setBadge} className="front z-10" />
+      <GameUsd
         badge={badge}
         dollar={dollar}
         setBadge={setBadge}

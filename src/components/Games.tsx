@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { inter } from "@/utils/fonts";
-import { Calculator } from "./CalculatorGame";
+import { CalculatorGame } from "./CalculatorGame";
 import axios from "axios";
 import { GradientEffectBackground } from "./GradientEffectBackground";
 
@@ -138,7 +138,7 @@ export const Games = (): JSX.Element => {
         </b>
       </p>
 
-      <Calculator dollar={dollar} />
+      <CalculatorGame dollar={dollar} />
     </section>
   );
 };

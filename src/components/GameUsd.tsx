@@ -9,7 +9,7 @@ const enum Badge {
   PESOS = "pesos",
 }
 
-export const DollarCalculator = ({
+export const GameUsd = ({
   badge,
   setBadge,
   className,
