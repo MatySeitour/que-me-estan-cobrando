@@ -23,9 +23,7 @@ export default function DollarCalculator() {
         <title>Dólar - ¿Que me están cobrando?</title>
         <meta></meta>
       </Head>
-      <main
-        className={`${inter.className} relative flex h-screen w-screen justify-center pt-28`}
-      >
+      <main className={`${inter.className} relative flex justify-center pt-20`}>
         <CalculatorContainer dollarCalculator={dollarCalculator} />
       </main>
     </>
