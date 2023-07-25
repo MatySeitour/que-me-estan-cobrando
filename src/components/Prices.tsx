@@ -106,13 +106,13 @@ export const Prices = ({
             </p>
           </div>
           <div id="price" className="flex h-10 w-full items-center bg-black">
-            <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg text-transparent md:flex-[2]">
+            <p className="flex-[1] border-y border-white/20 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg text-transparent md:flex-[2]">
               Impuesto
             </p>
-            <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg text-transparent">
+            <p className="flex-[1] border-y border-white/20 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg text-transparent">
               Porcentaje
             </p>
-            <p className="bg-gradient__effect flex-[1] border-y border-white/20 p-2 text-center text-lg text-transparent">
+            <p className="flex-[1] border-y border-white/20 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg text-transparent">
               Precio
             </p>
           </div>
