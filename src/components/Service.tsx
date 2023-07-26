@@ -39,7 +39,7 @@ export const Service = ({
           end: "start center",
         },
         opacity: 0,
-        duration: 2,
+        duration: 0.5,
       },
 
       {
@@ -49,7 +49,7 @@ export const Service = ({
           end: "start center",
         },
         opacity: 1,
-        duration: 2,
+        duration: 0.5,
       }
     );
   }, []);
