@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { paytone_One } from "@/utils/fonts";
+import { FaCaretDown, FaCaretUp, FaMinus } from "react-icons/fa6";
 
 const enum Badge {
   USD = "USD",
@@ -25,20 +26,21 @@ export const CalculatorContainer = ({
     return values;
   });
 
-  //   const dollarOficial =
-  //     dollarCalculator != undefined && dollarCalculator[0].casa;
-  //   console.log(dollarOficial);
-
-  //   const dollarNumber = dollar.dollarValue.replace(",", ".");
-
   const handleOnInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
       setInputCalculator(e.target.value);
     }
   };
 
+  const time = new Date();
+  const lastUpdate = `${time.getDay().toString()}/${
+    time.getMonth() + 1
+  }/${time.getFullYear()} a las ${time.getHours()}:${String(
+    time.getMinutes()
+  ).padStart(2, "0")}:${String(time.getSeconds()).padStart(2, "0")}`;
+
   return (
-    <div className="mx-auto flex h-full w-full max-w-4xl flex-col gap-10 p-4">
+    <div className="mx-auto flex h-full w-full max-w-4xl flex-col gap-10 p-4 sm:max-w-7xl">
       <h1
         className={`calculator-gradient__text bg-clip-text text-5xl ${paytone_One.className} text-center`}
       >
@@ -125,39 +127,61 @@ export const CalculatorContainer = ({
             </div>
           </div>
         </div>
-        <ul className="flex flex-col gap-3 py-2">
-          <li className="flex flex-row justify-between rounded-md bg-white/10 p-2">
-            <p className="home-title bg-clip-text text-right font-bold">
-              TIPO DE CAMBIO
-            </p>
-            <div className="flex justify-center gap-4 text-white">
-              <p className="calculator-gradient__text bg-clip-text font-bold">
-                VENTA
-              </p>
-              <p>/</p>
-              <p className="home-title bg-clip-text text-right font-bold">
-                COMPRA
-              </p>
-            </div>
-          </li>
+        <ul className="flex h-auto flex-col gap-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4">
           {dollarValues?.map((dolarInfo: any) => (
             <li
               key={dolarInfo.nombre}
-              className="flex justify-between rounded-md bg-white/10 p-2"
+              className="flex flex-col justify-between rounded-md bg-white/10 p-2 sm:h-auto sm:w-full"
             >
-              <div className="flex flex-col gap-4 text-left text-white">
-                <p className="home-title bg-clip-text text-left font-bold">
+              <div className="mb-2 flex justify-center gap-4 text-white">
+                <p className="home-title bg-clip-text text-center text-2xl font-bold">
                   {dolarInfo.nombre}
                 </p>
-                <p>Variacion: {dolarInfo.variacion}</p>
               </div>
-              <div className="flex flex-col gap-4 text-right text-white">
-                <p className="calculator-gradient__text bg-clip-text text-xl font-bold">
-                  ${dolarInfo.venta}
-                </p>
-                <p className="home-title bg-clip-text text-right font-bold">
-                  ${dolarInfo.compra}
-                </p>
+              <div className="mb-2 flex flex-row justify-center gap-4 text-white">
+                <div className="flex min-w-[6rem] flex-col items-center justify-center">
+                  <p className="home-title bg-clip-text text-center font-bold">
+                    VENTA
+                  </p>
+                  <p className="calculator-gradient__text bg-clip-text text-center text-base font-bold">
+                    ${dolarInfo.venta}
+                  </p>
+                </div>
+                <div className="flex min-w-[6rem] flex-col items-center justify-center">
+                  <p className="home-title bg-clip-text text-center font-bold">
+                    COMPRA
+                  </p>
+                  <p className="calculator-gradient__text bg-clip-text text-center text-base font-bold">
+                    ${dolarInfo.compra}
+                  </p>
+                </div>
+              </div>
+              <div className="mb-2 flex justify-center rounded-sm bg-[#111] p-2 text-white sm:flex">
+                <span className="mr-2">Variacion: </span>
+                <div className="flex items-center">
+                  {Number(dolarInfo.variacion) > 0 && (
+                    <>
+                      <p>{dolarInfo.variacion}%</p>
+                      <FaCaretUp className="mr-1 h-6 w-6 text-green-600" />
+                    </>
+                  )}
+
+                  {Number(dolarInfo.variacion) < 0 && (
+                    <>
+                      <p>{dolarInfo.variacion}%</p>
+                      <FaCaretDown className="mr-1 h-6 w-6 text-red-600" />
+                    </>
+                  )}
+                  {Number(dolarInfo.variacion) == 0 && (
+                    <>
+                      <FaMinus className="mr-1 flex h-4 w-4 items-center justify-center text-white" />
+                      <p className="mr-1">{dolarInfo.variacion}%</p>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div className=" text-center text-sm text-white sm:inline-block">
+                <p>Actualizado: {lastUpdate}</p>
               </div>
             </li>
           ))}
