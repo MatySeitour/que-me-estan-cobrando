@@ -2,9 +2,9 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { paytone_One } from "@/utils/fonts";
 import { FaCaretDown, FaCaretUp, FaMinus } from "react-icons/fa6";
 
-const enum Badge {
-  USD = "USD",
-  PESOS = "pesos",
+const enum Operation {
+  buy = "comprar",
+  sell = "vender",
 }
 
 export const CalculatorContainer = ({
@@ -16,7 +16,7 @@ export const CalculatorContainer = ({
 }): JSX.Element => {
   const [inputCalculator, setInputCalculator] = useState<string>("");
   const [dollarType, setDollarType] = useState<any>([]);
-  const [calculateType, setCalculateType] = useState<string>("Quiero");
+  const [calculateType, setCalculateType] = useState<Operation>(Operation.buy);
 
   const handleOnInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
@@ -42,10 +42,10 @@ export const CalculatorContainer = ({
         </p>
       </div>
       <div className="flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 p-2">
-        <div className="relative mb-2 flex flex-row justify-center gap-6"></div>
+        <div className="relative mb-4 flex flex-row justify-center gap-6"></div>
         <div className="w-full">
           <div className="mb-2 flex justify-center">
-            <h3 className="home-title bg-clip-text text-center text-2xl font-bold">
+            <h3 className="home-title bg-clip-text text-center text-base font-bold sm:text-2xl">
               Selecciona el tipo de cambio que quieras para calcular cuanto
               deseas{" "}
               <b className="calculator-gradient__text bg-clip-text">comprar</b>/
@@ -53,10 +53,10 @@ export const CalculatorContainer = ({
             </h3>
           </div>
           <div
-            className={`flex w-full flex-col justify-between rounded-md bg-white/10 outline-none  ${
+            className={`flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none sm:p-8 ${
               dollarType.length == 0
-                ? `h-0 transition-[height]`
-                : `h-16 p-2 transition-[height]`
+                ? `invisible h-0 transition-[height]`
+                : `h-72 p-2 transition-[height]`
             }`}
           >
             <div
@@ -64,12 +64,51 @@ export const CalculatorContainer = ({
                 dollarType.length == 0
                   ? `invisible transition-all duration-1000`
                   : `visible transition-all duration-1000`
-              } flex justify-center gap-4`}
+              } mb-4 flex flex-col items-center justify-center gap-4`}
             >
-              <button className="rounded-full bg-gradient-to-b from-[#1fbd06] to-green-800 p-2 font-semibold">
-                Quiero comprar
-              </button>
-              <button>Quiero vender</button>
+              <div className="">
+                <p className="home-title mb-2 bg-clip-text text-center text-2xl font-bold">
+                  {dollarType.nombre}
+                </p>
+                <div className="flex flex-col gap-2 sm:flex-row">
+                  <div className="flex items-center justify-center">
+                    <p className="home-title mr-1 bg-clip-text text-center text-xl font-bold">
+                      Compra:{" "}
+                    </p>
+                    <b className="calculator-gradient__text bg-clip-text text-xl">
+                      {dollarType.compra}
+                    </b>
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <p className="home-title mr-1 bg-clip-text text-center text-xl font-bold">
+                      Venta:{" "}
+                    </p>
+                    <b className="calculator-gradient__text bg-clip-text text-center text-xl">
+                      {dollarType.venta}
+                    </b>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center gap-4">
+                <button
+                  onClick={() => setCalculateType(Operation.buy)}
+                  className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
+                    calculateType == Operation.buy &&
+                    `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
+                  }`}
+                >
+                  Quiero comprar
+                </button>
+                <button
+                  onClick={() => setCalculateType(Operation.sell)}
+                  className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
+                    calculateType == Operation.sell &&
+                    `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
+                  }`}
+                >
+                  Quiero vender
+                </button>
+              </div>
             </div>
             {/* <span className="home-title bg-clip-text text-right font-bold">
               {badgeCalculator == Badge.PESOS
@@ -89,17 +128,48 @@ export const CalculatorContainer = ({
                   }`}
             </span> */}
 
-            {/* <div className={`flex w-full justify-end gap-2 bg-red-400`}>
-              <input
-                name="calculator"
-                onChange={handleOnInputChange}
-                value={inputCalculator}
-                type="text"
-                pattern="[0-9]+"
-                id="calculator"
-                className="home-title h-full w-full bg-white bg-clip-text text-right font-bold outline-none"
-              />
-            </div> */}
+            <div
+              className={`flex w-full flex-col items-center justify-center gap-2`}
+            >
+              <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
+                <span className="w-16 text-white">USD$</span>
+                <input
+                  name="calculator"
+                  onChange={handleOnInputChange}
+                  value={inputCalculator}
+                  type="number"
+                  pattern="[0-9]+"
+                  id="calculator"
+                  placeholder={
+                    calculateType == Operation.buy
+                      ? `Escribe el monto de compra...`
+                      : `Escribe el monto de venta...`
+                  }
+                  className="h-full w-full max-w-[15rem] rounded-r-md bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
+                />
+              </div>
+              <div className="flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
+                <span className="w-16 text-white">ARS$</span>
+                <input
+                  readOnly
+                  name="calculator"
+                  onChange={handleOnInputChange}
+                  value={
+                    calculateType == Operation.buy
+                      ? (
+                          Number(inputCalculator) * Number(dollarType.compra)
+                        ).toFixed(2)
+                      : (
+                          Number(inputCalculator) * Number(dollarType.venta)
+                        ).toFixed(2)
+                  }
+                  type="type"
+                  pattern="[0-9]+"
+                  id="calculator"
+                  className="h-full w-full max-w-[15rem] rounded-r-md bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <ul className="flex h-auto flex-col gap-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4">
