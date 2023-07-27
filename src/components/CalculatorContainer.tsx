@@ -41,7 +41,7 @@ export const CalculatorContainer = ({
           <b className="calculator-gradient__text bg-clip-text"> elijas</b>
         </p>
       </div>
-      <div className="flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 p-2">
+      <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 p-2">
         <div className="relative mb-4 flex flex-row justify-center gap-6"></div>
         <div className="w-full">
           <div className="mb-2 flex justify-center">
@@ -172,7 +172,7 @@ export const CalculatorContainer = ({
             </div>
           </div>
         </div>
-        <ul className="flex h-auto flex-col gap-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4">
+        <ul className="flex h-auto flex-col gap-4 py-2 md:grid md:grid-cols-3 md:gap-4">
           {dollarCalculator?.map((dollarInfo: any) => (
             <li
               key={dollarInfo.nombre}
@@ -236,6 +236,10 @@ export const CalculatorContainer = ({
             </li>
           ))}
         </ul>
+        <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
+        <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
+        <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>
+        <div className="border-effect__bottom absolute -bottom-0.5 -right-0.5 h-0.5 w-20"></div>
       </div>
     </div>
   );
