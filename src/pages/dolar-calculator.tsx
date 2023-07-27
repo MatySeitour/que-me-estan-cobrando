@@ -12,10 +12,25 @@ export default function DollarCalculator() {
       const res = await axios.get(
         "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
       );
-      setDollarCalculator(res.data);
+      const dollarValues = res.data?.map((dolar: any) => {
+        const values = { nombre: "", compra: null, venta: null, variacion: "" };
+        values.nombre = dolar.casa.nombre;
+        values.compra = dolar.casa.compra.replace(",", ".");
+        values.venta = dolar.casa.venta.replace(",", ".");
+        values.variacion = dolar.casa.variacion?.replace(",", ".");
+        return values;
+      });
+      setDollarCalculator(dollarValues);
     }
     getDollar();
   }, []);
+
+  const time = new Date();
+  const lastUpdate = `${time.getDay().toString()}/${
+    time.getMonth() + 1
+  }/${time.getFullYear()} a las ${time.getHours()}:${String(
+    time.getMinutes()
+  ).padStart(2, "0")}:${String(time.getSeconds()).padStart(2, "0")}`;
 
   return (
     <>
@@ -24,7 +39,10 @@ export default function DollarCalculator() {
         <meta></meta>
       </Head>
       <main className={`${inter.className} relative flex justify-center pt-20`}>
-        <CalculatorContainer dollarCalculator={dollarCalculator} />
+        <CalculatorContainer
+          dollarCalculator={dollarCalculator ?? dollarCalculator}
+          lastUpdate={lastUpdate}
+        />
       </main>
     </>
   );
