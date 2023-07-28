@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { inter } from "@/utils/fonts";
 import axios from "axios";
 import { CalculatorContainer } from "@/components/CalculatorContainer";
-import { GradientEffectBackground } from "@/components/GradientEffectBackground";
+import quotesData from "../assets/quotes.json";
 
 export default function DollarCalculator() {
+  const { cotizaciones } = quotesData;
+
   const [dollarCalculator, setDollarCalculator] = useState<any>();
   useEffect(() => {
     async function getDollar() {
@@ -13,11 +15,24 @@ export default function DollarCalculator() {
         "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
       );
       const dollarValues = res.data?.map((dolar: any) => {
-        const values = { nombre: "", compra: null, venta: null, variacion: "" };
+        const values = {
+          nombre: "",
+          compra: null,
+          venta: null,
+          variacion: "",
+          descripcion: "",
+        };
+        const descripcionDollar = cotizaciones.filter(
+          (quote) => quote.name == dolar.casa.nombre
+        );
+        console.log(descripcionDollar);
         values.nombre = dolar.casa.nombre;
         values.compra = dolar.casa.compra.replace(",", ".");
         values.venta = dolar.casa.venta.replace(",", ".");
         values.variacion = dolar.casa.variacion?.replace(",", ".");
+        values.descripcion = !descripcionDollar.length
+          ? ""
+          : descripcionDollar[0].descripcion;
         return values;
       });
       setDollarCalculator(dollarValues);
