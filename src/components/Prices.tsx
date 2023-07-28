@@ -48,13 +48,13 @@ export const Prices = ({
     gsap.fromTo(
       planTitle.current,
       {
-        yPercent: -40,
+        y: -40,
         opacity: 0,
         duration: 0.5,
         delay: 0.2,
       },
       {
-        yPercent: 0,
+        y: 0,
         opacity: 1,
         duration: 0.5,
         delay: 0.2,
@@ -65,12 +65,12 @@ export const Prices = ({
       tl.fromTo(
         price,
         {
-          yPercent: -20,
+          y: -20,
           opacity: 0,
           duration: 0.1,
         },
         {
-          yPercent: 0,
+          y: 0,
           opacity: 1,
           duration: 0.1,
         }

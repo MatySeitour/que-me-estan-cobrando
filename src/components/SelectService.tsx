@@ -27,7 +27,7 @@ export const SelectService = ({
           start: "start 70%",
           end: "start 70%",
         },
-        yPercent: -70,
+        y: -70,
         opacity: 0,
         duration: 0.5,
       },
@@ -38,7 +38,7 @@ export const SelectService = ({
           start: "start 70%",
           end: "start 70%",
         },
-        yPercent: 0,
+        y: 0,
         opacity: 1,
         duration: 0.5,
       }

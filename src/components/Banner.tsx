@@ -21,12 +21,12 @@ export const Banner = () => {
     gsap.fromTo(
       homeTitle,
       {
-        yPercent: 50,
+        y: 50,
         opacity: 0,
         duration: 0.4,
       },
       {
-        yPercent: 0,
+        y: 0,
         opacity: 1,
         duration: 0.4,
       }
@@ -35,13 +35,13 @@ export const Banner = () => {
     gsap.fromTo(
       homeSubtitle,
       {
-        yPercent: 50,
+        y: 50,
         opacity: 0,
         duration: 0.4,
         delay: 0.2,
       },
       {
-        yPercent: 0,
+        y: 0,
         opacity: 1,
         duration: 0.4,
         delay: 0.2,
