@@ -189,3 +189,8 @@
   transform: translateX(13.3rem);
   transition: all 0.5s ease linear;
 }
+
+.dollar-input__container:focus-within {
+  border-color: rgb(246, 246, 246);
+  transition: border 0.2s ease;
+}
