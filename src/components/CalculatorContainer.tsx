@@ -1,6 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { paytone_One } from "@/utils/fonts";
 import { FaCaretDown, FaCaretUp, FaMinus } from "react-icons/fa6";
+import { HiInformationCircle } from "react-icons/hi2";
 
 const enum Operation {
   buy = "comprar",
@@ -41,7 +42,7 @@ export const CalculatorContainer = ({
           <b className="calculator-gradient__text bg-clip-text"> elijas</b>
         </p>
       </div>
-      <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 p-2">
+      <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 bg-white/5 p-2">
         <div className="relative mb-4 flex flex-row justify-center gap-6"></div>
         <div className="w-full">
           <div className="mb-2 flex justify-center">
@@ -53,10 +54,10 @@ export const CalculatorContainer = ({
             </h3>
           </div>
           <div
-            className={`flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none sm:p-8 ${
+            className={`flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none ${
               dollarType.length == 0
                 ? `invisible h-0 transition-[height]`
-                : `h-72 p-2 transition-[height]`
+                : `h-72 p-2 transition-[height] sm:p-8`
             }`}
           >
             <div
@@ -67,9 +68,9 @@ export const CalculatorContainer = ({
               } mb-4 flex flex-col items-center justify-center gap-4`}
             >
               <div className="">
-                <p className="home-title mb-2 bg-clip-text text-center text-2xl font-bold">
-                  {dollarType.nombre}
-                </p>
+                <div className="home-title mb-2 bg-clip-text text-center text-2xl font-bold">
+                  <p>{dollarType.nombre}</p>
+                </div>
                 <div className="flex flex-col gap-2 sm:flex-row">
                   <div className="flex items-center justify-center">
                     <p className="home-title mr-1 bg-clip-text text-center text-xl font-bold">
@@ -110,29 +111,14 @@ export const CalculatorContainer = ({
                 </button>
               </div>
             </div>
-            {/* <span className="home-title bg-clip-text text-right font-bold">
-              {badgeCalculator == Badge.PESOS
-                ? `Dólar Oficial: $${
-                    dollarValues != undefined
-                      ? (
-                          Number(inputCalculator) /
-                          Number(dollarValues[0].venta)
-                        ).toFixed(2)
-                      : "0"
-                  }`
-                : `ARS$: ${
-                    dollarValues != undefined &&
-                    (
-                      Number(inputCalculator) * Number(dollarValues[0].venta)
-                    ).toFixed(2)
-                  }`}
-            </span> */}
 
             <div
               className={`flex w-full flex-col items-center justify-center gap-2`}
             >
               <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                <span className="w-16 text-white">USD$</span>
+                <span className="home-title w-16 bg-clip-text font-bold text-white">
+                  USD$
+                </span>
                 <input
                   name="calculator"
                   onChange={handleOnInputChange}
@@ -149,7 +135,9 @@ export const CalculatorContainer = ({
                 />
               </div>
               <div className="flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                <span className="w-16 text-white">ARS$</span>
+                <span className="home-title w-16 bg-clip-text font-bold text-white">
+                  ARS$
+                </span>
                 <input
                   readOnly
                   name="calculator"
@@ -183,10 +171,16 @@ export const CalculatorContainer = ({
                   : `outline-transparent`
               }`}
             >
-              <div className="mb-2 flex justify-center gap-4 text-white">
+              <div className="mb-2 flex items-center justify-center gap-2 text-white">
                 <p className="home-title bg-clip-text text-center text-2xl font-bold">
                   {dollarInfo.nombre}
                 </p>
+                <div className="group relative">
+                  <HiInformationCircle className="h-5 w-5" />
+                  <p className="invisible absolute -top-14 left-[50%] w-auto max-w-[20rem] -translate-x-1/2 rounded-md border border-white/20 bg-black p-2 text-center text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:min-w-[18rem]">
+                    {dollarInfo.descripcion}
+                  </p>
+                </div>
               </div>
               <div className="mb-2 flex flex-row justify-center gap-4 text-white">
                 <div className="flex min-w-[6rem] flex-col items-center justify-center">
