@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from "react";
 import { paytone_One } from "@/utils/fonts";
-import { FaCaretDown, FaCaretUp, FaMinus } from "react-icons/fa6";
+import { FaCaretDown, FaCaretUp, FaMinus, FaCopy } from "react-icons/fa6";
 import { HiInformationCircle } from "react-icons/hi2";
-import { GradientEffectBackground } from "./GradientEffectBackground";
 import { LoadingData } from "./LoadingData";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const enum Operation {
   buy = "comprar",
@@ -147,7 +147,7 @@ export const CalculatorContainer = ({
                     />
                   </div>
                   <div className="flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                    <span className="home-title w-16 bg-clip-text font-bold text-white">
+                    <span className="home-title mr-2 w-16 bg-clip-text font-bold text-white">
                       ARS$
                     </span>
                     <input
@@ -169,6 +169,15 @@ export const CalculatorContainer = ({
                       id="calculator"
                       className="h-full w-full max-w-[15rem] rounded-r-md bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
                     />
+                    <CopyToClipboard
+                      text={(
+                        Number(inputCalculator) * Number(dollarType.venta)
+                      ).toFixed(2)}
+                    >
+                      <span className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-b from-[#1fbd06] to-green-800 px-2">
+                        <FaCopy className="bg-whtie h-4 w-6 text-white" />
+                      </span>
+                    </CopyToClipboard>
                   </div>
                 </div>
               </div>
