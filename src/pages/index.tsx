@@ -57,11 +57,3 @@ export default function Home() {
     </>
   );
 }
-
-// content: "";
-// width: 100%;
-// height: 100%;
-// top: 0;
-// right: -1%;
-// position: absolute;
-// background: linear-gradient(89deg, transparent, rgba(0, 0, 0, 0.1), #000);
