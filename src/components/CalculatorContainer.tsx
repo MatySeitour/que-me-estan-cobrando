@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { paytone_One } from "@/utils/fonts";
 import { FaCaretDown, FaCaretUp, FaMinus } from "react-icons/fa6";
 import { HiInformationCircle } from "react-icons/hi2";
+import { GradientEffectBackground } from "./GradientEffectBackground";
 
 const enum Operation {
   buy = "comprar",
@@ -18,15 +19,17 @@ export const CalculatorContainer = ({
   const [inputCalculator, setInputCalculator] = useState<string>("");
   const [dollarType, setDollarType] = useState<any>([]);
   const [calculateType, setCalculateType] = useState<Operation>(Operation.buy);
+  const [dollarDescriptionState, setDollarDescriptionState] = useState<any>([]);
 
   const handleOnInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
       setInputCalculator(e.target.value);
     }
   };
-
+  // after:from-[#2D5FFF]/20 after:via-[#39f2aea5]/20
   return (
     <div className="mx-auto flex h-full w-full max-w-4xl flex-col gap-10 p-4 sm:max-w-7xl">
+      <GradientEffectBackground classname="after:from-[#1fbd06]/20 after:via-[#1fbd06]/20 after:w-96 after:-top-20" />
       <h1
         className={`calculator-gradient__text bg-clip-text text-5xl ${paytone_One.className} pb-2 text-center`}
       >
@@ -175,11 +178,14 @@ export const CalculatorContainer = ({
                 <p className="home-title bg-clip-text text-center text-2xl font-bold">
                   {dollarInfo.nombre}
                 </p>
-                <div className="group relative">
-                  <HiInformationCircle className="h-5 w-5" />
-                  <p className="invisible absolute -top-14 left-[50%] w-auto max-w-[20rem] -translate-x-1/2 rounded-md border border-white/20 bg-black p-2 text-center text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:min-w-[18rem]">
+                <div className="group relative z-50">
+                  <p className="invisible absolute bottom-4 left-[50%] hidden w-auto max-w-[20rem] -translate-x-1/2 rounded-md border border-white/20 bg-black p-2 text-center text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:inline-block sm:min-w-[18rem]">
                     {dollarInfo.descripcion}
                   </p>
+                  <HiInformationCircle
+                    className="h-5 w-5"
+                    onClick={() => setDollarDescriptionState(dollarInfo)}
+                  />
                 </div>
               </div>
               <div className="mb-2 flex flex-row justify-center gap-4 text-white">
@@ -234,6 +240,40 @@ export const CalculatorContainer = ({
         <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
         <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>
         <div className="border-effect__bottom absolute -bottom-0.5 -right-0.5 h-0.5 w-20"></div>
+      </div>
+      <div className="sm:hidden">
+        <div
+          className={
+            dollarDescriptionState.nombre != undefined
+              ? `visible fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-[#000a] transition-all`
+              : `invisible fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-[#000a] transition-all`
+          }
+        >
+          <div
+            className={
+              dollarDescriptionState.nombre != undefined
+                ? `relative h-auto w-72 scale-100 rounded-md border border-white/20 bg-[#000a] p-4 pt-10 backdrop-blur-sm transition-all`
+                : `relative h-auto w-72 scale-0 rounded-md border border-white/20 bg-[#000a] p-4 backdrop-blur-sm transition-all`
+            }
+          >
+            <span
+              onClick={() => setDollarDescriptionState([])}
+              className="home-title absolute left-2 top-2 bg-clip-text text-center text-2xl font-bold"
+            >
+              X
+            </span>
+            <div className="flex h-full w-full flex-col items-center justify-center gap-2">
+              <h5 className="home-title max-w-[16rem] bg-clip-text text-center text-2xl font-bold">
+                {dollarDescriptionState.nombre}
+              </h5>
+              <div className="px-4 text-center">
+                <p className="text-white">
+                  {dollarDescriptionState.descripcion}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
