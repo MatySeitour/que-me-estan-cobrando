@@ -1,9 +1,16 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { paytone_One } from "@/utils/fonts";
-import { FaCaretDown, FaCaretUp, FaMinus, FaCopy } from "react-icons/fa6";
+import {
+  FaCaretDown,
+  FaCaretUp,
+  FaMinus,
+  FaCopy,
+  FaCheck,
+} from "react-icons/fa6";
 import { HiInformationCircle } from "react-icons/hi2";
 import { LoadingData } from "./LoadingData";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { gsap } from "gsap";
 
 const enum Operation {
   buy = "comprar",
@@ -19,10 +26,12 @@ export const CalculatorContainer = ({
   lastUpdate: string;
   loadingData: boolean;
 }): JSX.Element => {
+  const calculatorTitle = useRef(null);
+  const calculatorText = useRef(null);
   const [inputCalculator, setInputCalculator] = useState<string>("");
   const [dollarType, setDollarType] = useState<any>([]);
   const [calculateType, setCalculateType] = useState<Operation>(Operation.buy);
-  const [dollarDescriptionState, setDollarDescriptionState] = useState<any>([]);
+  const [copyState, setCopyState] = useState<boolean>(false);
 
   const handleOnInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
@@ -30,14 +39,39 @@ export const CalculatorContainer = ({
     }
   };
 
+  useEffect(() => {
+    gsap.fromTo(
+      calculatorTitle.current,
+      { opacity: 0, y: 50, duration: 0.3 },
+      { opacity: 1, y: 0, duration: 0.3 }
+    );
+
+    gsap.fromTo(
+      calculatorText.current,
+      { opacity: 0, y: 50, duration: 0.3, delay: 0.1 },
+      { opacity: 1, y: 0, duration: 0.3, delay: 0.1 }
+    );
+  }, []);
+
+  const toggleCopy = () => {
+    setCopyState(true);
+    setTimeout(() => {
+      setCopyState(false);
+    }, 1000);
+  };
+
   return (
     <div className="mx-auto flex h-full w-full max-w-4xl flex-col gap-10 p-4 sm:max-w-7xl">
       <h1
+        ref={calculatorTitle}
         className={`calculator-gradient__text bg-clip-text text-5xl ${paytone_One.className} pb-2 text-center`}
       >
         ¿A cuanto el dólar?
       </h1>
-      <div className="flex items-center justify-center text-center">
+      <div
+        ref={calculatorText}
+        className="flex items-center justify-center text-center"
+      >
         <p className="max-w-2xl text-lg text-white">
           <b className="calculator-gradient__text bg-clip-text">Conoce </b>la
           cotización del dólar y{" "}
@@ -174,7 +208,10 @@ export const CalculatorContainer = ({
                         Number(inputCalculator) * Number(dollarType.venta)
                       ).toFixed(2)}
                     >
-                      <span className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-b from-[#1fbd06] to-green-800 px-2">
+                      <span
+                        onClick={toggleCopy}
+                        className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-b from-[#1fbd06] to-green-800 px-2"
+                      >
                         <FaCopy className="bg-whtie h-4 w-6 text-white" />
                       </span>
                     </CopyToClipboard>
@@ -207,10 +244,7 @@ export const CalculatorContainer = ({
                       <p className="invisible absolute bottom-4 left-[50%] min-w-[10rem] max-w-[20rem] -translate-x-1/2 rounded-md border border-white/20 bg-black p-2 text-center text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:inline-block md:min-w-[8rem] min-[840px]:min-w-[10rem] lg:min-w-[14rem]">
                         {dollarInfo.descripcion}
                       </p>
-                      <HiInformationCircle
-                        className="h-5 w-5"
-                        onClick={() => setDollarDescriptionState(dollarInfo)}
-                      />
+                      <HiInformationCircle className="h-5 w-5" />
                     </div>
                   </div>
                   <div className="mb-2 flex flex-row justify-center gap-4 text-white">
@@ -266,6 +300,20 @@ export const CalculatorContainer = ({
             <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>
             <div className="border-effect__bottom absolute -bottom-0.5 -right-0.5 h-0.5 w-20"></div>
           </div>
+          {/* {!copyState && ( */}
+          <div
+            className={
+              copyState
+                ? `fixed bottom-8 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
+                : `fixed -bottom-10 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
+            }
+          >
+            <p className="mr-2 text-white">¡Valor copiado con éxito!</p>
+            <div className="w-6 rounded-full bg-green-700 p-1">
+              <FaCheck className="h-full w-full text-white" />
+            </div>
+          </div>
+          {/* )} */}
         </>
       ) : (
         <div className="flex w-full justify-center pt-20">
