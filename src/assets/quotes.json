@@ -1,0 +1,28 @@
+{
+  "cotizaciones": [
+    {
+      "name": "Dolar Oficial",
+      "descripcion": "Tipo de cambio oficial establecido por el gobierno para operaciones legales."
+    },
+    {
+      "name": "Dolar Blue",
+      "descripcion": "Tipo de cambio no oficial del dólar estadounidense, negociado en el mercado paralelo."
+    },
+    {
+      "name": "Dolar Bolsa",
+      "descripcion": "También conocido como 'Dólar MEP' o 'Dólar de cable'. Se obtiene mediante operaciones bursátiles legales de compra y venta de bonos en pesos y dólares."
+    },
+    {
+      "name": "Dolar Contado con Liqui",
+      "descripcion": "Modalidad para obtener dólares de manera legal a través de la compra de activos locales en moneda nacional y su venta en el exterior en dólares."
+    },
+    {
+      "name": "Dolar Turista",
+      "descripcion": "Tipo de cambio con recargo adicional sobre el oficial, utilizado para la compra de moneda extranjera con fines turísticos."
+    },
+    {
+      "name": "Dolar Soja",
+      "descripcion": "Tipo de cambio diferencial aplicado a las exportaciones de productos agrícolas, como la soja, para incentivar las exportaciones y aumentar los ingresos en moneda extranjera del país."
+    }
+  ]
+}
