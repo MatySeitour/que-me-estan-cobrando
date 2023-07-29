@@ -11,6 +11,7 @@ import { HiInformationCircle } from "react-icons/hi2";
 import { LoadingData } from "./LoadingData";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { gsap } from "gsap";
+import { GradientEffectBackground } from "./GradientEffectBackground";
 
 const enum Operation {
   buy = "comprar",
@@ -95,17 +96,28 @@ export const CalculatorContainer = ({
       ref={calculator}
       className="mx-auto flex h-full w-full max-w-4xl flex-col gap-10 p-4 sm:max-w-7xl"
     >
-      <h1
-        ref={calculatorTitle}
-        className={`calculator-gradient__text bg-clip-text text-5xl ${paytone_One.className} pb-2 text-center`}
-      >
-        ¿A cuanto el dólar?
-      </h1>
+      <div className="relative h-auto w-auto">
+        <h1
+          ref={calculatorTitle}
+          className={`calculator-gradient__text bg-clip-text text-5xl md:text-6xl lg:text-8xl ${paytone_One.className} pb-2 text-center`}
+        >
+          ¿A cuanto el dólar?
+          {/* <GradientEffectBackground classname="after:w-full after:top-0 after:h-4 after:from-[#1fbd06]/20 after:via-[#1fbd06]/20" /> */}
+        </h1>
+        <div className="absolute left-0 top-0 z-0 h-96 w-full">
+          <div
+            className={`relative flex h-full w-full place-items-center before:absolute before:left-0 before:top-0 before:h-full before:w-full before:rounded-full before:bg-gradient-radial before:from-transparent before:to-[#0B121C10] after:absolute after:left-[50%] after:top-0 after:-z-20 after:h-32 after:w-full after:-translate-x-1/2
+     
+        after:bg-gradient-radial after:from-[#2aed54a5]/20 after:via-[#2aed54a5]/20 after:blur-2xl after:content-[''] sm:after:-top-6 lg:after:top-0`}
+          />
+        </div>
+      </div>
+      {/* after:from-[#2D5FFF]/20 after:via-[#39f2aea5]/20 */}
       <div
         ref={calculatorText}
-        className="flex items-center justify-center text-center"
+        className="flex items-center justify-center pt-10 text-center"
       >
-        <p className="max-w-2xl text-lg text-white">
+        <p className="text-base text-white md:max-w-2xl md:text-lg lg:max-w-4xl lg:text-2xl">
           <b className="calculator-gradient__text bg-clip-text">Conoce </b>la
           cotización del dólar y{" "}
           <b className="calculator-gradient__text bg-clip-text">calcula</b> el
@@ -122,21 +134,14 @@ export const CalculatorContainer = ({
               <div className="mb-2 flex justify-center">
                 <h3 className="home-title bg-clip-text text-center text-base font-bold sm:text-2xl">
                   Selecciona el tipo de cambio que quieras para calcular cuanto
-                  deseas{" "}
-                  <b className="calculator-gradient__text bg-clip-text">
-                    comprar
-                  </b>
-                  /
-                  <b className="calculator-gradient__text bg-clip-text">
-                    vender
-                  </b>
+                  deseas comprar / vender
                 </h3>
               </div>
               <div
                 className={`bg-gradient__cards flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none ${
                   dollarType.length == 0
                     ? `invisible h-0 transition-[height]`
-                    : `h-72 p-2 transition-[height] sm:p-8`
+                    : `visible h-72 p-2 transition-[height] sm:p-8`
                 }`}
               >
                 <div
@@ -349,7 +354,7 @@ export const CalculatorContainer = ({
           {/* )} */}
         </>
       ) : (
-        <div className="flex w-full justify-center pt-20">
+        <div className="flex h-screen w-full justify-center pt-20">
           <LoadingData />
         </div>
       )}
