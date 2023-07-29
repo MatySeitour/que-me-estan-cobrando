@@ -26,6 +26,7 @@ export const CalculatorContainer = ({
   lastUpdate: string;
   loadingData: boolean;
 }): JSX.Element => {
+  const calculator = useRef(null);
   const calculatorTitle = useRef(null);
   const calculatorText = useRef(null);
   const [inputCalculator, setInputCalculator] = useState<string>("");
@@ -40,18 +41,47 @@ export const CalculatorContainer = ({
   };
 
   useEffect(() => {
-    gsap.fromTo(
-      calculatorTitle.current,
-      { opacity: 0, y: 50, duration: 0.3 },
-      { opacity: 1, y: 0, duration: 0.3 }
-    );
+    const tl = gsap.timeline({ paused: true });
 
-    gsap.fromTo(
-      calculatorText.current,
-      { opacity: 0, y: 50, duration: 0.3, delay: 0.1 },
-      { opacity: 1, y: 0, duration: 0.3, delay: 0.1 }
-    );
+    const calculatorContext = gsap.context(() => {
+      tl.play();
+      tl.fromTo(
+        calculatorTitle.current,
+        { opacity: 0, y: 50, duration: 0.3 },
+        { opacity: 1, y: 0, duration: 0.3 }
+      );
+
+      tl.fromTo(
+        calculatorText.current,
+        { opacity: 0, y: 50, duration: 0.3 },
+        { opacity: 1, y: 0, duration: 0.3 },
+        0.2
+      );
+    }, calculator);
+
+    return () => calculatorContext.revert();
   }, []);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ paused: true });
+
+    const cards = gsap.utils.toArray("#cardQuote");
+    console.log(cards);
+
+    const calculatorContext = gsap.context(() => {
+      tl.play();
+
+      cards.forEach((card: any) => {
+        tl.fromTo(
+          card,
+          { opacity: 0, y: 50, duration: 0.2 },
+          { opacity: 1, y: 0, duration: 0.2 }
+        );
+      });
+    }, calculator);
+
+    return () => calculatorContext.revert();
+  }, [loadingData]);
 
   const toggleCopy = () => {
     setCopyState(true);
@@ -61,7 +91,10 @@ export const CalculatorContainer = ({
   };
 
   return (
-    <div className="mx-auto flex h-full w-full max-w-4xl flex-col gap-10 p-4 sm:max-w-7xl">
+    <div
+      ref={calculator}
+      className="mx-auto flex h-full w-full max-w-4xl flex-col gap-10 p-4 sm:max-w-7xl"
+    >
       <h1
         ref={calculatorTitle}
         className={`calculator-gradient__text bg-clip-text text-5xl ${paytone_One.className} pb-2 text-center`}
@@ -222,6 +255,7 @@ export const CalculatorContainer = ({
             <ul className="flex h-auto flex-col gap-4 py-2 md:grid md:grid-cols-3 md:gap-4">
               {dollarCalculator?.map((dollarInfo: any) => (
                 <li
+                  id="cardQuote"
                   key={dollarInfo.nombre}
                   onClick={() => setDollarType(dollarInfo)}
                   className={`flex flex-col justify-between rounded-md bg-white/10 p-2 outline sm:h-auto sm:w-full ${
@@ -300,7 +334,6 @@ export const CalculatorContainer = ({
             <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>
             <div className="border-effect__bottom absolute -bottom-0.5 -right-0.5 h-0.5 w-20"></div>
           </div>
-          {/* {!copyState && ( */}
           <div
             className={
               copyState
