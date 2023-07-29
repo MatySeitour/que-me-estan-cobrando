@@ -44,7 +44,7 @@ export const GameUsd = ({
         className ?? "false"
       } absolute top-0 flex h-auto w-full pt-16`}
     >
-      <div className="relative z-40 mx-auto h-full w-full max-w-xl rounded-md border border-white/20 bg-black pb-8">
+      <div className="bg-gradient__cards relative z-40 mx-auto h-full w-full max-w-xl rounded-md border border-white/20 pb-8">
         <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
         <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
         <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>

@@ -100,7 +100,7 @@ export const CalculatorContainer = ({
                 </h3>
               </div>
               <div
-                className={`flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none ${
+                className={`bg-gradient__cards flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none ${
                   dollarType.length == 0
                     ? `invisible h-0 transition-[height]`
                     : `h-72 p-2 transition-[height] sm:p-8`
