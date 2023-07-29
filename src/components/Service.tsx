@@ -131,6 +131,7 @@ export const Service = ({
             />
           </div>
           <Dropdown
+            serviceOptionSelect={serviceOptionSelect}
             serviceSelected={serviceSelected}
             selectPlan={selectPlan}
             setSelectPlan={setSelectPlan}
