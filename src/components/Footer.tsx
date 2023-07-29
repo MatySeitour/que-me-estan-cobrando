@@ -1,24 +1,21 @@
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa6";
-import { inter } from "../utils/fonts";
+import { inter, paytone_One } from "../utils/fonts";
 
-export const Footer = (): JSX.Element => {
+export const Footer = ({ text }: { text: string }): JSX.Element => {
   return (
     <footer className="h-auto w-full px-4 pt-4">
-      <div className="relative h-full w-full rounded-tl-md rounded-tr-md border-t border-white/30 bg-[#111] pb-4">
+      <div className="bg-gradient__cards relative h-full w-full rounded-tl-md rounded-tr-md border-t border-white/30 pb-4">
         <div className="border-effect__bottom absolute -top-0.5 right-4 h-0.5 w-20"></div>
         <div className="h-full w-full">
           <div className="px-8 py-6">
             <p className={`text-center text-sm text-white ${inter.className}`}>
-              Los precios de los servicios digitales y los impuestos mostrados
-              en esta página son informativos y están sujetos a cambios. Nos
-              esforzamos por proporcionar información precisa y actualizada,
-              pero no garantizamos la exactitud de los datos en todo momento.
-              Los precios finales pueden variar según la ubicación y otros
-              factores adicionales.
+              {text}
             </p>
           </div>
           <div className="flex justify-center">
-            <h5 className="home-title mb-4 bg-clip-text text-3xl ">
+            <h5
+              className={`home-title mb-4 bg-clip-text text-3xl ${paytone_One.className}`}
+            >
               Mis redes
             </h5>
           </div>
