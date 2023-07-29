@@ -41,7 +41,7 @@ export const Service = ({
             end: "start center",
           },
           opacity: 0,
-          duration: 0.5,
+          duration: 0.2,
         },
 
         {
@@ -51,7 +51,7 @@ export const Service = ({
             end: "start center",
           },
           opacity: 1,
-          duration: 0.5,
+          duration: 0.2,
         }
       );
     }, service);
@@ -66,11 +66,11 @@ export const Service = ({
       logoService.current,
       {
         opacity: 0,
-        duration: 0.4,
+        duration: 0.2,
       },
       {
         opacity: 1,
-        duration: 0.4,
+        duration: 0.2,
       }
     );
   }, [serviceSelected.id]);
