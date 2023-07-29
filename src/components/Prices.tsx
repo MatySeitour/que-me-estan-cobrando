@@ -30,7 +30,7 @@ export const Prices = ({
 
   useEffect(() => {
     const prices = gsap.utils.toArray("#price");
-    const tl = gsap.timeline({ paused: true, reversed: true });
+    const tl = gsap.timeline({ paused: true });
 
     tl.play();
 
@@ -38,11 +38,11 @@ export const Prices = ({
       priceTitle.current,
       {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.2,
       },
       {
         opacity: 1,
-        duration: 0.5,
+        duration: 0.2,
       }
     );
     gsap.fromTo(
@@ -50,13 +50,13 @@ export const Prices = ({
       {
         y: -40,
         opacity: 0,
-        duration: 0.5,
+        duration: 0.2,
         delay: 0.2,
       },
       {
         y: 0,
         opacity: 1,
-        duration: 0.5,
+        duration: 0.2,
         delay: 0.2,
       }
     );
