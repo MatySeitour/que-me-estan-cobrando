@@ -26,34 +26,11 @@ export const Plan = ({ plans }: { plans: any }): JSX.Element => {
     }
   };
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const titleCard = gsap.utils.toArray(`#plans`);
-
-    const tl = gsap.timeline({ paused: true, reversed: true });
-
-    tl.play();
-
-    titleCard.forEach((plan: any) => {
-      tl.fromTo(
-        plan,
-        {
-          y: -20,
-          opacity: 0,
-          duration: 0.2,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.2,
-        }
-      );
-    });
-  }, []);
   return (
     <li
       id={`plans`}
       ref={element1}
+      // ref={plansRef}
       onClick={() => toggleTax(plans.id)}
       className={
         plans.id == planSelect
