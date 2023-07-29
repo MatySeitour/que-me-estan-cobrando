@@ -230,3 +230,7 @@
     transform: rotate(360deg);
   }
 }
+
+.bg-gradient__cards {
+  background: linear-gradient(00deg, #242424, #000000 50.62%);
+}
