@@ -96,8 +96,8 @@ export const SelectService = ({
         </ul>
       </div>
       <div className="flex items-center justify-center">
-        <p className="home-title mr-1 bg-clip-text text-xl">Más servicios</p>
-        <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-xl font-normal text-transparent">
+        <p className="home-title mr-1 bg-clip-text text-3xl">Más servicios</p>
+        <b className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-3xl font-normal text-transparent">
           pronto...
         </b>
       </div>
