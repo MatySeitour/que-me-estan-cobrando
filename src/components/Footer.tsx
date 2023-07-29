@@ -4,7 +4,7 @@ import { inter } from "../utils/fonts";
 export const Footer = (): JSX.Element => {
   return (
     <footer className="h-auto w-full px-4 pt-4">
-      <div className="relative h-full w-full rounded-md border-t border-white/30 bg-[#111] pb-4">
+      <div className="relative h-full w-full rounded-tl-md rounded-tr-md border-t border-white/30 bg-[#111] pb-4">
         <div className="border-effect__bottom absolute -top-0.5 right-4 h-0.5 w-20"></div>
         <div className="h-full w-full">
           <div className="px-8 py-6">
