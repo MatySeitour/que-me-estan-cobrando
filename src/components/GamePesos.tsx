@@ -77,7 +77,7 @@ export const GamePesos = ({
               ARS$
             </p>
             <input
-              type="text"
+              type="number"
               pattern="[0-9]+"
               onChange={handleInputChange}
               value={inputPriceValue}
