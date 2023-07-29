@@ -52,7 +52,14 @@ export default function Home() {
           </div>
         </div>
 
-        <Footer />
+        <Footer
+          text="Los precios de los servicios digitales y los impuestos mostrados
+              en esta página son informativos y están sujetos a cambios. Nos
+              esforzamos por proporcionar información precisa y actualizada,
+              pero no garantizamos la exactitud de los datos en todo momento.
+              Los precios finales pueden variar según la ubicación y otros
+              factores adicionales."
+        />
       </main>
     </>
   );
