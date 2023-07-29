@@ -11,15 +11,15 @@
           "descripcion": [
             {
               "plan_description_id": 0,
-              "plan_description": "Puedes ver contenido en 1 dispositivo compatible a la vez"
+              "plan_description": "Puedes ver contenido en 1 dispositivo compatible a la vez."
             },
             {
               "plan_description_id": 1,
-              "plan_description": "Puedes ver en HD"
+              "plan_description": "Puedes ver en HD."
             },
             {
               "plan_description_id": 2,
-              "plan_description": "Puedes descargar contenido en 1 dispositivo compatible a la vez"
+              "plan_description": "Puedes descargar contenido en 1 dispositivo compatible a la vez."
             }
           ],
           "precio": 999
@@ -30,19 +30,19 @@
           "descripcion": [
             {
               "plan_description_id": 3,
-              "plan_description": "Puedes ver contenido en 2 dispositivos compatibles a la vez"
+              "plan_description": "Puedes ver contenido en 2 dispositivos compatibles a la vez."
             },
             {
               "plan_description_id": 4,
-              "plan_description": "Puedes ver en Full HD"
+              "plan_description": "Puedes ver en Full HD."
             },
             {
               "plan_description_id": 5,
-              "plan_description": "Puedes descargar contenido en 2 dispositivos compatibles a la vez"
+              "plan_description": "Puedes descargar contenido en 2 dispositivos compatibles a la vez."
             },
             {
               "plan_description_id": 6,
-              "plan_description": "Opción para agregar hasta 1 miembro extra que no viva contigo"
+              "plan_description": "Opción para agregar hasta 1 miembro extra que no viva contigo."
             }
           ],
           "precio": 1699
@@ -53,19 +53,19 @@
           "descripcion": [
             {
               "plan_description_id": 7,
-              "plan_description": "Puedes ver contenido en 4 dispositivos compatibles a la vez"
+              "plan_description": "Puedes ver contenido en 4 dispositivos compatibles a la vez."
             },
             {
               "plan_description_id": 8,
-              "plan_description": "Puedes ver en Ultra HD "
+              "plan_description": "Puedes ver en Ultra HD."
             },
             {
               "plan_description_id": 9,
-              "plan_description": "Puedes descargar contenido en 6 dispositivos compatibles a la vez"
+              "plan_description": "Puedes descargar contenido en 6 dispositivos compatibles a la vez."
             },
             {
               "plan_description_id": 10,
-              "plan_description": "Opción para agregar hasta 2 miembros extras que no vivan contigo "
+              "plan_description": "Opción para agregar hasta 2 miembros extras que no vivan contigo."
             }
           ],
           "precio": 2399
@@ -86,11 +86,11 @@
           "descripcion": [
             {
               "plan_description_id": 11,
-              "plan_description": "Puedes ver en 3 dispositivos a la vez "
+              "plan_description": "Puedes ver en 3 dispositivos a la vez."
             },
             {
               "plan_description_id": 12,
-              "plan_description": "Hasta 5 perfiles para toda la familia"
+              "plan_description": "Hasta 5 perfiles para toda la familia."
             }
           ],
           "precio": 699
@@ -101,11 +101,11 @@
           "descripcion": [
             {
               "plan_description_id": 12,
-              "plan_description": "Disfruta en todas tus pantallas"
+              "plan_description": "Disfruta en todas tus pantallas."
             },
             {
               "plan_description_id": 13,
-              "plan_description": "Contenido en alta definición y 4K"
+              "plan_description": "Contenido en alta definición y 4K."
             }
           ],
           "precio": 1899
@@ -116,15 +116,15 @@
           "descripcion": [
             {
               "plan_description_id": 14,
-              "plan_description": "Chromecast y Airplay disponibles "
+              "plan_description": "Chromecast y Airplay disponibles."
             },
             {
               "plan_description_id": 15,
-              "plan_description": "Descarga y disfruta donde sea"
+              "plan_description": "Descarga y disfruta donde sea."
             },
             {
               "plan_description_id": 16,
-              "plan_description": "Ahorra 3 meses"
+              "plan_description": "Ahorra 3 meses."
             }
           ],
           "precio": 5999
@@ -145,11 +145,11 @@
           "descripcion": [
             {
               "plan_description_id": 17,
-              "plan_description": "Puedes ver en cualquier dispositivo"
+              "plan_description": "Puedes ver en cualquier dispositivo."
             },
             {
               "plan_description_id": 18,
-              "plan_description": "Puedes descargar el contenido de Amazon Prime Video"
+              "plan_description": "Puedes descargar el contenido de Amazon Prime Video."
             }
           ],
           "precio": 580
@@ -170,15 +170,15 @@
           "descripcion": [
             {
               "plan_description_id": 19,
-              "plan_description": "Acceso a estrenos de películas, series originales y los clásicos atemporales de Disney, Pixar, Marvel, Star Wars y National Geographic"
+              "plan_description": "Acceso a estrenos de películas, series originales y los clásicos atemporales de Disney, Pixar, Marvel, Star Wars y National Geographic."
             },
             {
               "plan_description_id": 20,
-              "plan_description": "Puedes descargar el contenido que quieras"
+              "plan_description": "Puedes descargar el contenido que quieras."
             },
             {
               "plan_description_id": 21,
-              "plan_description": "Acceso desde cualquier dispositivo"
+              "plan_description": "Acceso desde cualquier dispositivo."
             }
           ],
           "precio": 453.99
@@ -189,7 +189,7 @@
           "descripcion": [
             {
               "plan_description_id": 30,
-              "plan_description": "Puedes disfrutar de todos los beneficios anteriores por un periodo de 12 meses"
+              "plan_description": "Puedes disfrutar de todos los beneficios anteriores por un periodo de 12 meses."
             }
           ],
           "precio": 3977
@@ -200,7 +200,7 @@
           "descripcion": [
             {
               "plan_description_id": 22,
-              "plan_description": "Pueden acceder a contenido de Disney+ y Star+"
+              "plan_description": "Pueden acceder a contenido de Disney+ y Star+."
             }
           ],
           "precio": 1136
@@ -211,7 +211,7 @@
           "descripcion": [
             {
               "plan_description_id": 23,
-              "plan_description": "Pueden acceder a contenido de Disney+, Star+ y Lionsgate+"
+              "plan_description": "Pueden acceder a contenido de Disney+, Star+ y Lionsgate+."
             }
           ],
           "precio": 1363
@@ -232,11 +232,11 @@
           "descripcion": [
             {
               "plan_description_id": 24,
-              "plan_description": "Puedes ver películas y series de Paramount, Nickelodeon, MTV y más desde cualquier dispositivo!"
+              "plan_description": "Puedes ver películas y series de Paramount, Nickelodeon, MTV y más desde cualquier dispositivo."
             },
             {
               "plan_description_id": 25,
-              "plan_description": "Puedes descargar contenido"
+              "plan_description": "Puedes descargar contenido."
             }
           ],
           "precio": 181
@@ -257,7 +257,7 @@
           "descripcion": [
             {
               "plan_description_id": 26,
-              "plan_description": "Puedes ver películas, series y deportes desde cualquier dispositivo!"
+              "plan_description": "Puedes ver películas, series y deportes desde cualquier dispositivo."
             }
           ],
           "precio": 453.99
@@ -268,7 +268,7 @@
           "descripcion": [
             {
               "plan_description_id": 27,
-              "plan_description": "Puedes ver películas, series y deportes desde cualquier dispositivo por 1 año!"
+              "plan_description": "Puedes ver películas, series y deportes desde cualquier dispositivo por 1 año."
             }
           ],
           "precio": 3977
@@ -279,7 +279,7 @@
           "descripcion": [
             {
               "plan_description_id": 28,
-              "plan_description": "Pueden acceder a contenido de Disney+ y Star+"
+              "plan_description": "Pueden acceder a contenido de Disney+ y Star+."
             }
           ],
           "precio": 1136
@@ -290,7 +290,7 @@
           "descripcion": [
             {
               "plan_description_id": 29,
-              "plan_description": "Pueden acceder a contenido de Disney+, Star+ y Lionsgate+"
+              "plan_description": "Pueden acceder a contenido de Disney+, Star+ y Lionsgate+."
             }
           ],
           "precio": 1363
@@ -311,15 +311,15 @@
           "descripcion": [
             {
               "plan_description_id": 26,
-              "plan_description": "Acceso ilimitado a animes dentro del catálogo de Crunchyroll sin publicidad"
+              "plan_description": "Acceso ilimitado a animes dentro del catálogo de Crunchyroll sin publicidad."
             },
             {
               "plan_description_id": 27,
-              "plan_description": "Nuevos episodios poco después de su transmisión en Japón"
+              "plan_description": "Nuevos episodios poco después de su transmisión en Japón."
             },
             {
               "plan_description_id": 28,
-              "plan_description": "Disponible en 1 dispositivo al mismo tiempo"
+              "plan_description": "Disponible en 1 dispositivo al mismo tiempo."
             }
           ],
           "precio": 299
@@ -330,15 +330,15 @@
           "descripcion": [
             {
               "plan_description_id": 29,
-              "plan_description": "Todos los beneficios del plan anterior"
+              "plan_description": "Todos los beneficios del plan anterior."
             },
             {
               "plan_description_id": 30,
-              "plan_description": "Disponible en 4 dispositivos al mismo tiempo"
+              "plan_description": "Disponible en 4 dispositivos al mismo tiempo."
             },
             {
               "plan_description_id": 31,
-              "plan_description": "Visionado Sin Conexión"
+              "plan_description": "Visionado Sin Conexión."
             }
           ],
           "precio": 379
@@ -349,11 +349,11 @@
           "descripcion": [
             {
               "plan_description_id": 32,
-              "plan_description": "Todos los beneficios del plan anterior"
+              "plan_description": "Todos los beneficios del plan anterior."
             },
             {
               "plan_description_id": 33,
-              "plan_description": "16 % de descuento sobre el Plan Mensual (cargo cada 12 meses)"
+              "plan_description": "16 % de descuento sobre el Plan Mensual (cargo cada 12 meses)."
             }
           ],
           "precio": 3799
@@ -374,15 +374,15 @@
           "descripcion": [
             {
               "plan_description_id": 34,
-              "plan_description": "Música sin anuncios para 1 cuenta"
+              "plan_description": "Música sin anuncios para 1 cuenta."
             },
             {
               "plan_description_id": 35,
-              "plan_description": "Escuchá tus canciones en cualquier lugar, incluso sin conexión"
+              "plan_description": "Escuchá tus canciones en cualquier lugar, incluso sin conexión."
             },
             {
               "plan_description_id": 36,
-              "plan_description": "Reproducción on-demand"
+              "plan_description": "Reproducción on-demand."
             }
           ],
           "precio": 399
@@ -393,15 +393,15 @@
           "descripcion": [
             {
               "plan_description_id": 37,
-              "plan_description": "Todos los beneficios del plan anterior"
+              "plan_description": "Todos los beneficios del plan anterior."
             },
             {
               "plan_description_id": 38,
-              "plan_description": "Disponible en 2 cuentas"
+              "plan_description": "Disponible en 2 cuentas."
             },
             {
               "plan_description_id": 39,
-              "plan_description": "Reproducción de música en modo offline"
+              "plan_description": "Reproducción de música en modo offline."
             }
           ],
           "precio": 549
@@ -412,19 +412,19 @@
           "descripcion": [
             {
               "plan_description_id": 40,
-              "plan_description": "Todos los beneficios del plan anterior"
+              "plan_description": "Todos los beneficios del plan anterior."
             },
             {
               "plan_description_id": 41,
-              "plan_description": "Disponible en 6 cuentas"
+              "plan_description": "Disponible en 6 cuentas."
             },
             {
               "plan_description_id": 42,
-              "plan_description": "Bloqueo de música con contenido explícito"
+              "plan_description": "Bloqueo de música con contenido explícito."
             },
             {
               "plan_description_id": 43,
-              "plan_description": "Spotify Kids: una aplicación independiente creada solo para niños"
+              "plan_description": "Spotify Kids: una aplicación independiente creada solo para niños."
             }
           ],
           "precio": 649
@@ -435,11 +435,11 @@
           "descripcion": [
             {
               "plan_description_id": 44,
-              "plan_description": "Descuento especial para estudiantes universitarios que cumplan con los requisitos"
+              "plan_description": "Descuento especial para estudiantes universitarios que cumplan con los requisitos."
             },
             {
               "plan_description_id": 45,
-              "plan_description": "Todos los beneficios del plan individual"
+              "plan_description": "Todos los beneficios del plan individual."
             }
           ],
           "precio": 199
