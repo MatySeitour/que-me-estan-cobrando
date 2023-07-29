@@ -17,10 +17,12 @@ export const Dropdown = ({
   serviceSelected,
   selectPlan,
   setSelectPlan,
+  serviceOptionSelect,
 }: {
   serviceSelected: ServiceType;
   selectPlan: Planes;
   setSelectPlan: (selectPlan: Planes) => void;
+  serviceOptionSelect: number;
 }): JSX.Element => {
   const [dropwDownActive, setDropDownAcitve] = useState(false);
   const dropdown = useRef(null);
@@ -46,7 +48,11 @@ export const Dropdown = ({
   }, [serviceSelected]);
 
   return (
-    <div className="relative flex h-[4.5rem] w-full justify-end pr-4">
+    <div
+      className={`relative flex h-[4.5rem] w-full justify-end pr-4 ${
+        serviceOptionSelect != 1 && `hidden`
+      }`}
+    >
       <div
         ref={dropdown}
         className="-top-14 left-0 z-50 flex h-auto w-full items-center rounded-md border-transparent bg-black p-2 sm:relative sm:left-auto sm:top-auto sm:inline-block sm:w-[25rem] sm:border sm:border-white/20"
