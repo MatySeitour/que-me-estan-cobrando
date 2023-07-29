@@ -18,31 +18,34 @@ export const SelectService = ({
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const serviceContainer = document.querySelector("#service-container");
-
-    gsap.fromTo(
-      selectService.current,
-      {
-        scrollTrigger: {
-          trigger: serviceContainer,
-          start: "start 70%",
-          end: "start 70%",
+    let ctx = gsap.context(() => {
+      gsap.fromTo(
+        selectService.current,
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          y: -70,
+          opacity: 0,
+          duration: 0.5,
         },
-        y: -70,
-        opacity: 0,
-        duration: 0.5,
-      },
 
-      {
-        scrollTrigger: {
-          trigger: serviceContainer,
-          start: "start 70%",
-          end: "start 70%",
-        },
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-      }
-    );
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+        }
+      );
+    }, selectService);
+
+    return () => ctx.revert();
   }, []);
 
   return (

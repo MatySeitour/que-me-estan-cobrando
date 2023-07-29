@@ -14,6 +14,7 @@ type InfoDollar = {
 };
 
 export const Games = (): JSX.Element => {
+  const games: any = useRef(null);
   const gameTitle: any = useRef(null);
   const selectServiceDescription: any = useRef(null);
   const [dollar, setDollar] = useState<InfoDollar>({
@@ -24,76 +25,81 @@ export const Games = (): JSX.Element => {
   useEffect(() => {
     const gamesContainer = document.querySelector("#games-container");
     gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo(
-      gameTitle.current,
-      {
-        scrollTrigger: {
-          trigger: gameTitle.current,
-          start: "start 70%",
-          end: "start 70%",
-        },
-        y: -100,
-        opacity: 0,
-        duration: 0.5,
-      },
 
-      {
-        scrollTrigger: {
-          trigger: gameTitle.current,
-          start: "start 70%",
-          end: "start 70%",
+    let context = gsap.context(() => {
+      gsap.fromTo(
+        gameTitle.current,
+        {
+          scrollTrigger: {
+            trigger: gameTitle.current,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          y: -100,
+          opacity: 0,
+          duration: 0.5,
         },
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-      }
-    );
-    gsap.fromTo(
-      gamesContainer,
-      {
-        scrollTrigger: {
-          trigger: gameTitle.current,
-          start: "start 70%",
-          end: "start 70%",
-        },
-        opacity: 0,
-        duration: 0.5,
-      },
 
-      {
-        scrollTrigger: {
-          trigger: gameTitle.current,
-          start: "start 70%",
-          end: "start 70%",
+        {
+          scrollTrigger: {
+            trigger: gameTitle.current,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+        }
+      );
+      gsap.fromTo(
+        gamesContainer,
+        {
+          scrollTrigger: {
+            trigger: gameTitle.current,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          opacity: 0,
+          duration: 0.5,
         },
-        opacity: 1,
-        duration: 0.5,
-      }
-    );
-    gsap.fromTo(
-      selectServiceDescription.current,
-      {
-        scrollTrigger: {
-          trigger: gameTitle.current,
-          start: "start 70%",
-          end: "start 70%",
-        },
-        y: -100,
-        opacity: 0,
-        duration: 0.5,
-      },
 
-      {
-        scrollTrigger: {
-          trigger: gameTitle.current,
-          start: "start 70%",
-          end: "start 70%",
+        {
+          scrollTrigger: {
+            trigger: gameTitle.current,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          opacity: 1,
+          duration: 0.5,
+        }
+      );
+      gsap.fromTo(
+        selectServiceDescription.current,
+        {
+          scrollTrigger: {
+            trigger: gameTitle.current,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          y: -100,
+          opacity: 0,
+          duration: 0.5,
         },
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-      }
-    );
+
+        {
+          scrollTrigger: {
+            trigger: gameTitle.current,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+        }
+      );
+    }, games);
+
+    return () => context.revert();
   }, []);
 
   useEffect(() => {
@@ -117,7 +123,7 @@ export const Games = (): JSX.Element => {
   }, []);
 
   return (
-    <section className="mb-20 h-auto pt-16">
+    <section ref={games} className="mb-20 h-auto pt-16">
       <h2
         ref={gameTitle}
         className="bg-gradient__effect service-title relative mb-8 text-center text-[3rem] opacity-0"

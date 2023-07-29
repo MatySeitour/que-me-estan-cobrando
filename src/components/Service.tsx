@@ -30,28 +30,33 @@ export const Service = ({
 
   useEffect(() => {
     const serviceContainer = document.querySelector("#service-container");
-    gsap.fromTo(
-      service.current,
-      {
-        scrollTrigger: {
-          trigger: serviceContainer,
-          start: "start center",
-          end: "start center",
-        },
-        opacity: 0,
-        duration: 0.5,
-      },
 
-      {
-        scrollTrigger: {
-          trigger: serviceContainer,
-          start: "start center",
-          end: "start center",
+    let ctx = gsap.context(() => {
+      gsap.fromTo(
+        service.current,
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start center",
+            end: "start center",
+          },
+          opacity: 0,
+          duration: 0.5,
         },
-        opacity: 1,
-        duration: 0.5,
-      }
-    );
+
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start center",
+            end: "start center",
+          },
+          opacity: 1,
+          duration: 0.5,
+        }
+      );
+    }, service);
+
+    return () => ctx.revert();
   }, []);
 
   useEffect(() => {

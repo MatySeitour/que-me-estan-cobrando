@@ -1,3 +1,5 @@
+"use client";
+
 import { Paytone_One } from "next/font/google";
 import { SliderHome } from "./SliderHome";
 import { gsap } from "gsap";
@@ -12,71 +14,79 @@ const paytone_One = Paytone_One({
 
 export const Banner = () => {
   const linkPageDollar = useRef(null);
+  const containerBanner = useRef(null);
   useEffect(() => {
     const homeTitle = document.querySelector(".home-title");
 
     const homeSubtitle = document.querySelector(".home-subtitle");
     const sliderContainer = document.querySelector(".slider-container");
 
-    gsap.fromTo(
-      homeTitle,
-      {
-        y: 50,
-        opacity: 0,
-        duration: 0.4,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.4,
-      }
-    );
+    let ctx = gsap.context(() => {
+      gsap.fromTo(
+        homeTitle,
+        {
+          y: 50,
+          opacity: 0,
+          duration: 0.4,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+        }
+      );
 
-    gsap.fromTo(
-      homeSubtitle,
-      {
-        y: 50,
-        opacity: 0,
-        duration: 0.4,
-        delay: 0.2,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.4,
-        delay: 0.2,
-      }
-    );
-    gsap.fromTo(
-      sliderContainer,
-      {
-        opacity: 0,
-        duration: 1,
-        delay: 0.4,
-      },
-      {
-        opacity: 1,
-        duration: 1,
-        delay: 0.4,
-      }
-    );
-    gsap.fromTo(
-      linkPageDollar.current,
-      {
-        opacity: 0,
-        duration: 0.5,
-        delay: 0.4,
-      },
-      {
-        opacity: 1,
-        duration: 0.5,
-        delay: 0.4,
-      }
-    );
+      gsap.fromTo(
+        homeSubtitle,
+        {
+          y: 50,
+          opacity: 0,
+          duration: 0.4,
+          delay: 0.2,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+          delay: 0.2,
+        }
+      );
+      gsap.fromTo(
+        sliderContainer,
+        {
+          opacity: 0,
+          duration: 1,
+          delay: 0.4,
+        },
+        {
+          opacity: 1,
+          duration: 1,
+          delay: 0.4,
+        }
+      );
+      gsap.fromTo(
+        linkPageDollar.current,
+        {
+          opacity: 0,
+          duration: 0.5,
+          delay: 0.4,
+        },
+        {
+          opacity: 1,
+          duration: 0.5,
+          delay: 0.4,
+        }
+      );
+    }, containerBanner);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div className="relative flex h-auto w-full flex-col items-center justify-center gap-4 bg-black px-4 pt-32">
+    <div
+      ref={containerBanner}
+      className="relative flex h-auto w-full flex-col items-center justify-center gap-4 bg-black px-4 pt-32"
+    >
       <div className="banner absolute top-0 h-40 w-screen bg-home bg-[length:40px_40px]"></div>
       <h1
         className={`home-title bg-clip-text p-2 ${paytone_One.className} relative z-20 mb-10 animate-gradientTitle text-center text-6xl min-[525px]:text-6xl min-[680px]:text-6xl min-[830px]:text-7xl lg:text-8xl`}
