@@ -76,10 +76,10 @@ export const Service = ({
   }, [serviceSelected.id]);
 
   return (
-    <section className="mb-20 h-auto pt-16">
+    <section className="mb-20 pt-16">
       <div
         ref={service}
-        className="bg-gradient__cards relative h-full w-full rounded-md border border-white/20"
+        className="bg-gradient__cards relative h-auto w-full rounded-md border border-white/20"
       >
         <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
         <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
