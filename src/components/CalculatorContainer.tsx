@@ -11,7 +11,6 @@ import { HiInformationCircle } from "react-icons/hi2";
 import { LoadingData } from "./LoadingData";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { gsap } from "gsap";
-import { GradientEffectBackground } from "./GradientEffectBackground";
 
 const enum Operation {
   buy = "comprar",
@@ -67,7 +66,6 @@ export const CalculatorContainer = ({
     const tl = gsap.timeline({ paused: true });
 
     const cards = gsap.utils.toArray("#cardQuote");
-    console.log(cards);
 
     const calculatorContext = gsap.context(() => {
       tl.play();
@@ -140,14 +138,14 @@ export const CalculatorContainer = ({
               <div
                 className={`bg-gradient__cards flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none ${
                   dollarType.length == 0
-                    ? `invisible h-0 transition-[height]`
-                    : `visible h-72 p-2 transition-[height] sm:p-8`
+                    ? `invisible  transition-[all]`
+                    : `visible p-2 transition-[all] sm:p-8`
                 }`}
               >
                 <div
                   className={`${
                     dollarType.length == 0
-                      ? `invisible transition-all duration-1000`
+                      ? `invisible h-0 transition-all duration-1000`
                       : `visible transition-all duration-1000`
                   } mb-4 flex flex-col items-center justify-center gap-4`}
                 >
