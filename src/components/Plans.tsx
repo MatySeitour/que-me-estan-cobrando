@@ -1,5 +1,5 @@
 import { ServiceType } from "@/types";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Plan } from "./Plan";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -11,6 +11,8 @@ export const Plans = ({
 }): JSX.Element => {
   const planTitle = useRef(null);
   const plansContainer = useRef(null);
+
+  const [planSelect, setPlanSelect] = useState<number | null>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -54,7 +56,10 @@ export const Plans = ({
   }, []);
 
   return (
-    <div ref={plansContainer} className="flex h-auto w-full flex-col gap-8">
+    <div
+      ref={plansContainer}
+      className="flex h-auto min-h-[30rem] w-full flex-col gap-8"
+    >
       <div className="px-2">
         <h3
           ref={planTitle}
@@ -65,7 +70,13 @@ export const Plans = ({
       </div>
       <ul className="flex h-auto w-full flex-col gap-1">
         {serviceSelected.planes.map((plans) => (
-          <Plan key={plans.id} plans={plans} />
+          <Plan
+            key={plans.id}
+            plans={plans}
+            planSelect={planSelect}
+            setPlanSelect={setPlanSelect}
+            serviceSelected={serviceSelected}
+          />
         ))}
       </ul>
     </div>
