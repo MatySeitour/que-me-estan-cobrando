@@ -1,5 +1,3 @@
-"use client";
-
 import { Paytone_One } from "next/font/google";
 import { SliderHome } from "./SliderHome";
 import { gsap } from "gsap";
