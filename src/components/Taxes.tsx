@@ -56,7 +56,7 @@ export const Taxes = () => {
   }, []);
 
   return (
-    <div className="relative flex h-auto w-full flex-col gap-8">
+    <div className="relative flex h-auto min-h-[40rem] w-full flex-col gap-8 sm:min-h-[30rem]">
       <div className="px-2">
         <h3
           ref={taxTitle}
@@ -65,12 +65,14 @@ export const Taxes = () => {
           ¿Que impuestos me cobran?
         </h3>
       </div>
-      <ul className="flex h-auto w-full flex-col gap-1">
+      <ul className="flex h-auto  w-full flex-col">
         {impuestos.map((tax) => (
           <li
             id="tax"
             onClick={() => toggleTax(tax.id)}
-            className="border-t border-white/30 text-white sm:cursor-pointer"
+            className={`border-t border-white/30 text-white sm:cursor-pointer ${
+              tax.id == impuestos.length - 1 && `border-b`
+            }`}
             key={tax.id}
           >
             <div className="flex items-center justify-between gap-4 p-4">
