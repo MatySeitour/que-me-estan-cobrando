@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, ChangeEvent } from "react";
 import impuestosData from "../assets/impuestos.json";
 import { HiInformationCircle } from "react-icons/hi2";
