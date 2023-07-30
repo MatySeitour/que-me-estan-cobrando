@@ -6,7 +6,7 @@
       "imagen": "/netflix.svg",
       "planes": [
         {
-          "id": 0,
+          "id": 1,
           "plan": "Básico",
           "descripcion": [
             {
