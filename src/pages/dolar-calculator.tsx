@@ -30,7 +30,7 @@ export default function DollarCalculator() {
           const descripcionDollar = cotizaciones.filter(
             (quote) => quote.name == dolar.casa.nombre
           );
-          console.log(descripcionDollar);
+
           values.nombre = dolar.casa.nombre;
           values.compra = dolar.casa.compra.replace(",", ".");
           values.venta = dolar.casa.venta.replace(",", ".");
