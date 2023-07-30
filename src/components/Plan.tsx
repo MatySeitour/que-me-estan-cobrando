@@ -1,12 +1,19 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { inter } from "@/utils/fonts";
 import plataformasData from "../assets/plataformas.json";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-export const Plan = ({ plans }: { plans: any }): JSX.Element => {
-  const [planSelect, setPlanSelect] = useState<number | null>(null);
+export const Plan = ({
+  plans,
+  planSelect,
+  setPlanSelect,
+  serviceSelected,
+}: {
+  plans: any;
+  planSelect: number | null;
+  setPlanSelect: (arg: number | null) => void;
+  serviceSelected: any;
+}): JSX.Element => {
   const { plataformas } = plataformasData;
 
   const finalPrice = (
@@ -16,32 +23,31 @@ export const Plan = ({ plans }: { plans: any }): JSX.Element => {
   const element1: any = useRef(null);
 
   const toggleTax = (numberPlan: number) => {
+    const planId = document.querySelector(`#plan__${planSelect}`);
+    planId?.setAttribute("style", "height: 0px");
     if (numberPlan != planSelect) {
-      setPlanSelect(numberPlan);
       let la = element1.current?.scrollHeight.toString() + "px";
       element1.current.style.height = la;
+      setPlanSelect(numberPlan);
     } else {
       setPlanSelect(null);
-      element1.current.style.height = "4rem";
+      element1.current.style.height = "0rem";
     }
   };
 
   return (
     <li
       id={`plans`}
-      ref={element1}
-      // ref={plansRef}
       onClick={() => toggleTax(plans.id)}
-      className={
-        plans.id == planSelect
-          ? ` border-t border-white/30 transition-[height] sm:cursor-pointer`
-          : `h-16 border-t border-white/30 transition-[height] sm:cursor-pointer`
-      }
+      className={`border-t border-white/30 text-white sm:cursor-pointer  ${
+        plans.id == serviceSelected.planes.length && `border-b`
+      }`}
       key={plans.id}
     >
-      <div className="flex items-center justify-between p-4">
-        <div className="flex font-normal">
+      <div className="flex items-center justify-between gap-4 p-4">
+        <div className="flex items-center">
           <p className="bg-gradient__effect mr-2 sm:hidden">
+            {" "}
             {plans?.plan.length > 10
               ? `${plans.plan.slice(0, 13)}...`
               : plans?.plan}
@@ -53,29 +59,34 @@ export const Plan = ({ plans }: { plans: any }): JSX.Element => {
             <p className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal text-transparent">
               ${`${plans.precio}`}
             </p>
+
             <span className="service-message invisible absolute -top-14 left-[50%] -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-red-300 opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100">
               <p className="text-white">Precio Inicial</p>
             </span>
           </div>
           <span className="bg-gradient__effect">/</span>
+
           <div className="group relative">
             <p className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal text-transparent">
               ${`${finalPrice}`}
             </p>
+
             <span className="service-message invisible absolute -top-14 left-[50%] -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-red-300 opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100">
               <p className="text-white">Precio Final</p>
             </span>
           </div>
         </div>
         <FaAngleDown
-          className={`h-5 w-5 text-white transition-all ${
-            planSelect == plans.id && `rotate-180 text-white transition-all`
+          className={`h-5 w-5 transition-all ${
+            planSelect == plans.id && `rotate-180 transition-all`
           }`}
         />
       </div>
       <div
-        className={`h-0 text-sm transition-[height] ${
-          planSelect == plans.id && `h-24 transition-[height]`
+        id={`plan__${plans.id}`}
+        ref={element1}
+        className={`h-0 overflow-hidden text-sm transition-[height] ${
+          planSelect == plans.id && `h-32 transition-[height] sm:h-20`
         }`}
       >
         <ul
