@@ -10,6 +10,7 @@ import { paytone_One } from "@/utils/fonts";
 import { Games } from "@/components/Games";
 import { GradientEffectBackground } from "@/components/GradientEffectBackground";
 import { Footer } from "@/components/Footer";
+import { ServicesContainer } from "@/containers/ServicesContainer";
 
 export default function Home() {
   const { plataformas } = plataformasData;
@@ -36,22 +37,26 @@ export default function Home() {
             id="service-container"
             className="mx-auto h-auto w-full px-4 pt-28"
           >
-            <TitleServices />
-            <SelectService
-              serviceSelected={
-                serviceSelected ?? {
-                  id: -1,
-                  imagen: "",
-                  planes: [],
-                  nombre: "",
-                  impuesto_final: 0,
-                  impuesto_porcentaje: 0,
-                  select_price: false,
-                }
-              }
-              setServiceSelected={setServiceSelected}
-            />
-            <Service serviceSelected={serviceSelected} />
+            <ServicesContainer>
+              <div id="select-service__container">
+                <TitleServices />
+                <SelectService
+                  serviceSelected={
+                    serviceSelected ?? {
+                      id: -1,
+                      imagen: "",
+                      planes: [],
+                      nombre: "",
+                      impuesto_final: 0,
+                      impuesto_porcentaje: 0,
+                      select_price: false,
+                    }
+                  }
+                  setServiceSelected={setServiceSelected}
+                />
+              </div>
+              <Service serviceSelected={serviceSelected} />
+            </ServicesContainer>
             <Games />
           </div>
         </div>
