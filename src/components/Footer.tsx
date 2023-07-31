@@ -13,11 +13,11 @@ export const Footer = ({ text }: { text: string }): JSX.Element => {
             </p>
           </div>
           <div className="flex justify-center">
-            <h5
+            <h6
               className={`home-title mb-4 bg-clip-text text-3xl ${paytone_One.className}`}
             >
               Mis redes
-            </h5>
+            </h6>
           </div>
           <div className="flex h-auto w-full items-center justify-center gap-6">
             <a
