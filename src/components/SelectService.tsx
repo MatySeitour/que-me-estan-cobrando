@@ -1,8 +1,5 @@
 import Image from "next/image";
 import plataformasData from "../../src/assets/plataformas.json";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useEffect, useRef } from "react";
 import { ServiceType } from "@/types";
 
 export const SelectService = ({
@@ -13,47 +10,10 @@ export const SelectService = ({
   setServiceSelected: any;
 }) => {
   const { plataformas } = plataformasData;
-  const selectService: any = useRef(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const serviceContainer = document.querySelector("#service-container");
-    let ctx = gsap.context(() => {
-      gsap.fromTo(
-        selectService.current,
-        {
-          scrollTrigger: {
-            trigger: serviceContainer,
-            start: "start 70%",
-            end: "start 70%",
-          },
-          y: -70,
-          opacity: 0,
-          duration: 0.5,
-        },
-
-        {
-          scrollTrigger: {
-            trigger: serviceContainer,
-            start: "start 70%",
-            end: "start 70%",
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-        }
-      );
-    }, selectService);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <>
-      <div
-        ref={selectService}
-        className="relative flex before:absolute before:-right-1 before:z-10 before:h-full before:w-12 before:bg-gradient-to-l before:from-[#000] before:to-transparent"
-      >
+      <div className="relative flex before:absolute before:-right-1 before:z-10 before:h-full before:w-12 before:bg-gradient-to-l before:from-[#000] before:to-transparent">
         <ul className="relative mx-auto flex gap-4 overflow-x-scroll px-8 py-14 lg:flex lg:overflow-x-hidden">
           {plataformas.map((service) => (
             <li
