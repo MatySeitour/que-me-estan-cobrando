@@ -7,6 +7,7 @@ import { Plans } from "./Plans";
 import { CustomEase } from "gsap/dist/CustomEase";
 import { Prices } from "./Prices";
 import { Dropdown } from "./Dropdown";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface Planes {
   id: number;
@@ -29,9 +30,37 @@ export const Service = ({
   const logoService = useRef(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const serviceContainer = document.querySelector("#service-container");
+    const selectService = document.querySelector("#select-service__container");
 
     let ctx = gsap.context(() => {
+      gsap.fromTo(
+        selectService,
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          y: -70,
+          opacity: 0,
+          duration: 0.4,
+        },
+
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start 70%",
+            end: "start 70%",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+        }
+      );
+
       gsap.fromTo(
         service.current,
         {
@@ -41,7 +70,7 @@ export const Service = ({
             end: "start center",
           },
           opacity: 0,
-          duration: 0.2,
+          duration: 0.4,
         },
 
         {
@@ -51,7 +80,7 @@ export const Service = ({
             end: "start center",
           },
           opacity: 1,
-          duration: 0.2,
+          duration: 0.4,
         }
       );
     }, service);
@@ -66,11 +95,11 @@ export const Service = ({
       logoService.current,
       {
         opacity: 0,
-        duration: 0.2,
+        duration: 0.4,
       },
       {
         opacity: 1,
-        duration: 0.2,
+        duration: 0.4,
       }
     );
   }, [serviceSelected.id]);
