@@ -1,6 +1,8 @@
 import { useState, ChangeEvent } from "react";
 import impuestosData from "../assets/impuestos.json";
 import { HiInformationCircle } from "react-icons/hi2";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { FaCopy, FaCheck } from "react-icons/fa6";
 
 const enum Badge {
   USD = "USD",
@@ -12,11 +14,15 @@ export const GameUsd = ({
   setBadge,
   className,
   dollar,
+  copyLastPriceState,
+  toggleCopy,
 }: {
   badge: string;
   setBadge: any;
   className: string;
+  copyLastPriceState: boolean;
   dollar: any;
+  toggleCopy: () => void;
 }): JSX.Element => {
   const { impuestos } = impuestosData;
 
@@ -40,7 +46,7 @@ export const GameUsd = ({
     <div
       className={`${
         className ?? "false"
-      } absolute top-0 flex h-auto w-full pt-16`}
+      } absolute top-0 flex h-auto w-full overflow-hidden pt-16`}
     >
       <div className="bg-gradient__cards relative z-40 mx-auto h-full w-full max-w-xl rounded-md border border-white/20 pb-8">
         <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
@@ -88,17 +94,26 @@ export const GameUsd = ({
           <label className="bg-gradient__effect p-2 text-center text-2xl font-normal text-transparent sm:p-0">
             Introduce el valor del juego en dolares
           </label>
-          <div className="flex flex-row items-center gap-2">
-            <p className="bg-gradient__effect text-center text-base font-normal text-transparent">
-              USD$
-            </p>
-            <input
-              type="number"
-              pattern="[0-9]+"
-              onChange={handleInputChange}
-              value={inputPriceValue}
-              className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
-            />
+          <div
+            className={`flex w-full flex-row items-center justify-center gap-2`}
+          >
+            <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
+              <label
+                htmlFor="game_usd"
+                className="home-title w-16 bg-[#000a] bg-clip-text font-bold text-white"
+              >
+                USD$
+              </label>
+              <input
+                name="game_usd"
+                id="game_usd"
+                type="number"
+                pattern="[0-9]+"
+                onChange={handleInputChange}
+                value={inputPriceValue}
+                className="h-full w-full max-w-[15rem] rounded-r-md bg-white/10 p-1 text-left font-normal text-white outline-none placeholder:text-xs"
+              />
+            </div>
           </div>
         </div>
         <div className="h-auto w-full">
@@ -169,14 +184,37 @@ export const GameUsd = ({
               PRECIO FINAL
             </p>
             <p className="flex-[.5] p-2 text-center text-lg text-white"></p>
-            <p className="flex flex-[1] items-center justify-center rounded-md border border-white/30 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
-              {inputPriceValue == ""
-                ? "$0"
-                : `$${(priceInPesos * 1.75).toFixed(2)}`}
-            </p>
+            <div className="flex flex-[1] items-center justify-center rounded-l-md border-b border-l border-t border-white/30 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
+              {copyLastPriceState && <div className="">Copiado!</div>}
+
+              {!copyLastPriceState &&
+                (inputPriceValue == ""
+                  ? "$0"
+                  : `$${(priceInPesos * 1.75).toFixed(2)}`)}
+            </div>
+            <CopyToClipboard text={(priceInPesos * 1.75).toFixed(2)}>
+              <div
+                onClick={toggleCopy}
+                className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-r from-emerald-500 to-cyan-500 p-1"
+              >
+                <FaCopy className="h-5 w-8 text-white" />
+              </div>
+            </CopyToClipboard>
           </div>
         </div>
       </div>
+      {/* <div
+        className={
+          copyLastPriceState
+            ? `fixed bottom-8 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
+            : `fixed -bottom-20 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
+        }
+      >
+        <p className="mr-2 text-white">¡Valor copiado con éxito!</p>
+        <div className="w-6 rounded-full bg-green-700 p-1">
+          <FaCheck className="h-full w-full text-white" />
+        </div>
+      </div> */}
     </div>
   );
 };

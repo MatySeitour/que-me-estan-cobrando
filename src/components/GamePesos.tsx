@@ -1,6 +1,8 @@
 import { useState, ChangeEvent } from "react";
 import impuestosData from "../assets/impuestos.json";
 import { HiInformationCircle } from "react-icons/hi2";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { FaCopy, FaCheck } from "react-icons/fa6";
 
 const enum Badge {
   USD = "USD",
@@ -11,10 +13,14 @@ export const GamePesos = ({
   badge,
   setBadge,
   className,
+  copyLastPriceState,
+  toggleCopy,
 }: {
   badge: string;
   setBadge: any;
   className: string;
+  copyLastPriceState: boolean;
+  toggleCopy: () => void;
 }): JSX.Element => {
   const { impuestos } = impuestosData;
 
@@ -72,17 +78,26 @@ export const GamePesos = ({
           <label className="bg-gradient__effect mb-2 text-2xl font-normal text-transparent">
             Introduce el valor del juego
           </label>
-          <div className="flex flex-row items-center gap-2">
-            <p className="bg-gradient__effect text-center text-base font-normal text-transparent">
-              ARS$
-            </p>
-            <input
-              type="number"
-              pattern="[0-9]+"
-              onChange={handleInputChange}
-              value={inputPriceValue}
-              className="bg-gradient__effect h-8 w-44 rounded-md border border-white/30 bg-black p-2 text-center font-normal text-transparent caret-white outline-none focus:border-white/60"
-            />
+          <div
+            className={`flex w-full flex-row items-center justify-center gap-2`}
+          >
+            <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
+              <label
+                htmlFor="game_ars"
+                className="home-title w-16 bg-[#000a] bg-clip-text font-bold text-white"
+              >
+                ARS$
+              </label>
+              <input
+                name="game_ars"
+                id="game_ars"
+                type="number"
+                pattern="[0-9]+"
+                onChange={handleInputChange}
+                value={inputPriceValue}
+                className="h-full w-full max-w-[15rem] rounded-r-md bg-white/10 p-1 text-left font-normal text-white outline-none placeholder:text-xs"
+              />
+            </div>
           </div>
         </div>
         <div className="h-auto w-full">
@@ -153,11 +168,22 @@ export const GamePesos = ({
               PRECIO FINAL
             </p>
             <p className="flex-[.5] p-2 text-center text-lg text-white"></p>
-            <p className="flex flex-[1] items-center justify-center rounded-md border border-white/30 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
-              {inputPriceValue == ""
-                ? "$0"
-                : `$${(Number(inputPriceValue) * 1.75).toFixed(2)}`}
-            </p>
+            <div className="flex flex-[1] items-center justify-center rounded-l-md border-b border-l border-t border-white/30 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg font-normal text-transparent">
+              {copyLastPriceState && <div className="">Copiado!</div>}
+
+              {!copyLastPriceState &&
+                (inputPriceValue == ""
+                  ? "$0"
+                  : `$${(Number(inputPriceValue) * 1.75).toFixed(2)}`)}
+            </div>
+            <CopyToClipboard text={(Number(inputPriceValue) * 1.75).toFixed(2)}>
+              <div
+                onClick={toggleCopy}
+                className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-r from-emerald-500 to-cyan-500 p-1"
+              >
+                <FaCopy className="h-5 w-8 text-white" />
+              </div>
+            </CopyToClipboard>
           </div>
         </div>
       </div>
