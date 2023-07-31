@@ -19,7 +19,23 @@ export default function DollarCalculator() {
         const res = await axios.get(
           "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
         );
-        const dollarValues = res.data?.map((dolar: any) => {
+        const filterRes = res.data.filter(
+          (value: any) => {
+            if (value.casa.nombre == "Bitcoin") {
+              return;
+            }
+            if (value.casa.nombre == "Argentina") {
+              return;
+            }
+            if (value.casa.nombre == "Dolar") {
+              return;
+            }
+            return value.casa;
+          }
+          // value.casa.nombre != "Argentina"
+        );
+        console.log(filterRes);
+        const dollarValues = filterRes.map((dolar: any) => {
           const values = {
             nombre: "",
             compra: null,
@@ -61,10 +77,13 @@ export default function DollarCalculator() {
     <>
       <Head>
         <title>Dólar - ¿Que me están cobrando?</title>
-        <meta></meta>
+        <meta
+          name="description"
+          content="¿A cuánto el dólar? Una web para saber todo acerca de las cotizaciones del dólar. Además, vas a poder calcular el valor del dólar dependiendo si queres vender o comprar."
+        />
       </Head>
       <main
-        className={`${inter.className} relative mb-10 flex flex-col justify-center pt-20`}
+        className={`${inter.className} relative mb-10 flex flex-col justify-center overflow-hidden pt-20`}
       >
         <CalculatorContainer
           dollarCalculator={dollarCalculator ?? dollarCalculator}
@@ -83,7 +102,7 @@ export default function DollarCalculator() {
               final de ese juego?
             </p>{" "}
           </div>
-          <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="z-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
             <span className="home-title bg-clip-text text-2xl font-bold">
               Visitá
             </span>
