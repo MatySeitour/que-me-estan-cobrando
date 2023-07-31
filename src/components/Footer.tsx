@@ -21,6 +21,7 @@ export const Footer = ({ text }: { text: string }): JSX.Element => {
           </div>
           <div className="flex h-auto w-full items-center justify-center gap-6">
             <a
+              aria-label="Mi perfil de github"
               href="https://github.com/MatySeitour"
               target="_blank"
               className="group relative h-auto w-auto"
@@ -31,6 +32,7 @@ export const Footer = ({ text }: { text: string }): JSX.Element => {
               </span>
             </a>
             <a
+              aria-label="Mi perfil de twitter"
               href="https://twitter.com/MatySeitour"
               target="_blank"
               className="group relative h-auto w-auto"
@@ -42,6 +44,7 @@ export const Footer = ({ text }: { text: string }): JSX.Element => {
               </span>
             </a>
             <a
+              aria-label="Mi perfil de linkedIn"
               href="https://www.linkedin.com/in/matias-seitour-1a0118240/"
               target="_blank"
               className="group relative h-auto w-auto"
