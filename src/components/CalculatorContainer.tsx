@@ -89,44 +89,42 @@ export const CalculatorContainer = ({
     }, 1000);
   };
 
+  console.log(dollarType);
+
   return (
     <div
       ref={calculator}
       className="mx-auto flex h-full w-full max-w-4xl flex-col gap-10 p-4 sm:max-w-7xl"
     >
+      <div className="absolute left-0 top-0 z-0 h-full w-full bg-[#000a]"></div>
+      <div className="absolute left-0 top-0 -z-10 h-full w-full bg-home bg-[length:40px_40px]"></div>
       <div className="relative h-auto w-auto">
-        <h1
-          ref={calculatorTitle}
-          className={`calculator-gradient__text bg-clip-text text-5xl md:text-6xl lg:text-8xl ${paytone_One.className} pb-2 text-center`}
-        >
-          ¿A cuanto el dólar?
-          {/* <GradientEffectBackground classname="after:w-full after:top-0 after:h-4 after:from-[#1fbd06]/20 after:via-[#1fbd06]/20" /> */}
-        </h1>
-        <div className="absolute left-0 top-0 z-0 h-96 w-full">
-          <div
-            className={`relative flex h-full w-full place-items-center before:absolute before:left-0 before:top-0 before:h-full before:w-full before:rounded-full before:bg-gradient-radial before:from-transparent before:to-[#0B121C10] after:absolute after:left-[50%] after:top-0 after:-z-20 after:h-32 after:w-full after:-translate-x-1/2
-     
-        after:bg-gradient-radial after:from-[#2aed54a5]/20 after:via-[#2aed54a5]/20 after:blur-2xl after:content-[''] sm:after:-top-6 lg:after:top-0`}
-          />
+        <div className="relative z-10">
+          <h1
+            ref={calculatorTitle}
+            className={`home-title bg-clip-text text-5xl md:text-6xl lg:text-8xl ${paytone_One.className} pb-2 text-center`}
+          >
+            ¿A cuanto el{" "}
+            <b className="calculator-gradient__text bg-clip-text">dólar</b>?
+          </h1>
         </div>
-      </div>
-      {/* after:from-[#2D5FFF]/20 after:via-[#39f2aea5]/20 */}
-      <div
-        ref={calculatorText}
-        className="flex items-center justify-center pt-10 text-center"
-      >
-        <p className="text-base text-white md:max-w-2xl md:text-lg lg:max-w-4xl lg:text-2xl">
-          <b className="calculator-gradient__text bg-clip-text">Conoce </b>la
-          cotización del dólar y{" "}
-          <b className="calculator-gradient__text bg-clip-text">calcula</b> el
-          precio que deseas vender o comprar dependiendo el tipo de cambio que
-          vos
-          <b className="calculator-gradient__text bg-clip-text"> elijas</b>
-        </p>
+        <div
+          ref={calculatorText}
+          className="relative z-10 flex items-center justify-center pt-10 text-center"
+        >
+          <p className="text-base text-white md:max-w-2xl md:text-lg lg:max-w-4xl lg:text-2xl">
+            <b className="calculator-gradient__text bg-clip-text">Conoce </b>la
+            cotización del dólar y{" "}
+            <b className="calculator-gradient__text bg-clip-text">calcula</b> el
+            precio que deseas vender o comprar dependiendo el tipo de cambio que
+            vos
+            <b className="calculator-gradient__text bg-clip-text"> elijas</b>
+          </p>
+        </div>
       </div>
       {loadingData == false ? (
         <>
-          <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 bg-white/5 p-2">
+          <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 p-2">
             <div className="relative mb-4 flex flex-row justify-center gap-6"></div>
             <div className="w-full">
               <div className="mb-2 flex justify-center">
@@ -172,87 +170,92 @@ export const CalculatorContainer = ({
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-center gap-4">
-                    <button
-                      onClick={() => setCalculateType(Operation.buy)}
-                      className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
-                        calculateType == Operation.buy &&
-                        `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
-                      }`}
-                    >
-                      Quiero comprar
-                    </button>
-                    <button
-                      onClick={() => setCalculateType(Operation.sell)}
-                      className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
-                        calculateType == Operation.sell &&
-                        `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
-                      }`}
-                    >
-                      Quiero vender
-                    </button>
-                  </div>
+                  {dollarType.compra != "No Cotiza" && (
+                    <div className="flex items-center justify-center gap-4">
+                      <button
+                        onClick={() => setCalculateType(Operation.buy)}
+                        className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
+                          calculateType == Operation.buy &&
+                          `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
+                        }`}
+                      >
+                        Quiero comprar
+                      </button>
+                      <button
+                        onClick={() => setCalculateType(Operation.sell)}
+                        className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
+                          calculateType == Operation.sell &&
+                          `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
+                        }`}
+                      >
+                        Quiero vender
+                      </button>
+                    </div>
+                  )}
                 </div>
 
-                <div
-                  className={`flex w-full flex-col items-center justify-center gap-2`}
-                >
-                  <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                    <span className="home-title w-16 bg-clip-text font-bold text-white">
-                      USD$
-                    </span>
-                    <input
-                      name="calculator"
-                      onChange={handleOnInputChange}
-                      value={inputCalculator}
-                      type="number"
-                      pattern="[0-9]+"
-                      id="calculator"
-                      placeholder={
-                        calculateType == Operation.buy
-                          ? `Escribe el monto de compra...`
-                          : `Escribe el monto de venta...`
-                      }
-                      className="h-full w-full max-w-[15rem] rounded-r-md bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
-                    />
-                  </div>
-                  <div className="flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                    <span className="home-title mr-2 w-16 bg-clip-text font-bold text-white">
-                      ARS$
-                    </span>
-                    <input
-                      readOnly
-                      name="calculator"
-                      onChange={handleOnInputChange}
-                      value={
-                        calculateType == Operation.buy
-                          ? (
-                              Number(inputCalculator) *
-                              Number(dollarType.compra)
-                            ).toFixed(2)
-                          : (
-                              Number(inputCalculator) * Number(dollarType.venta)
-                            ).toFixed(2)
-                      }
-                      type="type"
-                      pattern="[0-9]+"
-                      id="calculator"
-                      className="h-full w-full max-w-[15rem] rounded-r-md bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
-                    />
-                    <CopyToClipboard
-                      text={(
-                        Number(inputCalculator) * Number(dollarType.venta)
-                      ).toFixed(2)}
-                    >
-                      <span
-                        onClick={toggleCopy}
-                        className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-b from-[#1fbd06] to-green-800 px-2"
-                      >
-                        <FaCopy className="bg-whtie h-4 w-6 text-white" />
+                {dollarType.compra != "No Cotiza" && (
+                  <div
+                    className={`flex w-full flex-col items-center justify-center gap-2`}
+                  >
+                    <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
+                      <span className="home-title w-16 bg-clip-text font-bold text-white">
+                        USD$
                       </span>
-                    </CopyToClipboard>
+                      <input
+                        name="calculator"
+                        onChange={handleOnInputChange}
+                        value={inputCalculator}
+                        type="number"
+                        pattern="[0-9]+"
+                        id="calculator"
+                        placeholder={
+                          calculateType == Operation.buy
+                            ? `Escribe el monto de compra...`
+                            : `Escribe el monto de venta...`
+                        }
+                        className="h-full w-full max-w-[15rem] rounded-r-md bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
+                      />
+                    </div>
+                    <div className="flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
+                      <span className="home-title mr-2 w-16 bg-clip-text font-bold text-white">
+                        ARS$
+                      </span>
+                      <input
+                        readOnly
+                        name="calculator"
+                        onChange={handleOnInputChange}
+                        value={
+                          calculateType == Operation.buy
+                            ? (
+                                Number(inputCalculator) *
+                                Number(dollarType.compra)
+                              ).toFixed(2)
+                            : (
+                                Number(inputCalculator) *
+                                Number(dollarType.venta)
+                              ).toFixed(2)
+                        }
+                        type="type"
+                        pattern="[0-9]+"
+                        id="calculator"
+                        className="h-full w-full max-w-[15rem] bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
+                      />
+                      <CopyToClipboard
+                        text={(
+                          Number(inputCalculator) * Number(dollarType.venta)
+                        ).toFixed(2)}
+                      >
+                        <div
+                          onClick={toggleCopy}
+                          className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-b from-[#1fbd06] to-green-800 p-1"
+                        >
+                          <FaCopy className="h-5 w-8 text-white" />
+                        </div>
+                      </CopyToClipboard>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
             <ul className="flex h-auto flex-col gap-4 py-2 md:grid md:grid-cols-3 md:gap-4">
@@ -261,7 +264,7 @@ export const CalculatorContainer = ({
                   id="cardQuote"
                   key={dollarInfo.nombre}
                   onClick={() => setDollarType(dollarInfo)}
-                  className={`flex flex-col justify-between rounded-md bg-white/10 p-2 outline sm:h-auto sm:w-full ${
+                  className={`flex flex-col justify-between rounded-md bg-white/10 p-2 outline backdrop-blur-sm sm:h-auto sm:w-full ${
                     dollarType.nombre == dollarInfo.nombre
                       ? `outline-green-600`
                       : `outline-transparent`
