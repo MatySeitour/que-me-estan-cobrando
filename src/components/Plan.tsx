@@ -39,9 +39,7 @@ export const Plan = ({
     <li
       id={`plans`}
       onClick={() => toggleTax(plans.id)}
-      className={`border-t border-white/30 text-white sm:cursor-pointer  ${
-        plans.id == serviceSelected.planes.length && `border-b`
-      }`}
+      className={`border-b border-white/30 text-white sm:cursor-pointer`}
       key={plans.id}
     >
       <div className="flex items-center justify-between gap-4 p-4">
