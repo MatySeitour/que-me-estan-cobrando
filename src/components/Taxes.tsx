@@ -30,11 +30,11 @@ export const Taxes = () => {
       taxTitle.current,
       {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.2,
       },
       {
         opacity: 1,
-        duration: 0.5,
+        duration: 0.2,
       }
     );
 
@@ -44,12 +44,12 @@ export const Taxes = () => {
         {
           y: -20,
           opacity: 0,
-          duration: 0.2,
+          duration: 0.1,
         },
         {
           y: 0,
           opacity: 1,
-          duration: 0.2,
+          duration: 0.1,
         }
       );
     });
