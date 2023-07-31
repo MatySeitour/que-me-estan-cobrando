@@ -124,8 +124,8 @@ export const CalculatorContainer = ({
       </div>
       {loadingData == false ? (
         <>
-          <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 p-2">
-            <div className="relative mb-4 flex flex-row justify-center gap-6"></div>
+          <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 bg-black/30 p-2">
+            <div className="relative mb-4 flex flex-row justify-center gap-6 "></div>
             <div className="w-full">
               <div className="mb-2 flex justify-center">
                 <h3 className="home-title bg-clip-text text-center text-base font-bold sm:text-2xl">
@@ -270,10 +270,10 @@ export const CalculatorContainer = ({
                   id="cardQuote"
                   key={dollarInfo.nombre}
                   onClick={() => setDollarType(dollarInfo)}
-                  className={`flex flex-col justify-between rounded-md bg-white/10 p-2 outline backdrop-blur-sm sm:h-auto sm:w-full ${
+                  className={`flex flex-col justify-between rounded-md border bg-white/10 p-2 backdrop-blur-sm sm:h-auto sm:w-full ${
                     dollarType.nombre == dollarInfo.nombre
-                      ? `outline-green-600`
-                      : `outline-transparent`
+                      ? `border border-green-600`
+                      : `border-transparent`
                   }`}
                 >
                   <div className="mb-2 flex items-center justify-center gap-2 text-white">
