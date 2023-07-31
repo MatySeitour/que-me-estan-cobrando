@@ -96,7 +96,7 @@ export const Prices = ({
       </div>
       <div className="flex h-auto w-full flex-row">
         <ul className="flex h-full w-full flex-col">
-          <div id="price" className="flex h-10 w-full items-center bg-white">
+          <li id="price" className="flex h-10 w-full items-center bg-white">
             <p className="flex-[2] p-2 text-center text-lg text-black">
               Precio Inicial
             </p>
@@ -104,8 +104,8 @@ export const Prices = ({
             <p className="flex-[1] p-2 text-center text-lg text-black">
               ${selectPlan?.precio}
             </p>
-          </div>
-          <div id="price" className="flex h-10 w-full items-center bg-black">
+          </li>
+          <li id="price" className="flex h-10 w-full items-center bg-black">
             <p className="flex-[1] border-y border-white/20 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg text-transparent md:flex-[2]">
               Impuesto
             </p>
@@ -115,10 +115,10 @@ export const Prices = ({
             <p className="flex-[1] border-y border-white/20 bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text p-2 text-center text-lg text-transparent">
               Precio
             </p>
-          </div>
+          </li>
 
           {impuestos.map((impuesto) => (
-            <div
+            <li
               id="price"
               key={impuesto.id}
               className="flex h-10 w-full items-center border-white/20 bg-black"
@@ -161,7 +161,7 @@ export const Prices = ({
               <p className="bg-gradient__effect flex-1 border-y border-white/20 p-2 text-center text-lg font-normal text-transparent">
                 ${(selectPlan?.precio * impuesto?.porcentaje) / 100}
               </p>
-            </div>
+            </li>
           ))}
           <div id="price" className="flex h-10 w-full items-center bg-white">
             <p className="flex-[2] p-2 text-center text-lg text-black">
