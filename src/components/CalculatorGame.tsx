@@ -9,6 +9,14 @@ const enum Badge {
 
 export const CalculatorGame = ({ dollar }: { dollar: any }): JSX.Element => {
   const [badge, setBadge] = useState<Badge>(Badge.PESOS);
+  const [copyLastPriceState, setCopyLastPriceState] = useState<boolean>(false);
+
+  const toggleCopy = () => {
+    setCopyLastPriceState(true);
+    setTimeout(() => {
+      setCopyLastPriceState(false);
+    }, 1000);
+  };
 
   return (
     <div
@@ -17,12 +25,20 @@ export const CalculatorGame = ({ dollar }: { dollar: any }): JSX.Element => {
         badge == "USD" ? `preserve__active` : ``
       }`}
     >
-      <GamePesos badge={badge} setBadge={setBadge} className="front z-10" />
+      <GamePesos
+        badge={badge}
+        setBadge={setBadge}
+        copyLastPriceState={copyLastPriceState}
+        className="front z-10"
+        toggleCopy={toggleCopy}
+      />
       <GameUsd
         badge={badge}
         dollar={dollar}
         setBadge={setBadge}
         className="back z-10"
+        copyLastPriceState={copyLastPriceState}
+        toggleCopy={toggleCopy}
       />
     </div>
   );
