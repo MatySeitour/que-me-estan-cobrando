@@ -81,12 +81,12 @@ export const Prices = ({
   return (
     <div className="relative flex h-auto w-full flex-col gap-8 pb-8">
       <div className="flex flex-col gap-2 px-2 text-center sm:flex-col sm:text-left">
-        <h4
+        <h3
           ref={priceTitle}
           className="bg-gradient__effect text-4xl font-normal text-transparent"
         >
           Precios
-        </h4>
+        </h3>
         <h4
           ref={planTitle}
           className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-xl font-normal text-transparent sm:pr-4"
@@ -163,7 +163,7 @@ export const Prices = ({
               </p>
             </li>
           ))}
-          <div id="price" className="flex h-10 w-full items-center bg-white">
+          <li id="price" className="flex h-10 w-full items-center bg-white">
             <p className="flex-[2] p-2 text-center text-lg text-black">
               Precio Final
             </p>
@@ -174,7 +174,7 @@ export const Prices = ({
                 selectPlan?.precio * serviceSelected?.impuesto_porcentaje
               ).toFixed(2)}
             </p>
-          </div>
+          </li>
         </ul>
       </div>
     </div>
