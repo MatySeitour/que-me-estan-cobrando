@@ -21,6 +21,10 @@ export default function Home() {
     <>
       <Head>
         <title>¿Que me están cobrando?</title>
+        <meta
+          name="description"
+          content="¿Que me están cobrando? Una web para saber todo acerca de los servicios digitales de Argentina. Vas a poder conocer los impuestos, los planes y los precios de tu servicio digital favorito. Además, vas a conocer el precio final del juego que más deseas para evitar sorpresas."
+        />
       </Head>
 
       <main
