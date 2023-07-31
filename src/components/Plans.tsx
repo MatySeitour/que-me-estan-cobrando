@@ -68,7 +68,7 @@ export const Plans = ({
           ¿Que planes me ofrecen?
         </h3>
       </div>
-      <ul className="flex h-auto w-full flex-col gap-1">
+      <ul className="flex h-auto w-full flex-col gap-1 border-t border-white/30">
         {serviceSelected.planes.map((plans) => (
           <Plan
             key={plans.id}
