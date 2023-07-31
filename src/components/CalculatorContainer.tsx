@@ -199,11 +199,14 @@ export const CalculatorContainer = ({
                     className={`flex w-full flex-col items-center justify-center gap-2`}
                   >
                     <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                      <span className="home-title w-16 bg-clip-text font-bold text-white">
+                      <label
+                        htmlFor="input_buy"
+                        className="home-title w-16 bg-clip-text font-bold text-white"
+                      >
                         USD$
-                      </span>
+                      </label>
                       <input
-                        name="calculator"
+                        name="input_buy"
                         onChange={handleOnInputChange}
                         value={inputCalculator}
                         type="number"
@@ -218,12 +221,15 @@ export const CalculatorContainer = ({
                       />
                     </div>
                     <div className="flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                      <span className="home-title mr-2 w-16 bg-clip-text font-bold text-white">
+                      <label
+                        htmlFor="input_sell"
+                        className="home-title mr-2 w-16 bg-clip-text font-bold text-white"
+                      >
                         ARS$
-                      </span>
+                      </label>
                       <input
                         readOnly
-                        name="calculator"
+                        name="input_sell"
                         onChange={handleOnInputChange}
                         value={
                           calculateType == Operation.buy
@@ -352,7 +358,6 @@ export const CalculatorContainer = ({
               <FaCheck className="h-full w-full text-white" />
             </div>
           </div>
-          {/* )} */}
         </>
       ) : (
         <div className="flex h-screen w-full justify-center pt-20">
