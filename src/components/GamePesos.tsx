@@ -97,7 +97,7 @@ export const GamePesos = ({
           </div>
           <ul className="mb-4">
             {impuestos.map((impuesto) => (
-              <div
+              <li
                 key={impuesto.id}
                 className="flex h-10 w-full items-center border-white/20"
               >
@@ -145,7 +145,7 @@ export const GamePesos = ({
                         100
                       ).toFixed(2)}`}
                 </p>
-              </div>
+              </li>
             ))}
           </ul>
           <div className="flex h-10 w-full pr-2">
