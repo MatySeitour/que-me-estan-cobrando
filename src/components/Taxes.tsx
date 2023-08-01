@@ -6,11 +6,11 @@ import { gsap } from "gsap";
 
 export const Taxes = () => {
   const { impuestos } = impuestosData;
+  const taxTitle = useRef(null);
 
   const [taxSelect, setTaxSelect] = useState<number | null>(null);
 
-  const taxTitle = useRef(null);
-
+  // Function that sets the selected tax
   const toggleTax = (taxNumber: number) => {
     if (taxNumber != taxSelect) {
       setTaxSelect(taxNumber);
@@ -19,6 +19,7 @@ export const Taxes = () => {
     }
   };
 
+  // Animations
   useEffect(() => {
     const titleCard = gsap.utils.toArray(`#tax`);
 
