@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, RefObject } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { inter } from "@/utils/fonts";
@@ -6,23 +6,28 @@ import { CalculatorGame } from "./CalculatorGame";
 import axios from "axios";
 import { GradientEffectBackground } from "./GradientEffectBackground";
 
+// Type to know the value of the current dollar and what is the last update date.
 type InfoDollar = {
   dollarValue: string;
   lastUpdate: string;
 };
 
 export const Games = (): JSX.Element => {
-  const games: any = useRef(null);
-  const gameTitle: any = useRef(null);
-  const selectServiceDescription: any = useRef(null);
+  const games: RefObject<HTMLElement> = useRef(null);
+  const gameTitle: RefObject<HTMLDivElement> = useRef(null);
+  const selectServiceDescription: RefObject<HTMLDivElement> = useRef(null);
+
+  // create a state that is of type infoDollar
   const [dollar, setDollar] = useState<InfoDollar>({
     dollarValue: "",
     lastUpdate: "",
   });
 
+  // Animations
   useEffect(() => {
-    const gamesContainer = document.querySelector("#games-container");
     gsap.registerPlugin(ScrollTrigger);
+
+    const gamesContainer = document.querySelector("#games-container");
 
     let context = gsap.context(() => {
       gsap.fromTo(
@@ -101,10 +106,13 @@ export const Games = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    // Function to obtain the principal values of the dollar
     async function getDollarValue() {
       const res = await axios.get(
         "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
       );
+
+      // Create a current date
       const time = new Date();
       const timeFinal = `${time.getDay().toString()}/${
         time.getMonth() + 1
@@ -112,6 +120,7 @@ export const Games = (): JSX.Element => {
         time.getMinutes()
       ).padStart(2, "0")}:${String(time.getSeconds()).padStart(2, "0")}`;
 
+      // Set the two values to the dollar state
       setDollar({
         dollarValue: res.data[0].casa.venta,
         lastUpdate: timeFinal,
