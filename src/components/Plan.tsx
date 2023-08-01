@@ -1,37 +1,53 @@
-import { useRef } from "react";
+import { useRef, RefObject } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { inter } from "@/utils/fonts";
 import plataformasData from "../assets/plataformas.json";
+import { Planes } from "@/types";
+
+// PlanDescription Type
+type PlanDescription = {
+  plan_description_id: number;
+  plan_description: string;
+};
 
 export const Plan = ({
   plans,
   planSelect,
   setPlanSelect,
-  serviceSelected,
 }: {
-  plans: any;
+  plans: Planes;
   planSelect: number | null;
   setPlanSelect: (arg: number | null) => void;
-  serviceSelected: any;
 }): JSX.Element => {
   const { plataformas } = plataformasData;
 
+  // Final price by multiplying the total tax percentage by the initial price of the plan
   const finalPrice = (
     plataformas[0].impuesto_porcentaje * plans.precio
   ).toFixed(2);
 
-  const element1: any = useRef(null);
+  const element1: RefObject<HTMLDivElement> = useRef(null);
 
+  // Accordion function that is passed as a parameter the id of the selected plan
   const toggleTax = (numberPlan: number) => {
+    // Sets a height 0 to all elements with the id of the previous plan
     const planId = document.querySelector(`#plan__${planSelect}`);
     planId?.setAttribute("style", "height: 0px");
+
+    // Check if the plan number is different from the selected plan number
+    // If different, apply a height equal to the total value of the height of the container
+    // Else, apply height to 0px
     if (numberPlan != planSelect) {
       let la = element1.current?.scrollHeight.toString() + "px";
-      element1.current.style.height = la;
+      if (element1.current != null) {
+        element1.current.style.height = la;
+      }
       setPlanSelect(numberPlan);
     } else {
       setPlanSelect(null);
-      element1.current.style.height = "0rem";
+      if (element1.current != null) {
+        element1.current.style.height = "0rem";
+      }
     }
   };
 
@@ -94,7 +110,7 @@ export const Plan = ({
               : `p-4 font-serif font-normal ${inter.className} invisible flex flex-col font-bold text-white/70 opacity-0 transition-[opacity]`
           }
         >
-          {plans.descripcion.map((planDescription: any) => (
+          {plans.descripcion.map((planDescription: PlanDescription) => (
             <li key={planDescription.plan_description_id}>
               {planDescription.plan_description}
             </li>
