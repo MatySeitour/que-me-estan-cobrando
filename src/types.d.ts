@@ -17,3 +17,27 @@ interface Planes {
   }[];
   precio: number;
 }
+
+interface DollarApi {
+  casa: {
+    agencia: string;
+    compra: string;
+    venta: string;
+    decimales: string;
+    nombre: string;
+    variacion: string;
+    ventaCero: string;
+  };
+}
+
+interface DollarNewValues {
+  nombre: string;
+  compra: string;
+  venta: string;
+  variacion: string;
+  descripcion: string;
+}
+
+export { Planes };
+export { DollarApi };
+export { DollarNewValues };
