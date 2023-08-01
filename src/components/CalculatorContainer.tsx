@@ -11,7 +11,9 @@ import { HiInformationCircle } from "react-icons/hi2";
 import { LoadingData } from "./LoadingData";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { gsap } from "gsap";
+import { DollarNewValues } from "@/types";
 
+// Creat an enum with two values: buy or sell
 const enum Operation {
   buy = "comprar",
   sell = "vender",
@@ -22,24 +24,35 @@ export const CalculatorContainer = ({
   lastUpdate,
   loadingData,
 }: {
-  dollarCalculator: any;
+  dollarCalculator: DollarNewValues[] | undefined;
   lastUpdate: string;
   loadingData: boolean;
 }): JSX.Element => {
+  // refs
   const calculator = useRef(null);
   const calculatorTitle = useRef(null);
   const calculatorText = useRef(null);
+
+  // State containing the value of the input
   const [inputCalculator, setInputCalculator] = useState<string>("");
+
+  // Selected dollar quote
   const [dollarType, setDollarType] = useState<any>([]);
+
+  // type of calculation selected
   const [calculateType, setCalculateType] = useState<Operation>(Operation.buy);
+
+  // Copy value state
   const [copyState, setCopyState] = useState<boolean>(false);
 
+  // Function that sets the state of the input only if the first value is different from 0
   const handleOnInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
       setInputCalculator(e.target.value);
     }
   };
 
+  // Animations
   useEffect(() => {
     const tl = gsap.timeline({ paused: true });
 
@@ -82,14 +95,13 @@ export const CalculatorContainer = ({
     return () => calculatorContext.revert();
   }, [loadingData]);
 
+  // Function that sets the value of copyState
   const toggleCopy = () => {
     setCopyState(true);
     setTimeout(() => {
       setCopyState(false);
     }, 1000);
   };
-
-  console.log(dollarType);
 
   return (
     <div
