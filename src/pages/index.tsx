@@ -8,12 +8,15 @@ import type { ServiceType } from "@/types";
 import plataformasData from "../assets/plataformas.json";
 import { paytone_One } from "@/utils/fonts";
 import { Games } from "@/components/Games";
-import { GradientEffectBackground } from "@/components/GradientEffectBackground";
+
 import { Footer } from "@/components/Footer";
 import { ServicesContainer } from "@/containers/ServicesContainer";
 
 export default function Home() {
+  // extrae los datos de las plataformas del plataformas.json
   const { plataformas } = plataformasData;
+
+  // Por default, el estado inicial va a ser el primer elemento de las plataformas(en este caso, netflix).
   const [serviceSelected, setServiceSelected] = useState<ServiceType>(
     plataformas[0]
   );
