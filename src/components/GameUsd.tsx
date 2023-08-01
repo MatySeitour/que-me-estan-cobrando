@@ -21,13 +21,15 @@ export const GameUsd = ({
   setBadge: any;
   className: string;
   copyLastPriceState: boolean;
-  dollar: any;
+  dollar: { dollarValue: string; lastUpdate: string };
   toggleCopy: () => void;
 }): JSX.Element => {
   const { impuestos } = impuestosData;
 
   const [inputPriceValue, setInputPriceValue] = useState<string>("");
 
+  //function to update the value of the input.
+  //only if the value has less than 7 characters, is less than 1000, if the number is greater than or equal to 0 and and if the first and second values are different from 0.
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const firstZero = e.target.value[0] == "0" && e.target.value[1] == "0";
     if (
@@ -40,8 +42,11 @@ export const GameUsd = ({
     }
   };
 
+  // Change the "," to "."
   const dollarNumber = dollar.dollarValue.replace(",", ".");
-  const priceInPesos = dollarNumber * Number(inputPriceValue);
+
+  // Gets the value in pesos
+  const priceInPesos = Number(dollarNumber) * Number(inputPriceValue);
   return (
     <div
       className={`${
@@ -203,18 +208,6 @@ export const GameUsd = ({
           </div>
         </div>
       </div>
-      {/* <div
-        className={
-          copyLastPriceState
-            ? `fixed bottom-8 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
-            : `fixed -bottom-20 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
-        }
-      >
-        <p className="mr-2 text-white">¡Valor copiado con éxito!</p>
-        <div className="w-6 rounded-full bg-green-700 p-1">
-          <FaCheck className="h-full w-full text-white" />
-        </div>
-      </div> */}
     </div>
   );
 };
