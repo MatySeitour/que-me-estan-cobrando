@@ -26,6 +26,8 @@ export const GamePesos = ({
 
   const [inputPriceValue, setInputPriceValue] = useState("");
 
+  //function to update the value of the input.
+  //only if the value has less than 8 characters, is less than 30000 and if the first value is different from 0.
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (
       e.target.value.length <= 8 &&
