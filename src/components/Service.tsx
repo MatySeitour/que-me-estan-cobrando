@@ -1,4 +1,4 @@
-import { ServiceType } from "@/types";
+import { ServiceType, Planes } from "@/types";
 import Image from "next/image";
 import { Taxes } from "./Taxes";
 import { useState, useEffect, useRef } from "react";
@@ -9,26 +9,17 @@ import { Prices } from "./Prices";
 import { Dropdown } from "./Dropdown";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-interface Planes {
-  id: number;
-  plan: string;
-  descripcion: {
-    plan_description_id: number;
-    plan_description: string;
-  }[];
-  precio: number;
-}
-
 export const Service = ({
   serviceSelected,
 }: {
   serviceSelected: ServiceType;
 }): JSX.Element => {
   const [serviceOptionSelect, setServiceOptionSelect] = useState<number>(1);
-  const [selectPlan, setSelectPlan] = useState<any>();
+  const [selectPlan, setSelectPlan] = useState<Planes | null>(null);
   const service = useRef(null);
   const logoService = useRef(null);
 
+  // Animations
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -167,11 +158,7 @@ export const Service = ({
           />
         </div>
         {serviceOptionSelect == 1 && (
-          <Prices
-            selectPlan={selectPlan}
-            setSelectPlan={setSelectPlan}
-            serviceSelected={serviceSelected}
-          />
+          <Prices selectPlan={selectPlan} serviceSelected={serviceSelected} />
         )}
         {serviceOptionSelect == 2 && <Taxes />}
         {serviceOptionSelect == 3 && (
