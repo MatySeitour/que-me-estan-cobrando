@@ -16,11 +16,14 @@ export const Plans = ({
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    //Selecciona todos los elementos de HTML que tengan el id "plans"
     const titleCard = gsap.utils.toArray(`#plans`);
 
+    //Crea una linea del tiempo de gsap que por default esta en pausa
     const tl = gsap.timeline({ paused: true });
 
     let ctx = gsap.context(() => {
+      //Ejecuta la linea de tiempo
       tl.play();
 
       titleCard.forEach((plan: any) => {
@@ -75,7 +78,6 @@ export const Plans = ({
             plans={plans}
             planSelect={planSelect}
             setPlanSelect={setPlanSelect}
-            serviceSelected={serviceSelected}
           />
         ))}
       </ul>
