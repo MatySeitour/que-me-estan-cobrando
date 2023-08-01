@@ -13,11 +13,15 @@ const paytone_One = Paytone_One({
 export const Banner = () => {
   const linkPageDollar = useRef(null);
   const containerBanner = useRef(null);
-  useEffect(() => {
-    const homeTitle = document.querySelector(".home-title");
 
+  useEffect(() => {
+    // Obtengo los elementos que quiero animar
+    const homeTitle = document.querySelector(".home-title");
     const homeSubtitle = document.querySelector(".home-subtitle");
     const sliderContainer = document.querySelector(".slider-container");
+
+    // Creo un contexto de gsap y dentro inserto las animaciones de los elementos que quiero animar.
+    //Como segundo parámetro le paso el scope del contenedor padre.
 
     let ctx = gsap.context(() => {
       gsap.fromTo(
