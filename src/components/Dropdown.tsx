@@ -1,17 +1,7 @@
 import { useEffect, useState, useRef } from "react";
-import { ServiceType } from "@/types";
+import { ServiceType, Planes } from "@/types";
 import { HiChevronDown } from "react-icons/hi";
 import { gsap } from "gsap";
-
-interface Planes {
-  id: number;
-  plan: string;
-  descripcion: {
-    plan_description_id: number;
-    plan_description: string;
-  }[];
-  precio: number;
-}
 
 export const Dropdown = ({
   serviceSelected,
@@ -20,18 +10,21 @@ export const Dropdown = ({
   serviceOptionSelect,
 }: {
   serviceSelected: ServiceType;
-  selectPlan: Planes;
+  selectPlan: Planes | null;
   setSelectPlan: (selectPlan: Planes) => void;
   serviceOptionSelect: number;
 }): JSX.Element => {
   const [dropwDownActive, setDropDownAcitve] = useState(false);
   const dropdown = useRef(null);
 
+  // Función que cambia el plan y desactiva el dropdown
   const handleChangePlan = (plan: Planes) => {
     setSelectPlan(plan);
     setDropDownAcitve(false);
   };
 
+  // UseEffect que se ejecuta cada vez que el servicio seleccionado se cambia.
+  //Cada vez que ocurre esto, seleciona el primer valor de los planes y lo muestra en el dropdown
   useEffect(() => {
     setSelectPlan(serviceSelected.planes[0]);
     gsap.fromTo(
@@ -72,8 +65,9 @@ export const Dropdown = ({
               {selectPlan?.plan}
             </p>
             <p className="inline-block bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-sm font-normal text-transparent sm:hidden">
-              {selectPlan?.plan.length > 10
-                ? `${selectPlan.plan.slice(0, 13)}...`
+              {selectPlan?.plan?.length != undefined &&
+              selectPlan?.plan?.length > 10
+                ? `${selectPlan?.plan.slice(0, 13)}...`
                 : selectPlan?.plan}
             </p>
             <HiChevronDown className="ml-2 h-4 w-4 text-white sm:ml-0" />
