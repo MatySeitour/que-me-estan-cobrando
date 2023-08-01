@@ -2,36 +2,31 @@ import impuestosData from "../assets/impuestos.json";
 import { Dropdown } from "./Dropdown";
 import { useEffect, useRef } from "react";
 import { HiInformationCircle } from "react-icons/hi2";
-import { ServiceType } from "@/types";
+import { ServiceType, Planes } from "@/types";
 import { gsap } from "gsap";
-
-interface Planes {
-  id: number;
-  plan: string;
-  descripcion: {
-    plan_description_id: number;
-    plan_description: string;
-  }[];
-  precio: number;
-}
 
 export const Prices = ({
   serviceSelected,
   selectPlan,
-  setSelectPlan,
 }: {
   serviceSelected: ServiceType;
-  selectPlan: Planes;
-  setSelectPlan: any;
+  selectPlan: Planes | null;
 }): JSX.Element => {
+  // Obtiene los impuestos del impuestos.json
   const { impuestos } = impuestosData;
   const priceTitle = useRef(null);
   const planTitle = useRef(null);
 
+  // Animations
+
   useEffect(() => {
+    //Selecciona todos los elementos de HTML que tengan el id "price"
     const prices = gsap.utils.toArray("#price");
+
+    //Crea una linea del tiempo de gsap que por default esta en pausa
     const tl = gsap.timeline({ paused: true });
 
+    //Ejecuta la linea de tiempo
     tl.play();
 
     gsap.fromTo(
@@ -159,7 +154,9 @@ export const Prices = ({
                 {impuesto.porcentaje}%
               </p>
               <p className="bg-gradient__effect flex-1 border-y border-white/20 p-2 text-center text-lg font-normal text-transparent">
-                ${(selectPlan?.precio * impuesto?.porcentaje) / 100}
+                $
+                {selectPlan?.precio != undefined &&
+                  (selectPlan?.precio * impuesto?.porcentaje) / 100}
               </p>
             </li>
           ))}
@@ -170,9 +167,10 @@ export const Prices = ({
             <p className="flex-[1] p-2 text-center text-lg text-black"></p>
             <p className="flex-[1] p-2 text-center text-lg text-black">
               $
-              {(
-                selectPlan?.precio * serviceSelected?.impuesto_porcentaje
-              ).toFixed(2)}
+              {selectPlan?.precio != undefined &&
+                (
+                  selectPlan?.precio * serviceSelected?.impuesto_porcentaje
+                ).toFixed(2)}
             </p>
           </li>
         </ul>
