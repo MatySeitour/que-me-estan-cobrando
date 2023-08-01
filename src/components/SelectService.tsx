@@ -7,7 +7,7 @@ export const SelectService = ({
   setServiceSelected,
 }: {
   serviceSelected: ServiceType;
-  setServiceSelected: any;
+  setServiceSelected: (arg: ServiceType) => void;
 }) => {
   const { plataformas } = plataformasData;
 
