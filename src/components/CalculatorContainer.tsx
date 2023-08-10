@@ -134,22 +134,22 @@ export const CalculatorContainer = ({
           </p>
         </div>
       </div>
-      {loadingData == false ? (
-        <>
-          <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 bg-black/30 p-2">
-            <div className="relative mb-4 flex flex-row justify-center gap-6 "></div>
-            <div className="w-full">
-              <div className="mb-2 flex justify-center">
-                <h3 className="home-title bg-clip-text text-center text-base font-bold sm:text-2xl">
-                  Selecciona el tipo de cambio que quieras para calcular cuanto
-                  deseas comprar / vender
-                </h3>
-              </div>
+      <>
+        <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 bg-black/30 p-2">
+          <div className="relative mb-4 flex flex-row justify-center gap-6 "></div>
+          <div className="w-full">
+            <div className="mb-2 flex justify-center">
+              <h3 className="home-title bg-clip-text text-center text-base font-bold sm:text-2xl">
+                Selecciona el tipo de cambio que quieras para calcular cuanto
+                deseas comprar / vender
+              </h3>
+            </div>
+            {loadingData == false ? (
               <div
                 className={`bg-gradient__cards flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none ${
                   dollarType.length == 0
-                    ? `invisible  transition-[all]`
-                    : `visible p-2 transition-[all] sm:p-8`
+                    ? `invisible`
+                    : `visible p-2 transition-all sm:p-8`
                 }`}
               >
                 <div
@@ -275,107 +275,111 @@ export const CalculatorContainer = ({
                   </div>
                 )}
               </div>
-            </div>
-            <ul className="flex h-auto flex-col gap-4 py-2 md:grid md:grid-cols-3 md:gap-4">
-              {dollarCalculator?.map((dollarInfo: any) => (
-                <li
-                  id="cardQuote"
-                  key={dollarInfo.nombre}
-                  onClick={() => setDollarType(dollarInfo)}
-                  className={`flex flex-col justify-between rounded-md border bg-white/10 p-2 backdrop-blur-sm sm:h-auto sm:w-full ${
-                    dollarType.nombre == dollarInfo.nombre
-                      ? `border border-green-600`
-                      : `border-transparent`
-                  }`}
-                >
-                  <div className="mb-2 flex items-center justify-center gap-2 text-white">
-                    <p className="home-title bg-clip-text text-center text-2xl font-bold">
-                      {dollarInfo.nombre == "Dolar Contado con Liqui"
-                        ? "Dolar CCL"
-                        : dollarInfo.nombre}
+            ) : (
+              <div className="flex h-screen w-full justify-center pt-20">
+                <LoadingData />
+              </div>
+            )}
+          </div>
+          <ul className="flex h-auto flex-col gap-4 py-2 md:grid md:grid-cols-3 md:gap-4">
+            {dollarCalculator?.map((dollarInfo: any) => (
+              <li
+                id="cardQuote"
+                key={dollarInfo.nombre}
+                onClick={() => setDollarType(dollarInfo)}
+                className={`flex flex-col justify-between rounded-md border bg-white/10 p-2 backdrop-blur-sm sm:h-auto sm:w-full ${
+                  dollarType.nombre == dollarInfo.nombre
+                    ? `border border-green-600`
+                    : `border-transparent`
+                }`}
+              >
+                <div className="mb-2 flex items-center justify-center gap-2 text-white">
+                  <p className="home-title bg-clip-text text-center text-2xl font-bold">
+                    {dollarInfo.nombre == "Dolar Contado con Liqui"
+                      ? "Dolar CCL"
+                      : dollarInfo.nombre}
+                  </p>
+                  <div
+                    className={`group relative z-50 ${
+                      dollarInfo.descripcion == "" && `hidden`
+                    }`}
+                  >
+                    <p className="invisible absolute bottom-4 left-[50%] min-w-[10rem] max-w-[20rem] -translate-x-1/2 rounded-md border border-white/20 bg-black p-2 text-center text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:inline-block md:min-w-[8rem] min-[840px]:min-w-[10rem] lg:min-w-[14rem]">
+                      {dollarInfo.descripcion}
                     </p>
-                    <div
-                      className={`group relative z-50 ${
-                        dollarInfo.descripcion == "" && `hidden`
-                      }`}
-                    >
-                      <p className="invisible absolute bottom-4 left-[50%] min-w-[10rem] max-w-[20rem] -translate-x-1/2 rounded-md border border-white/20 bg-black p-2 text-center text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:inline-block md:min-w-[8rem] min-[840px]:min-w-[10rem] lg:min-w-[14rem]">
-                        {dollarInfo.descripcion}
-                      </p>
-                      <HiInformationCircle className="h-5 w-5" />
-                    </div>
+                    <HiInformationCircle className="h-5 w-5" />
                   </div>
-                  <div className="mb-2 flex flex-row justify-center gap-4 text-white">
-                    <div className="flex min-w-[6rem] flex-col items-center justify-center">
-                      <p className="home-title bg-clip-text text-center font-bold">
-                        VENTA
-                      </p>
-                      <p className="calculator-gradient__text bg-clip-text text-center text-base font-bold">
-                        ${dollarInfo.venta}
-                      </p>
-                    </div>
-                    <div className="flex min-w-[6rem] flex-col items-center justify-center">
-                      <p className="home-title bg-clip-text text-center font-bold">
-                        COMPRA
-                      </p>
-                      <p className="calculator-gradient__text bg-clip-text text-center text-base font-bold">
-                        ${dollarInfo.compra}
-                      </p>
-                    </div>
+                </div>
+                <div className="mb-2 flex flex-row justify-center gap-4 text-white">
+                  <div className="flex min-w-[6rem] flex-col items-center justify-center">
+                    <p className="home-title bg-clip-text text-center font-bold">
+                      VENTA
+                    </p>
+                    <p className="calculator-gradient__text bg-clip-text text-center text-base font-bold">
+                      ${dollarInfo.venta}
+                    </p>
                   </div>
-                  <div className="mb-2 flex justify-center rounded-sm bg-[#111] p-2 text-white sm:flex">
-                    <span className="mr-2">Variacion: </span>
-                    <div className="flex items-center">
-                      {Number(dollarInfo.variacion) > 0 && (
-                        <>
-                          <p>{dollarInfo.variacion}%</p>
-                          <FaCaretUp className="mr-1 h-6 w-6 text-green-600" />
-                        </>
-                      )}
+                  <div className="flex min-w-[6rem] flex-col items-center justify-center">
+                    <p className="home-title bg-clip-text text-center font-bold">
+                      COMPRA
+                    </p>
+                    <p className="calculator-gradient__text bg-clip-text text-center text-base font-bold">
+                      ${dollarInfo.compra}
+                    </p>
+                  </div>
+                </div>
+                <div className="mb-2 flex justify-center rounded-sm bg-[#111] p-2 text-white sm:flex">
+                  <span className="mr-2">Variacion: </span>
+                  <div className="flex items-center">
+                    {Number(dollarInfo.variacion) > 0 && (
+                      <>
+                        <p>{dollarInfo.variacion}%</p>
+                        <FaCaretUp className="mr-1 h-6 w-6 text-green-600" />
+                      </>
+                    )}
 
-                      {Number(dollarInfo.variacion) < 0 && (
-                        <>
-                          <p>{dollarInfo.variacion}%</p>
-                          <FaCaretDown className="mr-1 h-6 w-6 text-red-600" />
-                        </>
-                      )}
-                      {Number(dollarInfo.variacion) == 0 && (
-                        <>
-                          <FaMinus className="mr-1 flex h-4 w-4 items-center justify-center text-white" />
-                          <p className="mr-1">{dollarInfo.variacion}%</p>
-                        </>
-                      )}
-                    </div>
+                    {Number(dollarInfo.variacion) < 0 && (
+                      <>
+                        <p>{dollarInfo.variacion}%</p>
+                        <FaCaretDown className="mr-1 h-6 w-6 text-red-600" />
+                      </>
+                    )}
+                    {Number(dollarInfo.variacion) == 0 && (
+                      <>
+                        <FaMinus className="mr-1 flex h-4 w-4 items-center justify-center text-white" />
+                        <p className="mr-1">{dollarInfo.variacion}%</p>
+                      </>
+                    )}
                   </div>
-                  <div className=" text-center text-sm text-white sm:inline-block">
-                    <p>Actualizado: {lastUpdate}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
-            <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
-            <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>
-            <div className="border-effect__bottom absolute -bottom-0.5 -right-0.5 h-0.5 w-20"></div>
-          </div>
-          <div
-            className={
-              copyState
-                ? `fixed bottom-8 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
-                : `fixed -bottom-10 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
-            }
-          >
-            <p className="mr-2 text-white">¡Valor copiado con éxito!</p>
-            <div className="w-6 rounded-full bg-green-700 p-1">
-              <FaCheck className="h-full w-full text-white" />
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="flex h-screen w-full justify-center pt-20">
-          <LoadingData />
+                </div>
+                <div className=" text-center text-sm text-white sm:inline-block">
+                  <p>Actualizado: {lastUpdate}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="border-effect__top absolute -top-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
+          <div className="border-effect__left absolute -left-0.5 top-20 h-20 w-0.5"></div>
+          <div className="border-effect__left absolute -right-0.5 top-20 h-20 w-0.5"></div>
+          <div className="border-effect__bottom absolute -bottom-0.5 -right-0.5 h-0.5 w-20"></div>
         </div>
-      )}
+        <div
+          className={
+            copyState
+              ? `fixed bottom-8 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
+              : `fixed -bottom-10 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
+          }
+        >
+          <p className="mr-2 text-white">¡Valor copiado con éxito!</p>
+          <div className="w-6 rounded-full bg-green-700 p-1">
+            <FaCheck className="h-full w-full text-white" />
+          </div>
+        </div>
+      </>
     </div>
   );
 };
+
+// ) : (
+//
+// )}
