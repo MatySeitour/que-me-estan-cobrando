@@ -14,14 +14,13 @@ export const ClientDollarPage = (): JSX.Element => {
   const [dollarCalculator, setDollarCalculator] = useState<
     DollarNewValues[] | undefined
   >();
-  const [loadingData, setLoadingData] = useState<boolean>(false);
+  const [loadingData, setLoadingData] = useState<boolean>(true);
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {
     //call to the dolarsi api
     async function getDollar() {
       try {
-        setLoadingData(true);
         const res = await axios.get(
           "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
         );
