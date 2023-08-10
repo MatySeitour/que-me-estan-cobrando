@@ -8,7 +8,7 @@ import {
   FaCheck,
 } from "react-icons/fa6";
 import { HiInformationCircle } from "react-icons/hi2";
-import { LoadingData } from "./LoadingData";
+import { LoadingData } from "./Loading";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { gsap } from "gsap";
 import { DollarNewValues } from "@/types";
