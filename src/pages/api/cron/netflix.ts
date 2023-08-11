@@ -33,7 +33,7 @@ const netflixGetValues = async (req: NextApiRequest, res: NextApiResponse) => {
     let c = Array(b).join("").split("ARS");
     let d = c[0].substring(0, c[0].length - 1);
     plan.name = d;
-    plan.price = Number(c[1]);
+    plan.price = Number(c[1]) + 100;
 
     if (d === "Básico") {
       plan.id = 1;
@@ -51,28 +51,22 @@ const netflixGetValues = async (req: NextApiRequest, res: NextApiResponse) => {
     return plan;
   });
 
-  const primerItem = await prisma.plan.update({
+  data.forEach(async (planItem) => {
+    await updateData(planItem);
+  });
+
+  res.send(data);
+};
+
+const updateData = async (planItem: any) => {
+  await prisma.plan.update({
     where: {
-      id: data[0].id,
+      id: planItem.id,
     },
     data: {
-      benefits: data[0].benefits,
+      price: planItem.price,
     },
   });
-  // data.forEach(async (planItem) => {
-  //   await prisma.plan.updateMany({
-  //     where: {
-  //       id: planItem.id,
-  //     },
-  //     data: {
-  //       name: planItem.name,
-  //       price: planItem.price,
-  //       benefits: planItem.benefits,
-  //       serviceId: 1,
-  //     },
-  //   });
-  // });
-  res.send(primerItem);
 };
 
 export default netflixGetValues;
