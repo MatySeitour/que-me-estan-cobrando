@@ -76,23 +76,25 @@ export const CalculatorContainer = ({
   }, []);
 
   useEffect(() => {
-    const tl = gsap.timeline({ paused: true });
+    if (!loadingData) {
+      const tl = gsap.timeline({ paused: true });
 
-    const cards = gsap.utils.toArray("#cardQuote");
+      const cards = gsap.utils.toArray("#cardQuote");
 
-    const calculatorContext = gsap.context(() => {
-      tl.play();
+      const calculatorContext = gsap.context(() => {
+        tl.play();
 
-      cards.forEach((card: any) => {
-        tl.fromTo(
-          card,
-          { opacity: 0, y: 50, duration: 0.2 },
-          { opacity: 1, y: 0, duration: 0.2 }
-        );
-      });
-    }, calculator);
+        cards.forEach((card: any) => {
+          tl.fromTo(
+            card,
+            { opacity: 0, y: 50, duration: 0.2 },
+            { opacity: 1, y: 0, duration: 0.2 }
+          );
+        });
+      }, calculator);
 
-    return () => calculatorContext.revert();
+      return () => calculatorContext.revert();
+    }
   }, [loadingData]);
 
   // Function that sets the value of copyState
