@@ -9,54 +9,51 @@ const amazon = async (req: NextApiRequest, res: NextApiResponse) => {
     browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BLESS_TOKEN}`,
   });
   const page = await browser.newPage();
-  await page.goto(
-    "https://www.primevideo.com/offers/nonprimehomepage/ref=dvm_pds_amz_ar_dc_s_b_mkw_15Q6zXbW-dc_pcrid_76691108516658?mrntrk=slid__pgrid_1332608121879906_pgeo_141965_x__ptid_kwd-83288020178281:loc-8"
-  );
+  await page.goto("https://selectra.com.ar/streaming/amazon-prime-video");
   await page.waitForSelector(
-    "div.dv-safe-content > div.dv-push-left > div.dv-copy-body > p"
+    "#content-with-summary > div:nth-child(1) > p:nth-child(10) > strong"
   );
   const result = await page.evaluate((prices) => {
     let arr = [];
     const textAmazon = document.querySelector(prices)?.innerHTML;
-    console.log(textAmazon);
-    const getStringPrice = Array(textAmazon).join("").split(",")[2];
-    const getAmazonPrime = Number(
-      Array(Array(getStringPrice).join("").split(";")[1]).join("").split("/")[0]
-    );
-    const priceForYear = Number(getAmazonPrime) * 12;
-    arr.push({
-      plan: "1 mes",
-      price: getAmazonPrime,
-    });
-    arr.push({
-      plan: "1 año",
-      price: priceForYear,
-    });
-
-    const data = arr.map((item) => {
-      let plan = {
-        name: "",
-        price: 0,
-        benefits: "",
-        id: 0,
-      };
-      plan.name = item.plan;
-      plan.price = item.price;
-      if (plan.name === "1 mes") {
-        plan.benefits =
-          "Puedes ver en cualquier dispositivo.Puedes descargar el contenido de Amazon Prime Video.";
-        plan.id = 4;
-      } else if (plan.name === "1 año") {
-        plan.benefits =
-          "Puedes disfrutar todos los beneficios anteriores por 1 año.";
-        plan.id = 5;
-      }
-      return plan;
-    });
-
-    return data;
-  }, "div.dv-safe-content > div.dv-push-left > div.dv-copy-body > p");
-  result.forEach(async (planItem) => {
+    arr.push(textAmazon);
+    return arr;
+  }, "#content-with-summary > div:nth-child(1) > p:nth-child(10) > strong");
+  const getMonthPrice = Number(
+    Array(Array(result).join("").split("$")[1]).join("").split("mensuales")[0]
+  );
+  const getYearPrice = getMonthPrice * 12;
+  const plans = [
+    {
+      name: "1 mes",
+      price: getMonthPrice,
+    },
+    {
+      name: "1 año",
+      price: getYearPrice,
+    },
+  ];
+  const data = plans.map((item) => {
+    let plan = {
+      name: "",
+      price: 0,
+      benefits: "",
+      id: 0,
+    };
+    plan.name = item.name;
+    plan.price = item.price;
+    if (plan.name === "1 mes") {
+      plan.benefits =
+        "Puedes ver en cualquier dispositivo.Puedes descargar el contenido de Amazon Prime Video.";
+      plan.id = 4;
+    } else if (plan.name === "1 año") {
+      plan.benefits =
+        "Puedes disfrutar todos los beneficios anteriores por 1 año.";
+      plan.id = 5;
+    }
+    return plan;
+  });
+  data.forEach(async (planItem) => {
     await prisma.plan.update({
       where: {
         id: planItem.id,
@@ -69,7 +66,7 @@ const amazon = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     });
   });
-  res.status(200).json({ result });
+  res.status(200).json({ data });
 };
 
 export default amazon;
