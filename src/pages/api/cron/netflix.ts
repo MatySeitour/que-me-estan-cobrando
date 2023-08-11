@@ -38,7 +38,7 @@ const netflixGetValues = async (req: NextApiRequest, res: NextApiResponse) => {
     if (d === "Básico") {
       plan.id = 1;
       plan.benefits =
-        "Puedesasdasds ver contenido en 1 dispositivo compatible a la vez.Puedes ver en HD.Puedes descargar contenido en 1 dispositivo compatible a la vez.";
+        "Puedes ver contenido en 1 dispositivo compatible a la vez.Puedes ver en HD.Puedes descargar contenido en 1 dispositivo compatible a la vez.";
     } else if (d === "Estándar") {
       plan.id = 2;
       plan.benefits =
