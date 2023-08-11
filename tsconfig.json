@@ -22,8 +22,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/pages/api/cron/netflix.ts",
-    "src/pages/api/cron/netflix.ts"
+    "src/pages/api/cron/*",
+    "src/pages/api/cron/*"
   ],
   "exclude": ["node_modules"]
 }
