@@ -51,22 +51,32 @@ const netflixGetValues = async (req: NextApiRequest, res: NextApiResponse) => {
     return plan;
   });
 
-  data.forEach(async (planItem) => {
-    await updateData(planItem);
-  });
-
-  res.send(data);
-};
-
-const updateData = async (planItem: any) => {
-  await prisma.plan.update({
+  const primerItem = await prisma.plan.update({
     where: {
-      id: planItem.id,
+      id: data[data.length - length].id,
     },
     data: {
-      price: planItem.price,
+      price: data[data.length - length].price,
     },
   });
+  const second = await prisma.plan.update({
+    where: {
+      id: data[1].id,
+    },
+    data: {
+      price: data[1].price,
+    },
+  });
+
+  const third = await prisma.plan.update({
+    where: {
+      id: data[2].id,
+    },
+    data: {
+      price: data[2].price,
+    },
+  });
+  res.send(primerItem);
 };
 
 export default netflixGetValues;
