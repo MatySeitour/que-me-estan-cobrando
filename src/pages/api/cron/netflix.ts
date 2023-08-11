@@ -5,7 +5,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 const prisma = new PrismaClient();
 
 const netflixGetValues = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.query);
   const browser = await puppeteer.connect({
     browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BLESS_TOKEN}`,
   });
@@ -39,7 +38,7 @@ const netflixGetValues = async (req: NextApiRequest, res: NextApiResponse) => {
     if (d === "Básico") {
       plan.id = 1;
       plan.benefits =
-        "Puedes ver contenido en 1 dispositivo compatible a la vez.Puedes ver en HD.Puedes descargar contenido en 1 dispositivo compatible a la vez.";
+        "Puedesasdasds ver contenido en 1 dispositivo compatible a la vez.Puedes ver en HD.Puedes descargar contenido en 1 dispositivo compatible a la vez.";
     } else if (d === "Estándar") {
       plan.id = 2;
       plan.benefits =
@@ -51,20 +50,29 @@ const netflixGetValues = async (req: NextApiRequest, res: NextApiResponse) => {
     }
     return plan;
   });
-  data.forEach(async (planItem) => {
-    await prisma.plan.update({
-      where: {
-        id: planItem.id,
-      },
-      data: {
-        name: planItem.name,
-        price: planItem.price,
-        benefits: planItem.benefits,
-        serviceId: 1,
-      },
-    });
+
+  const primerItem = await prisma.plan.update({
+    where: {
+      id: data[0].id,
+    },
+    data: {
+      benefits: data[0].benefits,
+    },
   });
-  res.send(data);
+  // data.forEach(async (planItem) => {
+  //   await prisma.plan.updateMany({
+  //     where: {
+  //       id: planItem.id,
+  //     },
+  //     data: {
+  //       name: planItem.name,
+  //       price: planItem.price,
+  //       benefits: planItem.benefits,
+  //       serviceId: 1,
+  //     },
+  //   });
+  // });
+  res.send(primerItem);
 };
 
 export default netflixGetValues;
