@@ -1,24 +1,24 @@
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const prisma = new PrismaClient();
 
 const amazon = async (req: NextApiRequest, res: NextApiResponse) => {
-  const browser = await puppeteer.launch({
-    headless: "new",
+  const browser = await puppeteer.connect({
+    browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BLESS_TOKEN}`,
   });
   const page = await browser.newPage();
   await page.goto(
-    "https://www.primevideo.com/offers/nonprimehomepage/ref=atv_hm_offers_c_9zZ8D2_hm_hom"
+    "https://www.primevideo.com/offers/nonprimehomepage/ref=dvm_pds_amz_ar_dc_s_b_mkw_15Q6zXbW-dc_pcrid_76691108516658?mrntrk=slid__pgrid_1332608121879906_pgeo_141965_x__ptid_kwd-83288020178281:loc-8"
   );
   await page.waitForSelector(
     "div.dv-safe-content > div.dv-push-left > div.dv-copy-body > p"
   );
   const result = await page.evaluate((prices) => {
     let arr = [];
-    console.log(prices);
     const textAmazon = document.querySelector(prices)?.innerHTML;
+    console.log(textAmazon);
     const getStringPrice = Array(textAmazon).join("").split(",")[2];
     const getAmazonPrime = Number(
       Array(Array(getStringPrice).join("").split(";")[1]).join("").split("/")[0]

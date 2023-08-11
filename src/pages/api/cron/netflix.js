@@ -5,11 +5,11 @@ const prisma = new PrismaClient();
 
 const netflixGetValues = async (req, res) => {
   console.log(req.query);
-  const browser = await puppeteer.launch({
-    headless: "new",
+  const browser = await puppeteer.connect({
+    browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BLESS_TOKEN}`,
   });
   const page = await browser.newPage();
-  await page.goto("https://help.netflix.com/es/node/24926");
+  await page.goto("https://help.netflix.com/es/node/24926/ar");
   await page.waitForSelector(
     "body > div > div > div > div > div > section > div > div > div:nth-child(3) > ul > li > p"
   );
