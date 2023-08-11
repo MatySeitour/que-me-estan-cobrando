@@ -3,7 +3,6 @@ import { inter } from "@/utils/fonts";
 import { Footer } from "@/components/Footer";
 import { LinkToHome } from "@/components/LinkToHome";
 import dynamic from "next/dynamic";
-import { LoadingData } from "@/components/Loading";
 
 const DollarPage = dynamic(() =>
   import("../components/ClientDollarPage").then(
