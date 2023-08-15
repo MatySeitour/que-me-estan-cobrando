@@ -18,12 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/pages/api/cron/*",
-    "src/pages/api/cron/*"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/api/plans.ts"],
   "exclude": ["node_modules"]
 }
