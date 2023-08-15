@@ -76,11 +76,10 @@ export const CalculatorContainer = ({
   }, []);
 
   useEffect(() => {
+    const tl = gsap.timeline({ paused: true });
+
+    const cards = gsap.utils.toArray("#cardQuote");
     if (!loadingData) {
-      const tl = gsap.timeline({ paused: true });
-
-      const cards = gsap.utils.toArray("#cardQuote");
-
       const calculatorContext = gsap.context(() => {
         tl.play();
 
