@@ -4,13 +4,14 @@ import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
+import { ServiceTest } from "@/types";
 
 const paytone_One = Paytone_One({
   weight: ["400"],
   subsets: ["latin"],
 });
 
-export const Banner = () => {
+export const Banner = ({ services }: { services: ServiceTest[] }) => {
   const linkPageDollar = useRef(null);
   const containerBanner = useRef(null);
 
@@ -113,7 +114,7 @@ export const Banner = () => {
         </h2>
       </div>
 
-      <SliderHome />
+      <SliderHome services={services} />
 
       <Link
         href={"/dolar-calculator"}
