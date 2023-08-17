@@ -2,7 +2,7 @@ import { useState, ChangeEvent } from "react";
 import impuestosData from "../assets/impuestos.json";
 import { HiInformationCircle } from "react-icons/hi2";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { FaCopy, FaCheck } from "react-icons/fa6";
+import { FaCopy } from "react-icons/fa6";
 
 const enum Badge {
   USD = "USD",
