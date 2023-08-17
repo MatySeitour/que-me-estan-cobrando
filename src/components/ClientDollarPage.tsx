@@ -6,11 +6,7 @@ import axios from "axios";
 import quotesData from "../assets/quotes.json";
 import { DollarApi, DollarNewValues } from "@/types";
 
-export const ClientDollarPage = ({
-  dollars,
-}: {
-  dollars: any;
-}): JSX.Element => {
+export const ClientDollarPage = (): JSX.Element => {
   // Get "cotizaciones" from quotes.json
   const { cotizaciones } = quotesData;
 

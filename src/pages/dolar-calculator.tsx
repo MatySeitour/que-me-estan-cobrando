@@ -10,8 +10,7 @@ const DollarPage = dynamic(() =>
   )
 );
 
-export default function DollarCalculator({ data }: { data: any }) {
-  console.log(data);
+export default function DollarCalculator() {
   return (
     <>
       <Head>
@@ -24,7 +23,7 @@ export default function DollarCalculator({ data }: { data: any }) {
       <main
         className={`${inter.className} relative mb-10 flex flex-col justify-center overflow-hidden pt-20`}
       >
-        <DollarPage dollars={data} />
+        <DollarPage />
         <LinkToHome />
         <div className="shadow-gradient relative -bottom-1 left-0 z-20 h-40 w-full" />
       </main>
@@ -43,13 +42,13 @@ export default function DollarCalculator({ data }: { data: any }) {
     </>
   );
 }
-export const getServerSideProps = async (context: any) => {
-  const res = await fetch("https://dolarapi.com/v1/dolares");
-  const data = await res.json();
+// export const getServerSideProps = async (context: any) => {
+//   const res = await fetch("https://dolarapi.com/v1/dolares");
+//   const data = await res.json();
 
-  return {
-    props: {
-      data,
-    },
-  };
-};
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// };
