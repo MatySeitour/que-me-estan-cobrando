@@ -2,29 +2,21 @@ import { useRef, RefObject } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { inter } from "@/utils/fonts";
 import plataformasData from "../assets/plataformas.json";
-import { Planes } from "@/types";
-
-// PlanDescription Type
-type PlanDescription = {
-  plan_description_id: number;
-  plan_description: string;
-};
+import { PlansType } from "@/types";
 
 export const Plan = ({
   plans,
   planSelect,
   setPlanSelect,
 }: {
-  plans: Planes;
+  plans: PlansType;
   planSelect: number | null;
   setPlanSelect: (arg: number | null) => void;
 }): JSX.Element => {
-  const { plataformas } = plataformasData;
+  const planBenefits = plans.benefits.split(".");
 
   // Final price by multiplying the total tax percentage by the initial price of the plan
-  const finalPrice = (
-    plataformas[0].impuesto_porcentaje * plans.precio
-  ).toFixed(2);
+  const finalPrice = (1.74 * plans.price).toFixed(2);
 
   const element1: RefObject<HTMLDivElement> = useRef(null);
 
@@ -62,19 +54,19 @@ export const Plan = ({
         <div className="flex items-center">
           <p className="bg-gradient__effect mr-2 sm:hidden">
             {" "}
-            {plans?.plan.length > 10
-              ? `${plans.plan.slice(0, 13)}...`
-              : plans?.plan}
+            {plans.name.length > 10
+              ? `${plans.name.slice(0, 13)}...`
+              : plans.name}
           </p>
           <p className="bg-gradient__effect mr-2 hidden sm:inline-block">
-            {plans.plan}
+            {plans.name}
           </p>
           <div className="group relative">
             <p className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal text-transparent">
-              ${`${plans.precio}`}
+              ${`${plans.price}`}
             </p>
 
-            <span className="service-message invisible absolute -top-14 left-[50%] -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-red-300 opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100">
+            <span className="service-message invisible absolute -top-14 left-[50%] -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-red-300 opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100">
               <p className="text-white">Precio Inicial</p>
             </span>
           </div>
@@ -85,7 +77,7 @@ export const Plan = ({
               ${`${finalPrice}`}
             </p>
 
-            <span className="service-message invisible absolute -top-14 left-[50%] -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-red-300 opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100">
+            <span className="service-message invisible absolute -top-14 left-[50%] -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-red-300 opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100">
               <p className="text-white">Precio Final</p>
             </span>
           </div>
@@ -110,10 +102,8 @@ export const Plan = ({
               : `p-4 font-serif font-normal ${inter.className} invisible flex flex-col font-bold text-white/70 opacity-0 transition-[opacity]`
           }
         >
-          {plans.descripcion.map((planDescription: PlanDescription) => (
-            <li key={planDescription.plan_description_id}>
-              {planDescription.plan_description}
-            </li>
+          {planBenefits.map((plan: any) => (
+            <li key={Math.random()}>{plan}</li>
           ))}
         </ul>
       </div>

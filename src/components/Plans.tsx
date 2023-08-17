@@ -1,4 +1,4 @@
-import { ServiceType } from "@/types";
+import { ServiceTest } from "@/types";
 import { useRef, useEffect, useState } from "react";
 import { Plan } from "./Plan";
 import { gsap } from "gsap";
@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 export const Plans = ({
   serviceSelected,
 }: {
-  serviceSelected: ServiceType;
+  serviceSelected: ServiceTest;
 }): JSX.Element => {
   const planTitle = useRef(null);
   const plansContainer = useRef(null);
@@ -72,7 +72,7 @@ export const Plans = ({
         </h3>
       </div>
       <ul className="flex h-auto w-full flex-col gap-1 border-t border-white/30">
-        {serviceSelected.planes.map((plans) => (
+        {serviceSelected.plans.map((plans) => (
           <Plan
             key={plans.id}
             plans={plans}
