@@ -20,7 +20,7 @@ export const LinkToHome = (): JSX.Element => {
         </span>
         <Link
           href={"/"}
-          className="flex items-center justify-center rounded-md bg-gradient-to-r from-emerald-500 to-cyan-500 p-2 text-2xl font-semibold text-transparent text-white"
+          className="flex items-center justify-center rounded-md bg-gradient-to-r from-emerald-500 to-cyan-500 p-2 text-2xl font-semibold text-white"
           type="button"
         >
           <p className="">¿Que me están cobrando?</p>
