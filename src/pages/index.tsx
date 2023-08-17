@@ -3,7 +3,8 @@ import { paytone_One } from "@/utils/fonts";
 import { Footer } from "@/components/Footer";
 import { ClientPage } from "@/components/ClientPage";
 
-export default function Home() {
+export default function Home({ data }: { data: any }) {
+  console.log(data);
   return (
     <>
       <Head>
@@ -17,7 +18,7 @@ export default function Home() {
       <main
         className={`${paytone_One.className} relative overflow-hidden bg-black`}
       >
-        <ClientPage />
+        <ClientPage services={data} />
         <Footer
           text="Los precios de los servicios digitales y los impuestos mostrados
               en esta página son informativos y están sujetos a cambios. Nos
@@ -30,3 +31,14 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async (context: any) => {
+  const res = await fetch(`http://localhost:3000/api/plans/`);
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
