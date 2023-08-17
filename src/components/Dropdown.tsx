@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { ServiceType, Planes } from "@/types";
+import { ServiceTest, PlansType } from "@/types";
 import { HiChevronDown } from "react-icons/hi";
 import { gsap } from "gsap";
 
@@ -9,16 +9,16 @@ export const Dropdown = ({
   setSelectPlan,
   serviceOptionSelect,
 }: {
-  serviceSelected: ServiceType;
-  selectPlan: Planes | null;
-  setSelectPlan: (selectPlan: Planes) => void;
+  serviceSelected: ServiceTest;
+  selectPlan: PlansType | null;
+  setSelectPlan: (selectPlan: PlansType) => void;
   serviceOptionSelect: number;
 }): JSX.Element => {
   const [dropwDownActive, setDropDownAcitve] = useState(false);
   const dropdown = useRef(null);
 
   // Función que cambia el plan y desactiva el dropdown
-  const handleChangePlan = (plan: Planes) => {
+  const handleChangePlan = (plan: PlansType) => {
     setSelectPlan(plan);
     setDropDownAcitve(false);
   };
@@ -26,7 +26,7 @@ export const Dropdown = ({
   // UseEffect que se ejecuta cada vez que el servicio seleccionado se cambia.
   //Cada vez que ocurre esto, seleciona el primer valor de los planes y lo muestra en el dropdown
   useEffect(() => {
-    setSelectPlan(serviceSelected.planes[0]);
+    setSelectPlan(serviceSelected.plans[0]);
     gsap.fromTo(
       dropdown.current,
       {
@@ -62,13 +62,13 @@ export const Dropdown = ({
             className="flex w-full flex-row items-center justify-end sm:cursor-pointer sm:justify-between"
           >
             <p className="hidden bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text font-normal text-transparent sm:inline-block">
-              {selectPlan?.plan}
+              {selectPlan?.name}
             </p>
             <p className="inline-block bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-sm font-normal text-transparent sm:hidden">
-              {selectPlan?.plan?.length != undefined &&
-              selectPlan?.plan?.length > 10
-                ? `${selectPlan?.plan.slice(0, 13)}...`
-                : selectPlan?.plan}
+              {selectPlan?.name.length != undefined &&
+              selectPlan?.name.length > 10
+                ? `${selectPlan.name.slice(0, 13)}...`
+                : selectPlan?.name}
             </p>
             <HiChevronDown className="ml-2 h-4 w-4 text-white sm:ml-0" />
           </div>
@@ -81,26 +81,26 @@ export const Dropdown = ({
             <div className="border-effect__top absolute -bottom-0.5 left-20 h-0.5 w-20 -translate-x-1/2"></div>
             <div className="border-effect__left absolute -right-0.5 top-2 h-12 w-0.5"></div>
             <div>
-              {serviceSelected.planes.map((plan) => (
+              {serviceSelected.plans.map((plan) => (
                 <p
                   onClick={() => handleChangePlan(plan)}
                   key={plan.id}
                   className="text-primary/60 hover:text-primary hidden h-11 w-full items-center justify-start px-8 hover:bg-white/10 sm:flex hover:sm:cursor-pointer"
                 >
-                  {plan.plan}
+                  {plan.name}
                 </p>
               ))}
             </div>
             <div>
-              {serviceSelected.planes.map((plan) => (
+              {serviceSelected.plans.map((plan) => (
                 <p
                   onClick={() => handleChangePlan(plan)}
                   key={plan.id}
                   className="text-primary/60 hover:text-primary flex h-11 w-full items-center justify-start px-8 hover:bg-white/10 sm:hidden hover:sm:cursor-pointer"
                 >
-                  {plan.plan.length > 10
-                    ? `${plan.plan.slice(0, 26)}...`
-                    : plan.plan}
+                  {plan.name.length > 10
+                    ? `${plan.name.slice(0, 26)}...`
+                    : plan.name}
                 </p>
               ))}
             </div>

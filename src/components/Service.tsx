@@ -1,4 +1,4 @@
-import { ServiceType, Planes } from "@/types";
+import { ServiceTest, PlansType } from "@/types";
 import Image from "next/image";
 import { Taxes } from "./Taxes";
 import { useState, useEffect, useRef } from "react";
@@ -12,10 +12,10 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 export const Service = ({
   serviceSelected,
 }: {
-  serviceSelected: ServiceType;
+  serviceSelected: ServiceTest;
 }): JSX.Element => {
   const [serviceOptionSelect, setServiceOptionSelect] = useState<number>(1);
-  const [selectPlan, setSelectPlan] = useState<Planes | null>(null);
+  const [selectPlan, setSelectPlan] = useState<PlansType | null>(null);
   const service = useRef(null);
   const logoService = useRef(null);
 
@@ -93,7 +93,7 @@ export const Service = ({
         duration: 0.4,
       }
     );
-  }, [serviceSelected.id]);
+  }, [serviceSelected.serviceId]);
 
   return (
     <section className="mb-20 pt-16">
@@ -144,8 +144,8 @@ export const Service = ({
           <div className="flex h-40 w-48 items-center justify-center px-4 sm:w-52">
             <Image
               ref={logoService}
-              alt={serviceSelected?.nombre}
-              src={serviceSelected?.imagen}
+              alt={serviceSelected?.serviceName}
+              src={`${serviceSelected.serviceId}.svg`}
               width={2000}
               height={2000}
             />

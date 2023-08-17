@@ -1,16 +1,14 @@
 import impuestosData from "../assets/impuestos.json";
-import { Dropdown } from "./Dropdown";
 import { useEffect, useRef } from "react";
 import { HiInformationCircle } from "react-icons/hi2";
-import { ServiceType, Planes } from "@/types";
+import { PlansType, ServiceTest } from "@/types";
 import { gsap } from "gsap";
 
 export const Prices = ({
-  serviceSelected,
   selectPlan,
 }: {
-  serviceSelected: ServiceType;
-  selectPlan: Planes | null;
+  serviceSelected: ServiceTest;
+  selectPlan: PlansType | null;
 }): JSX.Element => {
   // Obtiene los impuestos del impuestos.json
   const { impuestos } = impuestosData;
@@ -86,7 +84,7 @@ export const Prices = ({
           ref={planTitle}
           className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-xl font-normal text-transparent sm:pr-4"
         >
-          {selectPlan?.plan}
+          {selectPlan?.name}
         </h4>
       </div>
       <div className="flex h-auto w-full flex-row">
@@ -97,7 +95,7 @@ export const Prices = ({
             </p>
             <p className="flex-[1] p-2 text-center text-lg text-black"></p>
             <p className="flex-[1] p-2 text-center text-lg text-black">
-              ${selectPlan?.precio}
+              ${selectPlan?.price}
             </p>
           </li>
           <li id="price" className="flex h-10 w-full items-center bg-black">
@@ -128,7 +126,7 @@ export const Prices = ({
                   } group relative z-50 inline-block w-[1.3rem] text-center`}
                 >
                   <HiInformationCircle className="h-full w-full text-white" />
-                  <span className="invisible absolute -top-14 z-50 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black sm:group-hover:visible sm:group-hover:opacity-100">
+                  <span className="invisible absolute -top-14 z-50 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/20 bg-black p-2 text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-4 before:w-4 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black sm:group-hover:visible sm:group-hover:opacity-100">
                     El porcentaje del impuesto puede variar según la provincia
                   </span>
                 </div>
@@ -143,7 +141,7 @@ export const Prices = ({
                   } group relative inline-block w-[1.3rem] text-center`}
                 >
                   <HiInformationCircle className="h-full w-full text-white" />
-                  <span className="invisible absolute -top-36 right-1/2 z-50 w-32 translate-x-1/2 break-words rounded-md border border-white/20 bg-black p-2 text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-auto before:w-4 before:-translate-x-1/2 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:-top-14 sm:w-16 sm:-translate-x-1/2">
+                  <span className="invisible absolute -top-36 right-1/2 z-50 w-32 translate-x-1/2 break-words rounded-md border border-white/20 bg-black p-2 text-sm text-white opacity-0 transition-all before:absolute before:-bottom-2 before:left-1/2 before:h-auto before:w-4 before:rotate-45 before:border-b before:border-r before:border-white/20 before:bg-black group-hover:visible group-hover:opacity-100 sm:-top-14 sm:w-16 sm:-translate-x-1/2">
                     <p className="h-auto w-full break-words">
                       El porcentaje del impuesto puede variar según la provincia
                     </p>
@@ -155,8 +153,8 @@ export const Prices = ({
               </p>
               <p className="bg-gradient__effect flex-1 border-y border-white/20 p-2 text-center text-lg font-normal text-transparent">
                 $
-                {selectPlan?.precio != undefined &&
-                  (selectPlan?.precio * impuesto?.porcentaje) / 100}
+                {selectPlan?.price != undefined &&
+                  (selectPlan?.price * impuesto?.porcentaje) / 100}
               </p>
             </li>
           ))}
@@ -167,10 +165,8 @@ export const Prices = ({
             <p className="flex-[1] p-2 text-center text-lg text-black"></p>
             <p className="flex-[1] p-2 text-center text-lg text-black">
               $
-              {selectPlan?.precio != undefined &&
-                (
-                  selectPlan?.precio * serviceSelected?.impuesto_porcentaje
-                ).toFixed(2)}
+              {selectPlan?.price != undefined &&
+                (selectPlan?.price * 1.76).toFixed(2)}
             </p>
           </li>
         </ul>
