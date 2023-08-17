@@ -38,6 +38,22 @@ interface DollarNewValues {
   descripcion: string;
 }
 
+interface ServiceTest {
+  plans: PlansType[];
+  serviceId: number;
+  serviceName: string;
+}
+
+interface PlansType {
+  serviceName: string;
+  id: number;
+  name: string;
+  price: number;
+  benefits: string;
+}
+
 export { Planes };
+export { PlansType };
 export { DollarApi };
 export { DollarNewValues };
+export { ServiceTest };
