@@ -33,7 +33,9 @@ export default function Home({ data }: { data: any }) {
 }
 
 export const getServerSideProps = async (context: any) => {
-  const res = await fetch(`http://localhost:3000/api/plans/`);
+  const res = await fetch(
+    `https://que-me-estan-cobrando-v2.vercel.app/api/plans/`
+  );
   const data = await res.json();
 
   return {
