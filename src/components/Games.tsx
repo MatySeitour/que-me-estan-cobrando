@@ -13,7 +13,7 @@ type InfoDollar = {
 };
 
 export const Games = (): JSX.Element => {
-  const games: RefObject<HTMLElement> = useRef(null);
+  const games: any = useRef(null);
   const gameTitle: RefObject<HTMLDivElement> = useRef(null);
   const selectServiceDescription: RefObject<HTMLDivElement> = useRef(null);
 
@@ -38,9 +38,9 @@ export const Games = (): JSX.Element => {
             start: "start 70%",
             end: "start 70%",
           },
-          y: -100,
+          y: 100,
           opacity: 0,
-          duration: 0.5,
+          duration: 0.2,
         },
 
         {
@@ -51,31 +51,25 @@ export const Games = (): JSX.Element => {
           },
           y: 0,
           opacity: 1,
-          duration: 0.5,
+          duration: 0.2,
         }
       );
-      gsap.fromTo(
-        gamesContainer,
-        {
-          scrollTrigger: {
-            trigger: gameTitle.current,
-            start: "start 70%",
-            end: "start 70%",
-          },
-          opacity: 0,
-          duration: 0.5,
+      gsap.from(gamesContainer, {
+        scrollTrigger: {
+          trigger: games.current,
+          start: "top center",
+          end: "top end",
+          scrub: true,
+          // markers: true,
         },
+        y: 100,
+        opacity: 0,
+        onComplete: () => {
+          gamesContainer?.removeAttribute("style");
+        },
+        duration: 1,
+      });
 
-        {
-          scrollTrigger: {
-            trigger: gameTitle.current,
-            start: "start 70%",
-            end: "start 70%",
-          },
-          opacity: 1,
-          duration: 0.5,
-        }
-      );
       gsap.fromTo(
         selectServiceDescription.current,
         {
@@ -84,9 +78,10 @@ export const Games = (): JSX.Element => {
             start: "start 70%",
             end: "start 70%",
           },
-          y: -100,
+          y: 100,
           opacity: 0,
           duration: 0.5,
+          delay: 0.2,
         },
 
         {
@@ -98,6 +93,7 @@ export const Games = (): JSX.Element => {
           y: 0,
           opacity: 1,
           duration: 0.5,
+          delay: 0.2,
         }
       );
     }, games);
