@@ -5,15 +5,15 @@ import { Service } from "@/components/Service";
 import { Games } from "@/components/Games";
 import { ServicesContainer } from "@/containers/ServicesContainer";
 import { useState } from "react";
-import type { ServiceTest } from "@/types";
+import type { ServiceType } from "@/types";
 
 export const ClientPage = ({
   services,
 }: {
-  services: ServiceTest[];
+  services: ServiceType[];
 }): JSX.Element => {
   // Por default, el estado inicial va a ser el primer elemento de las plataformas(en este caso, netflix).
-  const [serviceSelected, setServiceSelected] = useState<ServiceTest>(
+  const [serviceSelected, setServiceSelected] = useState<ServiceType>(
     services[0]
   );
 

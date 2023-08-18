@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { ServiceTest, PlansType } from "@/types";
+import { ServiceType, PlansType } from "@/types";
 import { HiChevronDown } from "react-icons/hi";
 import { gsap } from "gsap";
 
@@ -9,7 +9,7 @@ export const Dropdown = ({
   setSelectPlan,
   serviceOptionSelect,
 }: {
-  serviceSelected: ServiceTest;
+  serviceSelected: ServiceType;
   selectPlan: PlansType | null;
   setSelectPlan: (selectPlan: PlansType) => void;
   serviceOptionSelect: number;

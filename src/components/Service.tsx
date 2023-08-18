@@ -1,4 +1,4 @@
-import { ServiceTest, PlansType } from "@/types";
+import { ServiceType, PlansType } from "@/types";
 import Image from "next/image";
 import { Taxes } from "./Taxes";
 import { useState, useEffect, useRef } from "react";
@@ -12,7 +12,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 export const Service = ({
   serviceSelected,
 }: {
-  serviceSelected: ServiceTest;
+  serviceSelected: ServiceType;
 }): JSX.Element => {
   const [serviceOptionSelect, setServiceOptionSelect] = useState<number>(1);
   const [selectPlan, setSelectPlan] = useState<PlansType | null>(null);
@@ -25,17 +25,19 @@ export const Service = ({
 
     const serviceContainer = document.querySelector("#service-container");
     const selectService = document.querySelector("#select-service__container");
+    const servicesTitle = document.querySelector(".services-title");
+    const selectSubtitle = document.querySelector(".services-select__subtitle");
 
     let ctx = gsap.context(() => {
       gsap.fromTo(
-        selectService,
+        servicesTitle,
         {
           scrollTrigger: {
             trigger: serviceContainer,
-            start: "start 70%",
-            end: "start 70%",
+            start: "start center",
+            end: "start center",
           },
-          y: -70,
+          y: 70,
           opacity: 0,
           duration: 0.4,
         },
@@ -43,8 +45,8 @@ export const Service = ({
         {
           scrollTrigger: {
             trigger: serviceContainer,
-            start: "start 70%",
-            end: "start 70%",
+            start: "start center",
+            end: "start center",
           },
           y: 0,
           opacity: 1,
@@ -53,10 +55,64 @@ export const Service = ({
       );
 
       gsap.fromTo(
-        service.current,
+        selectSubtitle,
         {
           scrollTrigger: {
             trigger: serviceContainer,
+            start: "start center",
+            end: "start center",
+          },
+          y: 70,
+          opacity: 0,
+          duration: 0.4,
+          delay: 0.2,
+        },
+
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start center",
+            end: "start center",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+          delay: 0.2,
+        }
+      );
+
+      gsap.fromTo(
+        selectService,
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start center",
+            end: "start center",
+          },
+          y: 70,
+          opacity: 0,
+          duration: 0.4,
+          delay: 0.4,
+        },
+
+        {
+          scrollTrigger: {
+            trigger: serviceContainer,
+            start: "start center",
+            end: "start center",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+          delay: 0.4,
+        }
+      );
+
+      gsap.fromTo(
+        service.current,
+        {
+          scrollTrigger: {
+            trigger: service.current,
             start: "start center",
             end: "start center",
           },
@@ -66,7 +122,7 @@ export const Service = ({
 
         {
           scrollTrigger: {
-            trigger: serviceContainer,
+            trigger: service.current,
             start: "start center",
             end: "start center",
           },

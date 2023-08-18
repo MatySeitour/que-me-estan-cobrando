@@ -1,15 +1,15 @@
 import Image from "next/image";
 import plataformasData from "../../src/assets/plataformas.json";
-import { ServiceTest } from "@/types";
+import { ServiceType } from "@/types";
 
 export const SelectService = ({
   services,
   serviceSelected,
   setServiceSelected,
 }: {
-  services: ServiceTest[];
-  serviceSelected: ServiceTest;
-  setServiceSelected: (arg: ServiceTest) => void;
+  services: ServiceType[];
+  serviceSelected: ServiceType;
+  setServiceSelected: (arg: ServiceType) => void;
 }) => {
   const { plataformas } = plataformasData;
 

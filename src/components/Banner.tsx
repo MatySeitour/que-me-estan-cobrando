@@ -4,14 +4,14 @@ import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
-import { ServiceTest } from "@/types";
+import { ServiceType } from "@/types";
 
 const paytone_One = Paytone_One({
   weight: ["400"],
   subsets: ["latin"],
 });
 
-export const Banner = ({ services }: { services: ServiceTest[] }) => {
+export const Banner = ({ services }: { services: ServiceType[] }) => {
   const linkPageDollar = useRef(null);
   const containerBanner = useRef(null);
 

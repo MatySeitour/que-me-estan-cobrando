@@ -1,13 +1,13 @@
 import impuestosData from "../assets/impuestos.json";
 import { useEffect, useRef } from "react";
 import { HiInformationCircle } from "react-icons/hi2";
-import { PlansType, ServiceTest } from "@/types";
+import { PlansType, ServiceType } from "@/types";
 import { gsap } from "gsap";
 
 export const Prices = ({
   selectPlan,
 }: {
-  serviceSelected: ServiceTest;
+  serviceSelected: ServiceType;
   selectPlan: PlansType | null;
 }): JSX.Element => {
   // Obtiene los impuestos del impuestos.json
@@ -89,12 +89,15 @@ export const Prices = ({
       </div>
       <div className="flex h-auto w-full flex-row">
         <ul className="flex h-full w-full flex-col">
-          <li id="price" className="flex h-10 w-full items-center bg-white">
-            <p className="flex-[2] p-2 text-center text-lg text-black">
+          <li
+            id="price"
+            className="flex h-10 w-full items-center border-t border-white/20"
+          >
+            <p className="bg-gradient__effect flex-[2] p-2 text-center text-lg font-normal text-transparent">
               Precio Inicial
             </p>
-            <p className="flex-[1] p-2 text-center text-lg text-black"></p>
-            <p className="flex-[1] p-2 text-center text-lg text-black">
+            <p className="bg-gradient__effect flex-[1] p-2 text-center text-lg font-normal text-transparent"></p>
+            <p className="bg-gradient__effect flex-[1] p-2 text-center text-lg font-normal text-transparent">
               ${selectPlan?.price}
             </p>
           </li>
@@ -158,12 +161,15 @@ export const Prices = ({
               </p>
             </li>
           ))}
-          <li id="price" className="flex h-10 w-full items-center bg-white">
-            <p className="flex-[2] p-2 text-center text-lg text-black">
+          <li
+            id="price"
+            className="flex h-10 w-full items-center border-y border-white/20 bg-black"
+          >
+            <p className="bg-gradient__effect flex-[2] p-2 text-center text-lg text-transparent">
               Precio Final
             </p>
-            <p className="flex-[1] p-2 text-center text-lg text-black"></p>
-            <p className="flex-[1] p-2 text-center text-lg text-black">
+            <p className="bg-gradient__effect flex-[1] p-2 text-center text-lg text-transparent"></p>
+            <p className="bg-gradient__effect flex-[1] p-2 text-center text-lg text-transparent">
               $
               {selectPlan?.price != undefined &&
                 (selectPlan?.price * 1.76).toFixed(2)}

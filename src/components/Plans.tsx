@@ -1,4 +1,4 @@
-import { ServiceTest } from "@/types";
+import { ServiceType } from "@/types";
 import { useRef, useEffect, useState } from "react";
 import { Plan } from "./Plan";
 import { gsap } from "gsap";
@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 export const Plans = ({
   serviceSelected,
 }: {
-  serviceSelected: ServiceTest;
+  serviceSelected: ServiceType;
 }): JSX.Element => {
   const planTitle = useRef(null);
   const plansContainer = useRef(null);

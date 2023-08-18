@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ServiceTest } from "@/types";
+import { ServiceType } from "@/types";
 
-export const SliderHome = ({ services }: { services: ServiceTest[] }) => {
+export const SliderHome = ({ services }: { services: ServiceType[] }) => {
   return (
     <div className="slider-container relative mb-20 grid h-auto w-[50%] max-w-[684px] place-items-center overflow-hidden">
       <ul className="slider-track animate-sliderScroll">
