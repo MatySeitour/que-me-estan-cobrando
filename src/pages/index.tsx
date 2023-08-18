@@ -32,7 +32,7 @@ export default function Home({ data }: { data: any }) {
   );
 }
 
-export const getServerSideProps = async (context: any) => {
+export const getStaticProps = async (context: any) => {
   const res = await fetch(
     `https://que-me-estan-cobrando-v2.vercel.app/api/plans/`
   );
