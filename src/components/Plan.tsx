@@ -1,7 +1,6 @@
 import { useRef, RefObject } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { inter } from "@/utils/fonts";
-import plataformasData from "../assets/plataformas.json";
 import { PlansType } from "@/types";
 
 export const Plan = ({
