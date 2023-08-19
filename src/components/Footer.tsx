@@ -3,12 +3,13 @@ import { inter, paytone_One } from "../utils/fonts";
 
 export const Footer = ({ text }: { text: string }): JSX.Element => {
   return (
-    <footer className="flex h-auto w-full items-center justify-center pt-4">
-      <div className="bg-gradient__cards relative h-full w-full max-w-7xl rounded-tl-md rounded-tr-md border-t border-white/30 pb-4">
-        <div className="border-effect__bottom absolute -top-0.5 right-4 h-0.5 w-20"></div>
+    <footer className="flex h-auto w-full items-center justify-center bg-[#111] pt-4">
+      <div className="relative h-full w-full max-w-7xl pb-4">
         <div className="h-full w-full">
           <div className="px-8 py-6">
-            <p className={`text-center text-sm text-white ${inter.className}`}>
+            <p
+              className={`text-center text-sm text-white/40 ${inter.className}`}
+            >
               {text}
             </p>
           </div>
