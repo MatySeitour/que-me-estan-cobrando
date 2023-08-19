@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { ClientPage } from "@/components/ClientPage";
 
 export default function Home({ data }: { data: any }) {
-  console.log(data);
   return (
     <>
       <Head>
