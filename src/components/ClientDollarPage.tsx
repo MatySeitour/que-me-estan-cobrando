@@ -1,6 +1,12 @@
-import { CalculatorContainer } from "./CalculatorContainer";
 import { DollarApi } from "@/types";
 import modifyDollars from "@/utils/modifyDollars";
+import dynamic from "next/dynamic";
+
+const Calculator = dynamic(() =>
+  import("../components/CalculatorContainer").then(
+    (module) => module.CalculatorContainer
+  )
+);
 
 export const ClientDollarPage = ({
   dollars,
@@ -11,7 +17,7 @@ export const ClientDollarPage = ({
 
   return (
     <section>
-      <CalculatorContainer dollarCalculator={newDollars} />
+      <Calculator dollarCalculator={newDollars} />
     </section>
   );
 };
