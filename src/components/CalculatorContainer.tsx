@@ -8,7 +8,6 @@ import {
   FaCheck,
 } from "react-icons/fa6";
 import { HiInformationCircle } from "react-icons/hi2";
-import { LoadingData } from "./Loading";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { gsap } from "gsap";
 import { DollarNewValues } from "@/types";
@@ -21,12 +20,8 @@ const enum Operation {
 
 export const CalculatorContainer = ({
   dollarCalculator,
-  lastUpdate,
-  loadingData,
 }: {
   dollarCalculator: DollarNewValues[] | undefined;
-  lastUpdate: string;
-  loadingData: boolean;
 }): JSX.Element => {
   // refs
   const calculator = useRef(null);
@@ -34,7 +29,21 @@ export const CalculatorContainer = ({
   const calculatorText = useRef(null);
 
   // State containing the value of the input
-  const [inputCalculator, setInputCalculator] = useState<string>("");
+  const [lastUpdate, setLastUpdate] = useState<number | string>("");
+  const [inputCalculator, setInputCalculator] = useState<number | string>("");
+  const [inputPesosCalculator, setInputPesosCalculator] = useState<
+    number | string
+  >("");
+
+  useEffect(() => {
+    const time = new Date();
+    const lastUpdate = `${time.getDay().toString()}/${
+      time.getMonth() + 1
+    }/${time.getFullYear()} a las ${time.getHours()}:${String(
+      time.getMinutes()
+    ).padStart(2, "0")}:${String(time.getSeconds()).padStart(2, "0")}`;
+    setLastUpdate(lastUpdate);
+  }, []);
 
   // Selected dollar quote
   const [dollarType, setDollarType] = useState<any>([]);
@@ -48,16 +57,36 @@ export const CalculatorContainer = ({
   // Function that sets the state of the input only if the first value is different from 0
   const handleOnInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
-      setInputCalculator(e.target.value);
+      const parseInputNumber = Number(e.target.value);
+      if (calculateType == Operation.buy) {
+        setInputPesosCalculator(parseInputNumber * Number(dollarType.compra));
+        setInputCalculator(Number(e.target.value));
+      } else {
+        setInputPesosCalculator(parseInputNumber * Number(dollarType.venta));
+        setInputCalculator(Number(e.target.value));
+      }
+    }
+  };
+  const handleOnInputPesosChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
+      const parseInputNumber = Number(e.target.value);
+      if (calculateType == Operation.buy) {
+        setInputCalculator(parseInputNumber / Number(dollarType.compra));
+        setInputPesosCalculator(Number(e.target.value));
+      } else {
+        setInputCalculator(parseInputNumber / Number(dollarType.venta));
+        setInputPesosCalculator(Number(e.target.value));
+      }
     }
   };
 
   // Animations
   useEffect(() => {
+    const typesDollars = document.querySelector(".types-dollars");
     const tl = gsap.timeline({ paused: true });
 
+    tl.play();
     const calculatorContext = gsap.context(() => {
-      tl.play();
       tl.fromTo(
         calculatorTitle.current,
         { opacity: 0, y: 50, duration: 0.3 },
@@ -70,31 +99,16 @@ export const CalculatorContainer = ({
         { opacity: 1, y: 0, duration: 0.3 },
         0.2
       );
+
+      tl.fromTo(
+        typesDollars,
+        { opacity: 0, duration: 0.3 },
+        { opacity: 1, duration: 0.3 }
+      );
     }, calculator);
 
     return () => calculatorContext.revert();
   }, []);
-
-  useEffect(() => {
-    const tl = gsap.timeline({ paused: true });
-
-    const cards = gsap.utils.toArray("#cardQuote");
-    if (!loadingData) {
-      const calculatorContext = gsap.context(() => {
-        tl.play();
-
-        cards.forEach((card: any) => {
-          tl.fromTo(
-            card,
-            { opacity: 0, y: 50, duration: 0.2 },
-            { opacity: 1, y: 0, duration: 0.2 }
-          );
-        });
-      }, calculator);
-
-      return () => calculatorContext.revert();
-    }
-  }, [loadingData]);
 
   // Function that sets the value of copyState
   const toggleCopy = () => {
@@ -136,7 +150,7 @@ export const CalculatorContainer = ({
         </div>
       </div>
       <>
-        <div className="relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 bg-black/30 p-2">
+        <div className="types-dollars relative flex h-auto w-full flex-col gap-2 rounded-md border border-white/30 bg-black/30 p-2">
           <div className="relative mb-4 flex flex-row justify-center gap-6 "></div>
           <div className="w-full">
             <div className="mb-2 flex justify-center">
@@ -145,149 +159,137 @@ export const CalculatorContainer = ({
                 deseas comprar / vender
               </h3>
             </div>
-            {loadingData == false ? (
+            <div
+              className={`bg-gradient__cards flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none ${
+                dollarType.length == 0
+                  ? `invisible`
+                  : `visible p-2 transition-all sm:p-8`
+              }`}
+            >
               <div
-                className={`bg-gradient__cards flex w-full flex-col justify-between rounded-md border border-white/20 px-2 outline-none ${
+                className={`${
                   dollarType.length == 0
-                    ? `invisible`
-                    : `visible p-2 transition-all sm:p-8`
-                }`}
+                    ? `invisible h-0 transition-all duration-1000`
+                    : `visible transition-all duration-1000`
+                } mb-4 flex flex-col items-center justify-center gap-4`}
               >
-                <div
-                  className={`${
-                    dollarType.length == 0
-                      ? `invisible h-0 transition-all duration-1000`
-                      : `visible transition-all duration-1000`
-                  } mb-4 flex flex-col items-center justify-center gap-4`}
-                >
-                  <div className="">
-                    <div className="home-title mb-2 bg-clip-text text-center text-2xl font-bold">
-                      <p>{dollarType.nombre}</p>
+                <div className="">
+                  <div className="home-title mb-2 bg-clip-text text-center text-2xl font-bold">
+                    <p>{dollarType.nombre}</p>
+                  </div>
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <div className="flex items-center justify-center">
+                      <p className="home-title mr-1 bg-clip-text text-center text-xl font-bold">
+                        Compra:{" "}
+                      </p>
+                      <b className="calculator-gradient__text bg-clip-text text-xl">
+                        {dollarType.compra}
+                      </b>
                     </div>
-                    <div className="flex flex-col gap-2 sm:flex-row">
-                      <div className="flex items-center justify-center">
-                        <p className="home-title mr-1 bg-clip-text text-center text-xl font-bold">
-                          Compra:{" "}
-                        </p>
-                        <b className="calculator-gradient__text bg-clip-text text-xl">
-                          {dollarType.compra}
-                        </b>
-                      </div>
-                      <div className="flex items-center justify-center">
-                        <p className="home-title mr-1 bg-clip-text text-center text-xl font-bold">
-                          Venta:{" "}
-                        </p>
-                        <b className="calculator-gradient__text bg-clip-text text-center text-xl">
-                          {dollarType.venta}
-                        </b>
-                      </div>
+                    <div className="flex items-center justify-center">
+                      <p className="home-title mr-1 bg-clip-text text-center text-xl font-bold">
+                        Venta:{" "}
+                      </p>
+                      <b className="calculator-gradient__text bg-clip-text text-center text-xl">
+                        {dollarType.venta}
+                      </b>
                     </div>
                   </div>
-                  {dollarType.compra != "No Cotiza" && (
-                    <div className="flex items-center justify-center gap-4">
-                      <button
-                        onClick={() => setCalculateType(Operation.buy)}
-                        className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
-                          calculateType == Operation.buy &&
-                          `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
-                        }`}
-                      >
-                        Quiero comprar
-                      </button>
-                      <button
-                        onClick={() => setCalculateType(Operation.sell)}
-                        className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
-                          calculateType == Operation.sell &&
-                          `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
-                        }`}
-                      >
-                        Quiero vender
-                      </button>
-                    </div>
-                  )}
                 </div>
-
                 {dollarType.compra != "No Cotiza" && (
-                  <div
-                    className={`flex w-full flex-col items-center justify-center gap-2`}
-                  >
-                    <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                      <label
-                        htmlFor="input_buy"
-                        className="home-title w-16 bg-clip-text font-bold text-white"
-                      >
-                        USD$
-                      </label>
-                      <input
-                        name="input_buy"
-                        onChange={handleOnInputChange}
-                        value={inputCalculator}
-                        type="number"
-                        pattern="[0-9]+"
-                        id="calculator"
-                        placeholder={
-                          calculateType == Operation.buy
-                            ? `Escribe el monto de compra...`
-                            : `Escribe el monto de venta...`
-                        }
-                        className="h-full w-full max-w-[15rem] rounded-r-md bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
-                      />
-                    </div>
-                    <div className="flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
-                      <label
-                        htmlFor="input_sell"
-                        className="home-title mr-2 w-16 bg-clip-text font-bold text-white"
-                      >
-                        ARS$
-                      </label>
-                      <input
-                        readOnly
-                        name="input_sell"
-                        onChange={handleOnInputChange}
-                        value={
-                          calculateType == Operation.buy
-                            ? (
-                                Number(inputCalculator) *
-                                Number(dollarType.compra)
-                              ).toFixed(2)
-                            : (
-                                Number(inputCalculator) *
-                                Number(dollarType.venta)
-                              ).toFixed(2)
-                        }
-                        type="type"
-                        pattern="[0-9]+"
-                        id="calculator"
-                        className="h-full w-full max-w-[15rem] bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
-                      />
-                      <CopyToClipboard
-                        text={(
-                          Number(inputCalculator) * Number(dollarType.venta)
-                        ).toFixed(2)}
-                      >
-                        <div
-                          onClick={toggleCopy}
-                          className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-b from-[#1fbd06] to-green-800 p-1"
-                        >
-                          <FaCopy className="h-5 w-8 text-white" />
-                        </div>
-                      </CopyToClipboard>
-                    </div>
+                  <div className="flex items-center justify-center gap-4">
+                    <button
+                      onClick={() => setCalculateType(Operation.buy)}
+                      className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
+                        calculateType == Operation.buy &&
+                        `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
+                      }`}
+                    >
+                      Quiero comprar
+                    </button>
+                    <button
+                      onClick={() => setCalculateType(Operation.sell)}
+                      className={`rounded-full border border-green-500 p-2 font-semibold text-white hover:bg-white/10 ${
+                        calculateType == Operation.sell &&
+                        `border-transparent bg-gradient-to-b from-[#1fbd06] to-green-800`
+                      }`}
+                    >
+                      Quiero vender
+                    </button>
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="flex h-screen w-full justify-center pt-20">
-                <LoadingData />
-              </div>
-            )}
+
+              {dollarType.compra != "No Cotiza" && (
+                <div
+                  className={`flex w-full flex-col items-center justify-center gap-2`}
+                >
+                  <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
+                    <label
+                      htmlFor="input_buy"
+                      className="home-title mr-2 w-16 bg-clip-text font-bold text-white"
+                    >
+                      USD$
+                    </label>
+                    <input
+                      name="input_buy"
+                      onChange={handleOnInputChange}
+                      value={inputCalculator}
+                      type="number"
+                      pattern="[0-9]+"
+                      id="calculator"
+                      placeholder={`Escribe el monto en USD...`}
+                      className="h-full w-full max-w-[15rem] rounded-r-md bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
+                    />
+                    <CopyToClipboard text={inputCalculator.toString()}>
+                      <div
+                        onClick={toggleCopy}
+                        className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-b from-[#1fbd06] to-green-800 p-1"
+                      >
+                        <FaCopy className="h-5 w-8 text-white" />
+                      </div>
+                    </CopyToClipboard>
+                  </div>
+                  <div className="dollar-input__container flex w-72 items-center justify-center rounded-md border border-white/20 pl-2">
+                    <label
+                      htmlFor="input_sell"
+                      className="home-title mr-2 w-16 bg-clip-text font-bold text-white"
+                    >
+                      ARS$
+                    </label>
+                    <input
+                      name="input_sell"
+                      onChange={handleOnInputPesosChange}
+                      value={inputPesosCalculator}
+                      type="number"
+                      placeholder={`Escribe el monto en ARS...`}
+                      pattern="[0-9]+"
+                      id="calculator"
+                      className="h-full w-full max-w-[15rem] bg-black/50 p-1 text-left font-bold text-white outline-none placeholder:text-xs"
+                    />
+                    <CopyToClipboard text={inputPesosCalculator.toString()}>
+                      <div
+                        onClick={toggleCopy}
+                        className="flex h-full cursor-pointer items-center justify-center rounded-r-md bg-gradient-to-b from-[#1fbd06] to-green-800 p-1"
+                      >
+                        <FaCopy className="h-5 w-8 text-white" />
+                      </div>
+                    </CopyToClipboard>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           <ul className="flex h-auto flex-col gap-4 py-2 md:grid md:grid-cols-3 md:gap-4">
             {dollarCalculator?.map((dollarInfo: any) => (
               <li
                 id="cardQuote"
                 key={dollarInfo.nombre}
-                onClick={() => setDollarType(dollarInfo)}
+                onClick={() => {
+                  setDollarType(dollarInfo);
+                  setInputCalculator("");
+                  setInputPesosCalculator("");
+                }}
                 className={`flex flex-col justify-between rounded-md border bg-white/10 p-2 backdrop-blur-sm sm:h-auto sm:w-full ${
                   dollarType.nombre == dollarInfo.nombre
                     ? `border border-green-600`
@@ -368,7 +370,7 @@ export const CalculatorContainer = ({
           className={
             copyState
               ? `fixed bottom-8 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
-              : `fixed -bottom-10 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
+              : `fixed -bottom-14 right-4 z-50 flex h-10 w-auto items-center justify-center rounded-md border border-green-500 bg-[#111] p-4 transition-all`
           }
         >
           <p className="mr-2 text-white">¡Valor copiado con éxito!</p>
