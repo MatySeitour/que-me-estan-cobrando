@@ -56,27 +56,37 @@ export const CalculatorContainer = ({
 
   // Function that sets the state of the input only if the first value is different from 0
   const handleOnInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
-      const parseInputNumber = Number(e.target.value);
-      if (calculateType == Operation.buy) {
-        setInputPesosCalculator(parseInputNumber * Number(dollarType.compra));
-        setInputCalculator(Number(e.target.value));
-      } else {
-        setInputPesosCalculator(parseInputNumber * Number(dollarType.venta));
-        setInputCalculator(Number(e.target.value));
+    if (e.target.value != "") {
+      if (Number(e.target.value) >= 0) {
+        const parseInputNumber = Number(e.target.value);
+        if (calculateType == Operation.buy) {
+          setInputPesosCalculator(parseInputNumber * Number(dollarType.compra));
+          setInputCalculator(Number(e.target.value));
+        } else {
+          setInputPesosCalculator(parseInputNumber * Number(dollarType.venta));
+          setInputCalculator(Number(e.target.value));
+        }
       }
+    } else {
+      setInputPesosCalculator("");
+      setInputCalculator("");
     }
   };
   const handleOnInputPesosChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) >= 0 && e.target.value[0] != "0") {
-      const parseInputNumber = Number(e.target.value);
-      if (calculateType == Operation.buy) {
-        setInputCalculator(parseInputNumber / Number(dollarType.compra));
-        setInputPesosCalculator(Number(e.target.value));
-      } else {
-        setInputCalculator(parseInputNumber / Number(dollarType.venta));
-        setInputPesosCalculator(Number(e.target.value));
+    if (e.target.value != "") {
+      if (Number(e.target.value) >= 0) {
+        const parseInputNumber = Number(e.target.value);
+        if (calculateType == Operation.buy) {
+          setInputCalculator(parseInputNumber / Number(dollarType.compra));
+          setInputPesosCalculator(Number(e.target.value));
+        } else {
+          setInputCalculator(parseInputNumber / Number(dollarType.venta));
+          setInputPesosCalculator(Number(e.target.value));
+        }
       }
+    } else {
+      setInputPesosCalculator("");
+      setInputCalculator("");
     }
   };
 
