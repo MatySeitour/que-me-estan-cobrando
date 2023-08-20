@@ -1,5 +1,4 @@
 import Image from "next/image";
-import plataformasData from "../../src/assets/plataformas.json";
 import { ServiceType } from "@/types";
 
 export const SelectService = ({
@@ -11,8 +10,6 @@ export const SelectService = ({
   serviceSelected: ServiceType;
   setServiceSelected: (arg: ServiceType) => void;
 }) => {
-  const { plataformas } = plataformasData;
-
   return (
     <>
       <div className="relative flex before:absolute before:-right-1 before:z-10 before:h-full before:w-12 before:bg-gradient-to-l before:from-[#000] before:to-transparent">

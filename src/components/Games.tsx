@@ -58,20 +58,37 @@ export const Games = (): JSX.Element => {
         }
       );
 
-      gsap.from(gamesContainer, {
-        scrollTrigger: {
-          trigger: gamesTitleContainer,
-          start: "-30% 60%",
-          end: "bottom bottom",
-          scrub: true,
+      gsap.fromTo(
+        gamesContainer,
+        {
+          scrollTrigger: {
+            trigger: gamesTitleContainer,
+            start: "end center",
+            end: "bottom bottom",
+            scrub: true,
+            markers: true,
+          },
+          opacity: 0,
+          // onComplete: () => {
+          //   gamesContainer?.removeAttribute("style");
+          // },
+          duration: 0.2,
         },
-        y: 100,
-        opacity: 0,
-        onComplete: () => {
-          gamesContainer?.removeAttribute("style");
-        },
-        duration: 0.2,
-      });
+
+        {
+          scrollTrigger: {
+            trigger: gamesTitleContainer,
+            start: "end center",
+            end: "bottom bottom",
+            scrub: true,
+          },
+          opacity: 1,
+          // onComplete: () => {
+          //   gamesContainer?.removeAttribute("style");
+          // },
+          duration: 0.2,
+        }
+      );
 
       gsap.fromTo(
         selectServiceDescription.current,
