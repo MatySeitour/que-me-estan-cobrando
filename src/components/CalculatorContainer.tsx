@@ -128,6 +128,11 @@ export const CalculatorContainer = ({
     }, 1000);
   };
 
+  useEffect(() => {
+    setInputCalculator("");
+    setInputPesosCalculator("");
+  }, [calculateType]);
+
   return (
     <div
       ref={calculator}
