@@ -66,7 +66,6 @@ export const Games = (): JSX.Element => {
             start: "end center",
             end: "bottom bottom",
             scrub: true,
-            markers: true,
           },
           opacity: 0,
           // onComplete: () => {
