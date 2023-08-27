@@ -65,7 +65,6 @@ export const Games = (): JSX.Element => {
             trigger: gamesTitleContainer,
             start: "end center",
             end: "bottom bottom",
-            scrub: true,
           },
           opacity: 0,
           // onComplete: () => {
@@ -79,7 +78,6 @@ export const Games = (): JSX.Element => {
             trigger: gamesTitleContainer,
             start: "end center",
             end: "bottom bottom",
-            scrub: true,
           },
           opacity: 1,
           // onComplete: () => {
