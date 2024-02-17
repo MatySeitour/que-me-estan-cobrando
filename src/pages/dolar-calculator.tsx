@@ -5,12 +5,12 @@ import { LinkToHome } from "@/components/LinkToHome";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import dynamic from "next/dynamic";
 import { DollarApi } from "@/types";
+import { LoadingData } from "@/components/Loading";
 
-const DollarPage = dynamic(() =>
-  import("../components/ClientDollarPage").then(
-    (module) => module.ClientDollarPage
-  )
-);
+const ClientPage = dynamic(() => import("../components/ClientDollarPage"), {
+  ssr: false,
+  loading: LoadingData,
+});
 
 export default function DollarCalculator({ data }: { data: DollarApi[] }) {
   return (
@@ -23,9 +23,10 @@ export default function DollarCalculator({ data }: { data: DollarApi[] }) {
         />
       </Head>
       <main
-        className={`${inter.className} relative mb-10 flex flex-col justify-center overflow-hidden pt-20`}
+        className={`${inter.className} relative mb-10 flex min-h-screen flex-col items-center justify-center overflow-hidden  pt-20`}
       >
-        <DollarPage dollars={data} />
+        <ClientPage dollars={data} />
+        {/* <DollarPage dollars={data} /> */}
         <LinkToHome />
         <div className="shadow-gradient relative -bottom-1 left-0 z-20 h-40 w-full" />
       </main>
@@ -47,9 +48,7 @@ export default function DollarCalculator({ data }: { data: DollarApi[] }) {
 export const getServerSideProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
-  const res = await fetch(
-    "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
-  );
+  const res = await fetch("https://dolarapi.com/v1/dolares");
   const data = await res.json();
 
   return {
