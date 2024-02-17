@@ -42,11 +42,8 @@ export const GameUsd = ({
     }
   };
 
-  // Change the "," to "."
-  const dollarNumber = dollar.dollarValue.replace(",", ".");
-
   // Gets the value in pesos
-  const priceInPesos = Number(dollarNumber) * Number(inputPriceValue);
+  const priceInPesos = Number(dollar.dollarValue) * Number(inputPriceValue);
   return (
     <div
       className={`${
