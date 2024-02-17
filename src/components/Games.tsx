@@ -192,9 +192,7 @@ export const Games = (): JSX.Element => {
   useEffect(() => {
     // Function to obtain the principal values of the dollar
     async function getDollarValue() {
-      const res = await axios.get(
-        "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
-      );
+      const res = await axios.get("https://dolarapi.com/v1/dolares");
 
       // Create a current date
       const time = new Date();
@@ -206,7 +204,7 @@ export const Games = (): JSX.Element => {
 
       // Set the two values to the dollar state
       setDollar({
-        dollarValue: res.data[0].casa.venta,
+        dollarValue: res.data[0].venta,
         lastUpdate: timeFinal,
       });
     }
