@@ -1,7 +1,13 @@
 import Head from "next/head";
 import { paytone_One } from "@/utils/fonts";
 import { Footer } from "@/components/Footer";
-import { ClientPage } from "@/components/ClientPage";
+import dynamic from "next/dynamic";
+import { LoadingData } from "@/components/Loading";
+
+const ClientPage = dynamic(() => import("../components/ClientPage"), {
+  ssr: false,
+  loading: LoadingData,
+});
 
 export default function Home({ data }: { data: any }) {
   return (
@@ -15,7 +21,8 @@ export default function Home({ data }: { data: any }) {
       </Head>
 
       <main
-        className={`${paytone_One.className} relative overflow-hidden bg-black`}
+        // className={`${paytone_One.className} relative overflow-hidden bg-black`}
+        className={`${paytone_One.className} relative min-h-screen w-full overflow-x-hidden bg-black`}
       >
         <ClientPage services={data} />
         <Footer
